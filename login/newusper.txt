@@ -1,0 +1,7 @@
+<div id="user">
+	<p id="name">newuser</p>
+	<p id="fullname">Test User</p>
+	<p id="password">password</p>
+	<p id="photo">branislavblazek.png</p>
+	<p id="secretCode">000000</p>
+</div>

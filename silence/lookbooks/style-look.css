@@ -1,0 +1,54 @@
+article {
+	width:100%;
+	position: relative;
+}
+#photos {
+	width:80%;
+	border:4px solid red;
+	box-sizing: border-box;
+	margin: 0 auto;
+	margin-bottom:150px;
+}
+#photos img {
+	width:100%;
+	box-sizing: border-box;
+}
+.arrow {
+	position: absolute;
+	width: 5%;
+	height: 10%;
+	box-sizing: border-box;
+	border-bottom:4px solid red;
+	border-right:4px solid red;
+	display: block;
+	top:50%;
+	cursor: pointer;
+	dipslay:block;
+	transition: 500ms;
+}
+.arrow:hover{
+	border-color:gray;
+}
+.left {
+	left:2.5%;
+	transform: rotate(135deg);
+}
+.right {
+	right:2.5%;
+	transform: rotate(-45deg);
+}
+@media screen and (max-width:600px){
+	#photos {
+		width:100%;
+	}
+	.arrow {
+		top: 120%;
+		height: 7%;
+	}
+	.left {
+		left:25%;
+	}
+	.right {
+		right: 25%;
+	}
+}

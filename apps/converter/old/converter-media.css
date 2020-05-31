@@ -1,0 +1,196 @@
+/*Small mobile*/@media screen and (min-width: 320px) {
+			.screen-12 { width: 100%;}
+		    #head {font-size: 3em; margin-bottom: 0;} 
+			#temp {padding: 1%; box-sizing: border-box;background-image: linear-gradient(to right,#00b09b, #96c96d)}
+			#weig {padding: 1%; box-sizing: border-box;background-image: linear-gradient(to right,#00b09b, #96c96d)}
+			#leng {padding: 1%; box-sizing: border-box;background-image: linear-gradient(to right,#00b09b, #96c96d)}
+			#plocha { padding: 1%; box-sizing: border-box;background-image: linear-gradient(to right,#00b09b, #96c96d)}
+			#objem { padding: 1%; box-sizing: border-box;background-image: linear-gradient(to right,)#00b09b, #96c96d}
+			#hmotnost { padding: 1%; box-sizing: border-box;background-image: linear-gradient(to right,#00b09b, #96c96d)}
+			#cas {padding: 1%; box-sizing: border-box;background-image: linear-gradient(to right,#00b09b, #96c96d)}
+			#data { padding: 1%; box-sizing: border-box;background-image: linear-gradient(to right,#00b09b, #96c96d)}
+			#rozmery { padding: 1%; box-sizing: border-box;background-image: linear-gradient(to right,#00b09b, #96c96d)}
+			#percenta { padding: 1%; box-sizing: border-box;background-image: linear-gradient(to right,#00b09b, #96c96d)}
+			::-webkit-input-placeholder {font-size: 1.5em;}	
+			#maintwo { margin-bottom: 0;}
+			#trojobvod {width: 100%;}
+			#obdlobvod  {width: 100%;}
+			#kosostvoobvod {width: 100%;}
+			#kosodlznobvod {width: 100%;}
+			#lichobeznik {width: 100%;background-image:linear-gradient(to right,#00b09b, #96c96d)}
+			#kruh {width: 100%;background-image:linear-gradient(to right,#00b09b, #96c96d)}
+			#stvorec{background-image:linear-gradient(to right,#00b09b, #96c96d)}#obdlznik{background-image:linear-gradient(to right,#00b09b, #96c96d)}#kosostvorec{background-image:linear-gradient(to right,#00b09b, #96c96d)}#kosodlznik{background-image:linear-gradient(to right,#00b09b, #96c96d)}#trojuholnik{background-image:linear-gradient(to right,#00b09b, #96c96d)}
+			
+			#zao {width: 100%; left: 0; text-align: center; }
+			#zao input {width: 2em; text-align: left;}
+        .scol-6 {width: 50%;}.scol-7 {width: 58.33%;}.scol-8 {width: 66.66%;}
+		#F,#C,#mzas,#kmzah,#mzam,#fps,#fph,#mm,#cm,#dm,#m,#km,#mil,#yd,#ft,#in,#mm2,#cm2,#dm2,#m2,#a,#ha,#km2,#mm3,#cm3,#ml,#l,#dl,#dm3,#hl,#m3,#km3,#mg,#g,#dag,#kg,#t,#lib,#s,#mi,#h,#d,#ty,#me,#r,#b,#by,#kby,#mby,#gby,#tby, #px, #em {padding: 2% 2% 7% 2%; border-radius: 5px;margin: 15px auto;width: 95%;}
+		#F input,#C input,#mzas input,#kmzah input,#mzam input,#fps input,#fph input,#mm input,#cm input,#dm input,#m input,#km input,#mil input,#yd input,#ft input,#in input,#mm2 input,#cm2 input,#dm2 input,#m2 input,#a input,#ha input,#km2 input,#mm3 input,#cm3 input,#ml input,#l input,#dl input,#dm3 input,#hl input,#m3 input,#km3 input,#mg input,#g input,#dag input,#kg input,#t input,#lib input,#s input,#mi input,#h input,#d input,#ty input,#me input,#r input,#b input,#by input,#kby input,#mby input,#gby input,#tby input, #px input, #em input, #ZAP input, #CAP input, #POP input { height: 2.3em;  }
+		#ZAP, #CAP, #POP {border-radius: 5px;margin: 15px auto;width: 95%;padding: 2%;}
+		#dopln-cast-percenta {margin-top: 10px;}
+		}
+		/*Medium mobile */@media screen and (min-width: 375px) {
+			#head { font-size: 4em;}#autor {margin-top: -2em;}
+        [class*="mcol-"] {
+            float: right;
+            padding: 0 15px;
+        }
+        .mcol-5 {width: 41.66%;}.mcol-6 {width: 50%;}.mcol-7 {width: 58.33%;}.mcol-8 {width: 66.66%;}
+			#mainthree { margin-bottom: 2em;}
+			#zao input {width:6em;}
+		#F,#C,#mzas,#kmzah,#mzam,#fps,#fph,#mm,#cm,#dm,#m,#km,#mil,#yd,#ft,#in,#mm2,#cm2,#dm2,#m2,#a,#ha,#km2,#mm3,#cm3,#ml,#l,#dl,#dm3,#hl,#m3,#km3,#mg,#g,#dag,#kg,#t,#lib,#s,#mi,#h,#d,#ty,#me,#r,#b,#by,#kby,#mby,#gby,#tby, #px, #em {padding: 3% 3% 6% 3%; border-radius: 5px;margin: 15px auto;width: 95%;font-size: 1.5em;}
+		#F input,#C input,#mzas input,#kmzah input,#mzam input,#fps input,#fph input,#mm input,#cm input,#dm input,#m input,#km input,#mil input,#yd input,#ft input,#in input,#mm2 input,#cm2 input,#dm2 input,#m2 input,#a input,#ha input,#km2 input,#mm3 input,#cm3 input,#ml input,#l input,#dl input,#dm3 input,#hl input,#m3 input,#km3 input,#mg input,#g input,#dag input,#kg input,#t input,#lib input,#s input,#mi input,#h input,#d input,#ty input,#me input,#r input,#b input,#by input,#kby input,#mby input,#gby input,#tby input, #px input, #em input, #ZAP input, #CAP input, #POP input { height: 3em;}
+			#ZAP, #CAP, #POP {padding: 3%; border-radius: 5px;margin: 15px auto;width: 95%;font-size: 1.5em;}
+		}
+		/*Large mobile */@media screen and (min-width: 425px) {
+			
+        [class*="lcol-"] {
+            float: right;
+            padding: 0 15px;
+        }
+        .lcol-6 {width: 50%;}.lcol-7 {width: 58.33%;}.lcol-8 {width: 66.66%;}.lcol-9 {width: 75%;}
+			#F,#C,#mzas,#kmzah,#mzam,#fps,#fph,#mm,#cm,#dm,#m,#km,#mil,#yd,#ft,#in,#mm2,#cm2,#dm2,#m2,#a,#ha,#km2,#mm3,#cm3,#ml,#l,#dl,#dm3,#hl,#m3,#km3,#mg,#g,#dag,#kg,#t,#lib,#s,#mi,#h,#d,#ty,#me,#r,#b,#by,#kby,#mby,#gby,#tby, #px, #em {padding: 5% 5% 6% 5%; border-radius: 5px;margin: 15px auto;width: 95%;font-size: 1.5em;}
+			#F input,#C input,#mzas input,#kmzah input,#mzam input,#fps input,#fph input,#mm input,#cm input,#dm input,#m input,#km input,#mil input,#yd input,#ft input,#in input,#mm2 input,#cm2 input,#dm2 input,#m2 input,#a input,#ha input,#km2 input,#mm3 input,#cm3 input,#ml input,#l input,#dl input,#dm3 input,#hl input,#m3 input,#km3 input,#mg input,#g input,#dag input,#kg input,#t input,#lib input,#s input,#mi input,#h input,#d input,#ty input,#me input,#r input,#b input,#by input,#kby input,#mby input,#gby input,#tby input, #px input, #em input, #ZAP input, #CAP input, #POP input { height: 3em;}
+			#ZAP, #CAP, #POP {padding: 5%; border-radius: 5px;margin: 15px auto;width: 95%;font-size: 1.5em;}
+		}
+		/*XXXS tablet */ @media screen and (min-width: 460px) {
+		body{background-image: linear-gradient(to right, #36D1DC, #5B86E5, #5B86E5)}
+        .xxxscol-1 {width: 8.33%;}.xxxscol-2 {width: 16.66%;}.xxxscol-3 {width: 25%;}.xxxscol-4 {width: 33.33%;}.xxxscol-5 {width: 41.66%;}.xxxscol-6 {width: 50%;}.xxxscol-7 {width: 58.33%;}
+			#name {} #head {font-size: 4em;}
+			#name {} #head {font-size: 4em;}
+			.screen-6 {width: 50%;}
+			#temp {padding: 1%; box-sizing: border-box; float: left;background-image: linear-gradient(to right, #36D1DC, #5B86E5)}
+			#weig {padding: 1%; box-sizing: border-box; float: right;background-image: linear-gradient(to left, #36D1DC, #5B86E5)}
+			#leng {padding: 1%; box-sizing: border-box; float: right;background-image: linear-gradient(to left, #36D1DC, #5B86E5)}
+			#plocha {padding: 1%; box-sizing: border-box; float: left;background-image: linear-gradient(to right, #36D1DC, #5B86E5)}
+			#objem { padding: 1%; box-sizing: border-box; float: left;background-image: linear-gradient(to right, #36D1DC, #5B86E5)}
+			#hmotnost { padding: 1%; box-sizing: border-box; float: right;background-image: linear-gradient(to left, #36D1DC, #5B86E5)}
+			#cas { padding: 1%; box-sizing: border-box; float: right;background-image: linear-gradient(to left, #36D1DC, #5B86E5)}
+			#data { padding: 1%; box-sizing: border-box; float: left;background-image: linear-gradient(to right, #36D1DC, #5B86E5)}
+			#rozmery {padding: 1%; box-sizing: border-box; float: left;background-image: linear-gradient(to left, #36D1DC, #5B86E5)}
+			input::-webkit-input-placeholder { font-size: 1em;}
+			#trojuholnik { 
+			float: right;}
+			#percenta {width: 100%;background-image: linear-gradient(to right, #36D1DC, #5B86E5, #36D1dc)}
+			#stvorec {float: right;background-image: linear-gradient(to left, #36D1DC, #5B86E5, #36D1dc)}
+			#trojobvod {width: 50%;}
+			#stvoobvod {width: 50%;}
+			#stvoobvod {float: left;}
+			#trojuholnik{background-image: linear-gradient(to left, #36D1DC, #5B86E5, #36D1dc)}
+			#obdlznik {float: left;background-image: linear-gradient(to left, #36D1DC, #5B86E5, #36D1dc)}
+			#obdlobvod {width: 50%;float: left;}
+			#kosostvorec {float: left;background-image: linear-gradient(to left, #36D1DC, #5B86E5, #36D1dc)}
+			#kosostvoobvod {width: 50%;float: left;}
+			#kosostvoobsah {width: 50%;float: right;}
+			#kosodlznik {float: left;background-image: linear-gradient(to left, #36D1DC, #5B86E5, #36D1dc)}
+			#kosodlznobvod {width: 50%;float: left;}
+			#lichobeznik {float: left;background-image: linear-gradient(to left, #36D1DC, #5B86E5, #36D1dc)}
+			#lichoobvod {width: 50%;float: left;}
+			#kruh {float: left;background-image: linear-gradient(to left, #36D1DC, #5B86E5, #36D1dc)}
+			#kruhobvod {width: 50%;float: left;}
+			#zao {width: 50%;left: 25%;}
+			#F,#C,#mzas,#kmzah,#mzam,#fps,#fph,#mm,#cm,#dm,#m,#km,#mil,#yd,#ft,#in,#mm2,#cm2,#dm2,#m2,#a,#ha,#km2,#mm3,#cm3,#ml,#l,#dl,#dm3,#hl,#m3,#km3,#mg,#g,#dag,#kg,#t,#lib,#s,#mi,#h,#d,#ty,#me,#r,#b,#by,#kby,#mby,#gby,#tby, #px, #em {padding: 2% 2% 7% 2%; border-radius: 5px;margin: 15px auto;width: 95%;font-size: 1.2em;}
+			#F input,#C input,#mzas input,#kmzah input,#mzam input,#fps input,#fph input,#mm input,#cm input,#dm input,#m input,#km input,#mil input,#yd input,#ft input,#in input,#mm2 input,#cm2 input,#dm2 input,#m2 input,#a input,#ha input,#km2 input,#mm3 input,#cm3 input,#ml input,#l input,#dl input,#dm3 input,#hl input,#m3 input,#km3 input,#mg input,#g input,#dag input,#kg input,#t input,#lib input,#s input,#mi input,#h input,#d input,#ty input,#me input,#r input,#b input,#by input,#kby input,#mby input,#gby input,#tby input, #px input, #em input, #ZAP input, #CAP input, #POP input { height: 2em;}
+			#ZAP, #CAP, #POP {padding: 2%; border-radius: 5px;margin: 15px auto;width: 95%;font-size: 1.2em;}
+		}
+		/*XXS tablet*/ @media screen and (min-width: 560px) {
+			.xxscol-1 {width: 8.33%;}.xxscol-2 {width: 16.66%;}.xxscol-3 {width: 25%;}.xxscol-4 {width: 33.33%;}.xxscol-5 {width: 41.66%;}.xxscol-6 {width: 50%;}.xxscol-7 {width: 58.33%;}
+			::-webkit-input-placeholder { font-size: 1.2em;}
+			input::-webkit-input-placeholder { font-size: 1.2em;}
+			#F,#C,#mzas,#kmzah,#mzam,#fps,#fph,#mm,#cm,#dm,#m,#km,#mil,#yd,#ft,#in,#mm2,#cm2,#dm2,#m2,#a,#ha,#km2,#mm3,#cm3,#ml,#l,#dl,#dm3,#hl,#m3,#km3,#mg,#g,#dag,#kg,#t,#lib,#s,#mi,#h,#d,#ty,#me,#r,#b,#by,#kby,#mby,#gby,#tby, #px, #em {padding: 3% 3% 9% 3%; border-radius: 5px;margin: 15px auto;width: 95%;font-size: 1.2em;}
+			#F input,#C input,#mzas input,#kmzah input,#mzam input,#fps input,#fph input,#mm input,#cm input,#dm input,#m input,#km input,#mil input,#yd input,#ft input,#in input,#mm2 input,#cm2 input,#dm2 input,#m2 input,#a input,#ha input,#km2 input,#mm3 input,#cm3 input,#ml input,#l input,#dl input,#dm3 input,#hl input,#m3 input,#km3 input,#mg input,#g input,#dag input,#kg input,#t input,#lib input,#s input,#mi input,#h input,#d input,#ty input,#me input,#r input,#b input,#by input,#kby input,#mby input,#gby input,#tby input, #px input, #em input, #ZAP input, #CAP input, #POP input { height: 3em;}
+			#ZAP, #CAP, #POP{padding: 3%; border-radius: 5px;margin: 15px auto;width: 95%;font-size: 1.2em;}
+		}
+		/*XS tablet */@media screen and (min-width: 640px) {
+			.xscol-4 {width: 33.33%;}.xscol-5 {width: 41.66%;}.xscol-6 {width: 50%;}.xscol-7 {width: 58.33%;}.col-8 {width: 66.66%;}.xscol-9 {width: 75%;}.xscol-10 {width: 83.33%;}
+			input::-webkit-input-placeholder { font-size: 1.4em;}
+			#zao {width: 33%; left: 33%;}
+			#zao input {width: 5em;}
+			#F,#C,#mzas,#kmzah,#mzam,#fps,#fph,#mm,#cm,#dm,#m,#km,#mil,#yd,#ft,#in,#mm2,#cm2,#dm2,#m2,#a,#ha,#km2,#mm3,#cm3,#ml,#l,#dl,#dm3,#hl,#m3,#km3,#mg,#g,#dag,#kg,#t,#lib,#s,#mi,#h,#d,#ty,#me,#r,#b,#by,#kby,#mby,#gby,#tby, #px, #em {padding: 3% 3% 9% 3%; border-radius: 5px;margin: 15px auto;width: 95%;font-size: 1.2em;}
+			#F input,#C input,#mzas input,#kmzah input,#mzam input,#fps input,#fph input,#mm input,#cm input,#dm input,#m input,#km input,#mil input,#yd input,#ft input,#in input,#mm2 input,#cm2 input,#dm2 input,#m2 input,#a input,#ha input,#km2 input,#mm3 input,#cm3 input,#ml input,#l input,#dl input,#dm3 input,#hl input,#m3 input,#km3 input,#mg input,#g input,#dag input,#kg input,#t input,#lib input,#s input,#mi input,#h input,#d input,#ty input,#me input,#r input,#b input,#by input,#kby input,#mby input,#gby input,#tby input, #px input, #em input, #ZAP input, #CAP input, #POP input { height: 3em;}
+			#ZAP, #CAP, #POP {padding: 3%; border-radius: 5px;margin: 15px auto;width: 95%;font-size: 1.2em;}
+		}
+		/*tablet*/ @media screen and (min-width: 768px) {
+	        #ul { padding-bottom: 15%;}
+			.tacol-7 {width: 58.33%;}.tacol-8 {width: 66.66%;}.tacol-9 {width: 75%;}.tacol-10 {width: 83.33%;}
+		}
+		/*laptop*/@media screen and (min-width: 900px) {
+			body{background-image: linear-gradient(to right, #30E8BF, #FF8235)}
+			.lacol-1 {width: 8.33%;}.lacol-2 {width: 16.66%;}.lacol-3 {width: 25%;}.lacol-4 {width: 33.33%;}.lacol-5 {width: 41.66%;}.lacol-6 {width: 50%;}.lacol-7 {width: 58.33%;}.lacol-8 {width: 66.66%;}
+			.screen-4 {width: 100%;}
+			#zao input {width: auto;}
+			#temp {background-image: linear-gradient(to right, #30E8BF, #FF8235)}#hmotnost{background-image: linear-gradient(to right, #30E8BF, #FF8235)}#plocha{background-image: linear-gradient(to right, #30E8BF, #FF8235)}#rozmery{background-image: linear-gradient(to right, #30E8BF, #FF8235)}#leng{background-image: linear-gradient(to left, #30E8BF, #FF8235)}#objem{background-image: linear-gradient(to left, #30E8BF, #FF8235)}#weig{background-image: linear-gradient(to right, #30E8BF, #FF8235)}#data{background-image: linear-gradient(to right, #30E8BF, #FF8235)}#cas{background-image: linear-gradient(to right, #30E8BF, #FF8235)}
+			#three1 {float: left; width: 33%;}
+			#three2 {float: left; width: 33%;}
+			#three3 {margin-left: 66%;}
+			#name {height: 40%;} #head {font-size: 4em;}
+			#temp { padding: 1%; box-sizing: border-box;float: none;}
+			#weig {padding: 1%; box-sizing: border-box;float: none;}
+			#leng {padding: 1%; box-sizing: border-box;float: none;}
+			#plocha {padding: 1%; box-sizing: border-box; float: none;}
+			#objem {padding: 1%; box-sizing: border-box;float: none; }
+			#hmotnost {padding: 1%; box-sizing: border-box; float: none;}
+			#cas {padding: 1%; box-sizing: border-box;float: none;}
+			#data {padding: 1%; box-sizing: border-box;float: none; }
+			#rozmery {padding: 1%; box-sizing: border-box; float: none;}
+			#percenta { padding: 1%; box-sizing: border-box; float: none;background-image: linear-gradient(to right, #30E8BF, #FF8235)}
+			#trojuholnik {background-image: linear-gradient(to right, #30E8BF, #FF8235)}
+			#stvorec{background-image: linear-gradient(to right, #30E8BF, #FF8235)}
+			#obdlznik{background-image: linear-gradient(to right, #30E8BF, #FF8235)}
+			#kosostvorec{background-image: linear-gradient(to right, #30E8BF, #FF8235)}
+			#kosodlznik{background-image: linear-gradient(to right, #30E8BF, #FF8235)}
+			#kruh{background-image: linear-gradient(to right, #30E8BF, #FF8235)}
+			#lichobeznik{background-image: linear-gradient(to right, #30E8BF, #FF8235)}
+			
+		::-webkit-scrollbar {
+			width: 20px;
+		}
+		::-webkit-scrollbar-track {
+			background: orange;
+		}
+		::-webkit-scrollbar-button {
+			background: red;
+		}
+		::-webkit-scrollbar-thumb {
+			background: red;
+		}
+			#F,#C,#mzas,#kmzah,#mzam,#fps,#fph,#mm,#cm,#dm,#m,#km,#mm2,#cm2,#dm2,#m2,#a,#ha,#km2,#mm3,#cm3,#ml,#l,#dl,#dm3,#hl,#m3,#km3,#mg,#g,#dag,#kg,#t,#lib,#s,#mi,#h,#d,#ty,#me,#r,#b,#by,#kby,#mby,#gby,#tby, #px, #em {padding: 2% 2% 7% 2%; border-radius: 5px;margin: 15px auto;width: 95%;font-size: 1.2em;}
+			#dopln-cast-percenta {margin-top: 0;}
+			#ZAP, #CAP, #POP {padding: 2%; border-radius: 5px;margin: 15px auto;width: 95%;font-size: 1.2em;}
+		}
+		/*bigger than laptop*/@media screen and (min-width: 1440px) {
+			body {
+				font-size: 1.6em;
+			}
+			input::-webkit-input-placeholder {
+				font-size: 2em;
+			}
+			#F input,#C input,#mzas input,#kmzah input,#mzam input,#fps input,#fph input,#mm input,#cm input,#dm input,#m input,#km input,#mil input,#yd input,#ft input,#in input,#mm2 input,#cm2 input,#dm2 input,#m2 input,#a input,#ha input,#km2 input,#mm3 input,#cm3 input,#ml input,#l input,#dl input,#dm3 input,#hl input,#m3 input,#km3 input,#mg input,#g input, #dag input,#t input,#lib input, #b input,#by input,#kby input,#mby input,#gby input,#tby input, #s input,#mi input,#h input,#d input,#ty input,#me input,#r input, #px input, #em input, #ZAP input, #CAP input, #POP input { height: 5em;}
+			}
+		/*4K*/@media screen and (min-width: 2000px ) {
+			body {
+				font-size: 2em;
+			}
+			input::-webkit-input-placeholder {
+				font-size: 3em;
+			}
+			#zao {font-size: 1.7em;}
+			#zao input {font-size: 0.5em; width: 7em;}
+				#F input,#C input,#mzas input,#kmzah input,#mzam input,#fps input,#fph input,#mm input,#cm input,#dm input,#m input,#km input,#mil input,#yd input,#ft input,#in input,#mm2 input,#cm2 input,#dm2 input,#m2 input,#a input,#ha input,#km2 input,#mm3 input,#cm3 input,#ml input,#l input,#dl input,#dm3 input,#hl input,#m3 input,#km3 input,#mg input,#g input, #dag input,#t input,#lib input, #b input,#by input,#kby input,#mby input,#gby input,#tby input, #s input,#mi input,#h input,#d input,#ty input,#me input,#r input, #px input, #em input, #ZAP input, #CAP input, #POP input { height: 6em;}
+		}
+		#nojsmain{background:rgba(0,0,0,0.7);width:100%;height:100%;position:fixed;z-index:6;}
+		#nojs{width:80%;height:AUTO;margin: 10em auto;text-align:center;padding: 10px;letter-spacing:2px;animation-name: nojs;animation-duration: 50s;animation-iteration-count: infinite;}
+		#nojs a {color:black;}
+		@keyframes nojs {
+			0% {background-image: linear-gradient(to right, #FC5C7D,#6A82FB)}
+			10% {background-image: linear-gradient(to right, #00b09b, #96c93d)}
+			20% {background-image: linear-gradient(to right, #800080, #ffc0cb)}
+			30% {background-image: linear-gradient(to right, #fc4a1a, #f7b733)}
+			40% {background-image: linear-gradient(to right, #e1eec3, #f05053)}
+			50% {background-image: linear-gradient(to right, #74ebd5, #ACB6E5)}
+			60% {background-image: linear-gradient(to right, #e1eec3, #f05053)}
+			70% {background-image: linear-gradient(to right, #22c1c3, #fdbb2d)}
+			80% {background-image: linear-gradient(to right, #ff9966, #ff5e62)}
+			90% {background-image: linear-gradient(to right, #d9a7c7, #fffcdc)}
+			100% {background-image: linear-gradient(to right, #642B73, #C6426E)}
+		}

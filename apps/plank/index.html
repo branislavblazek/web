@@ -1,0 +1,108 @@
+<!DOCTYPE html>
+<html>
+	<head>
+		<meta charset="utf-8">
+		<meta http-equiv="X-UA-Compatible" content="IE=edge,chrome=1">
+		<title>plankmeter</title>
+		<script src="https://ajax.googleapis.com/ajax/libs/jquery/3.2.1/jquery.min.js"></script>
+		<meta name="viewport" content="width=device-width, initial-scale=1.0">
+		<link rel="stylesheet" href="https://fonts.googleapis.com/icon?family=Material+Icons">
+		<style>
+			html, body {
+				font-family: sans-serif;
+				text-align: center;
+			}
+			table, tr, td {
+				margin:0 auto;
+				border-collapse: collapse;
+				padding: 15px;
+			}
+			table {
+				width:50%;
+				margin-bottom:20px;
+			}
+			td {
+				width:25%;
+			}
+			tr:nth-of-type(odd){
+				background: #999;
+			}
+			tr:nth-of-type(even){
+				background: #777;
+			}
+			#val {
+				width:40%;
+				box-sizing:border-box;
+				border:none;
+				background: gray;
+				outline:none;
+				margin:0;
+				padding: 1%;
+				text-align: center;
+			}
+			#new {
+				width:10%;
+				box-sizing:border-box;
+				border:none;
+				outline:none;
+				margin:0;
+				cursor: pointer;
+				background:none;
+				padding:1%;
+				transition: 0.5s;
+				text-transform: uppercase;
+			}
+			#new:hover {
+				background: gray;
+			}
+			@media screen and (max-width:900px){
+				table, tr, td {
+				}
+				table {
+					width:90%;
+				}
+				#val {
+					width:75%;
+				}
+				#new {
+					width:15%;
+				}
+			}
+		</style>
+	</head>
+	<body>
+		<table id="score">
+			<tr style="background:#888"><td>dátum:</td><td>čas: (min)</td></tr>
+		</table>
+		<input type="number" id="val"><button id="new">pridaj</button>
+		<script>
+			function AddToTable(data){
+				if (data.hour < 10){data.hour = "0" + data.hour;}else {data.hour.toString();}if (data.min < 10){data.min = "0" + data.min;}else {data.min.toString();}if (data.month < 10){data.month = "0" + data.month;}else {data.month.toString();}if (data.day < 10){data.day = "0" + data.day;}else {data.day.toString();}
+				var par = document.createElement("tr");var ch1 = document.createElement("td");var ch2 = document.createElement("td");var ch1_text = document.createTextNode(data.hour + ":" + data.min + ", " + data.day + "." + data.month + "." + data.year);var ch2_text = document.createTextNode(data.val);
+				ch1.appendChild(ch1_text);ch2.appendChild(ch2_text);par.appendChild(ch1);par.appendChild(ch2);document.getElementById("score").appendChild(par);
+			}
+			for (var i = 0; i < localStorage.length;i++){
+				var thisTime = Number(localStorage.key(i));
+				data = {
+					val: localStorage.getItem(localStorage.key(i)),
+					hour:new Date(thisTime).getHours(),
+					min:new Date(thisTime).getMinutes(),
+					day:new Date(thisTime).getDate(),
+					month:new Date(thisTime).getMonth()+1,
+					year:new Date(thisTime).getFullYear()
+				}
+				new AddToTable(data);
+			}
+			function Plank(data){
+				new AddToTable(data);
+				localStorage.setItem(data.time, data.val);
+			}
+			var button = document.getElementById("new");
+			button.onclick = function(){
+				var t = new Date();
+				data = {val: document.getElementById("val").value,hour: t.getHours(),min: t.getMinutes(),day: t.getDate(),month: t.getMonth()+1,year:t.getFullYear(),time: t.getTime()}
+				new Plank(data);
+			}
+		</script>
+	</body>
+</html>

@@ -1,0 +1,115 @@
+<html>
+	<head>
+		<title>bludisko</title>
+		<meta charset="utf">
+		<script src="https://ajax.googleapis.com/ajax/libs/jquery/3.2.1/jquery.min.js"></script>
+		<style>
+			table {
+				border: 1px solid black;
+				border-collapse: collapse;
+				table-layout: fixed;
+				width: 200px;
+			}
+			th,td {
+  				border: 1px solid black;
+			}
+			.border {
+				border: 1px solid black;
+			}
+			.row {
+				width: 100%;
+				height: 100%
+			}
+			.block {
+				width: 50px;
+				height: 50px;
+			}
+			.br {
+				width: 10px;
+			}
+			.bd {
+				height: 10px;
+			}
+		</style>
+	</head>
+	<body>
+		<table id="table">
+			
+		<table>
+		<script>
+			function create_table(m, n){
+				table = $('#table')
+				for (let i = 0; i < m; i++){
+					// vytvori riadku
+					row = '<tr class="row r' + i + '"></tr>';
+					table.append(row)
+					for (let z = 0; z < n; z++){
+						// vytvori bloky
+						block = '<td class="block b'+ i + '' + z + '"></td>';
+						// vytvori stenu vedla bloku
+						right_border = '<td class="border br br' + i + '' + z + '"></td>';
+						//pridaj
+						$('.r' + i).append(block);
+						if (z != n - 1){
+							$('.r' + i).append(right_border);
+						}
+					}
+					// prida spodnu listu na bordery
+					bottom_border_lista = '<tr class="border"></tr>';
+					for (let y = 0; y < n; y++){
+						bottom_border = '<td class="border bd bd' + i + '' + y + '"></td>';
+						corner = '<td class="corner"></td>'
+						if (i != m - 1){
+							table.append(bottom_border, corner);
+						}	
+					}
+				}
+			}
+			function fill_borders(ver, hor){
+				$('.bd').each(function(){
+					class_name = $(this).attr('class').substr(12);
+					row = class_name.slice(0,1);
+					column = class_name.slice(1);
+					if (ver[row][column] == 1){
+						$(this).css('background-color', 'red');
+					}
+				});
+				$('.br').each(function(){
+					class_name = $(this).attr('class').substr(12);
+					row = class_name.slice(0,1);
+					column = class_name.slice(1);
+					if (hor[row][column] == 1){
+						$(this).css('background-color', 'red');
+					}	
+				})
+			}
+			
+			vertikalne = [
+				[ 0, 0, 0, 0, 0, 0, 0, 0, 0, 0],
+				[ 0, 0, 0, 0, 0, 0, 0, 0, 0, 0],
+				[ 0, 0, 0, 0, 0, 0, 0, 0, 0, 0],
+				[ 0, 0, 0, 0, 0, 0, 0, 0, 0, 0],
+				[ 0, 0, 0, 0, 0, 0, 0, 0, 0, 0],
+				[ 0, 0, 0, 0, 0, 0, 0, 0, 0, 0],
+				[ 0, 0, 0, 0, 0, 0, 0, 0, 0, 0],
+				[ 0, 0, 0, 0, 0, 0, 0, 0, 0, 0],
+				[ 1, 1, 1, 1, 1, 1, 1, 1, 1, 1],
+			];
+			horizontalne = [
+				[ 0, 1, 0, 0, 0, 0, 0, 0, 0, 0],
+				[ 0, 1, 0, 0, 0, 0, 0, 0, 0, 0],
+				[ 0, 1, 0, 0, 0, 0, 0, 0, 0, 0],
+				[ 0, 1, 0, 0, 0, 0, 0, 0, 0, 0],
+				[ 0, 1, 0, 0, 0, 0, 0, 0, 0, 0],
+				[ 0, 1, 0, 0, 0, 0, 0, 0, 0, 0],
+				[ 0, 1, 0, 0, 0, 0, 0, 0, 0, 0],
+				[ 0, 1, 0, 0, 0, 0, 0, 0, 0, 0],
+				[ 0, 1, 0, 0, 0, 0, 0, 0, 0, 0],
+				[ 0, 1, 0, 0, 0, 0, 0, 0, 0, 0],
+			]
+			
+			create_table(10,10);
+			fill_borders(vertikalne, horizontalne);
+		</script>
+	</body>
+</html>

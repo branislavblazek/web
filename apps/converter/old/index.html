@@ -1,0 +1,481 @@
+<!DOCTYPE html>
+<html lang="sk" manifest="off.appcache">
+<head>
+<title>PREVOD JEDNOTIEK</title>
+<script src="https://ajax.googleapis.com/ajax/libs/jquery/3.2.1/jquery.min.js"></script>
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<link href="https://fonts.googleapis.com/css?family=Noto+Sans" rel="stylesheet">
+<link href="https://fonts.googleapis.com/css?family=Nunito" rel="stylesheet">
+<link rel="stylesheet" type="text/css" href="converter-style.css">
+<link rel="stylesheet" type="text/css" href="converter-media.css">
+<meta name="theme-color" content="#ffa500">
+<meta name="apple-mobile-web-app-status-bar-style" content="black-translucent">
+<meta charset="utf-8">
+</head>
+<body>
+<div id="preloader">
+	<div id="loader"></div>
+</div>
+<div id="zao">
+		<p>Zaokrúhli na <b><span id="kolkozao">2</span></b> miest(a)   <button onclick="zaokruhli(this.value)" id="plus" value="+">+</button>	<button onclick="zaokruhli(this.value)" id="minus" value="-">-</button></p>
+</div>
+	<div id="back" onclick="$('html, body').animate({ scrollTop: 0 }, 'slow');">
+		<span title="posuň hore"><span style="display: block; padding: 20px;"><i class="up"></i></span></span>
+	</div>
+<div id="name">
+	<h1 id="head"><b>CONVERTER</b></h1>
+		<div id="menu">
+			<p id="mainone" onclick="show()">PREVOD JEDNOTIEK <b><span id="downsymbol" style="display: inline;">&or;</span><span id="upsymbol" style="display: none;">&and;</span></b></p>
+			<ul id="ull" style="display: none;">
+	        <li class="odkaz spec"><span data-href="temp">TEPLOTA</span></li>	
+	        <li class="odkaz"><span data-href="hmotnost">HMOTNOSŤ</span></li>	
+	        <li class="odkaz"><span data-href="plocha">PLOCHA</span></li>	
+	        <li class="odkaz"><span data-href="rozmery">ROZMERY</span></li>	
+	        <li class="odkaz"><span data-href="leng">DĹŽKY</span></li>	
+	        <li class="odkaz"><span data-href="objem">OBJEM</span></li>		
+	        <li class="odkaz"><span data-href="weig">RÝCHLOSŤ</span></li>	
+	        <li class="odkaz"><span data-href="data">MNOŽSTVO DÁT</span></li>	
+	        <li class="odkaz" style="margin-bottom: 0;"><span data-href="cas">ČAS</span></li>	
+	        </ul>
+		<p class="main"><span data-href="percenta">PERCENTÁ</span></p>
+		<p class="main"><span data-href="trojuholnik">TROJUHOLNÍK</span></p>
+		<p class="main"><span data-href="stvorec">ŠTVOREC</span></p>
+		<p class="main"><span data-href="obdlznik">OBDĹŽNIK</span></p>
+		<p class="main"><span data-href="kosostvorec">KOSOŠTVOREC</span></p>
+		<p class="main"><span data-href="kosodlznik">KOSODĹŽNIK</span></p>
+		<p class="main"><span data-href="lichobeznik">LICHOBEŽNIK</span></p>
+		<p class="main"><span data-href="kruh">KRUH</span></p>
+			
+		</div>
+		<p style="padding: 0 0 4em 0; background: orange; margin: 0;"></p>
+	<p id="autor"><a href="http://branislavblazek.sk/#works" class="myname">&#60;</a>&nbsp;|&nbsp;<a href="http://www.branislavblazek.sk" target="_self" class="myname">Branislav Blažek</a></p>
+</div>
+<div id="three1">
+	<div id="temp" class="screen-12 screen-6 screen-4">
+		<h3><b>Teplota</b></h3>
+	<div id="F">
+    <label>Fahrenheit</label>	
+	<input id="inputFahrenheit" class="scol-7 mcol-7 lcol-7 xxxscol-5 xxscol-6 xscol-7 tacol-8 lacol-7"   type="number" onchange="temperature(this.id,this.value)" oninput="temperature(this.id,this.value)" placeholder="F">
+	</div>
+	<div id="C">
+	<label>Celzium</label>
+	<input id="inputCelzium" class="scol-7 mcol-7 lcol-7 xxxscol-5 xxscol-6 xscol-7 tacol-8 lacol-7"   type="number" onchange="temperature(this.id,this.value)" oninput="temperature(this.id,this.value)" placeholder="C">
+	</div>
+	</div> 
+	<div id="hmotnost"  class="screen-12 screen-6 screen-4">
+	<h3><b>Hmotnosť</b></h3>
+	<div id="mg">
+	<label>Miligram</label>
+	<input type="number" id="inputmg" class="scol-7 mcol-7 lcol-7 xxxscol-5 xxscol-6 xscol-7 tacol-8 lacol-7"  onchange="hmotnost(this.id,this.value)" oninput="hmotnost(this.id,this.value)" placeholder="mg">
+	</div> 
+	<div id="g">
+	<label>Gram</label>
+	<input type="number" id="inputg" class="scol-7 mcol-7 lcol-7 xxxscol-5 xxscol-6 xscol-7 tacol-8 lacol-7"  onchange="hmotnost(this.id,this.value)" oninput="hmotnost(this.id,this.value)" placeholder="g">
+	</div> 
+	<div id="dag">
+	<label>Dekagram</label>
+	<input type="number" id="inputdag" class="scol-7 mcol-7 lcol-7 xxxscol-5 xxscol-6 xscol-7 tacol-8 lacol-7"  onchange="hmotnost(this.id,this.value)" oninput="hmotnost(this.id,this.value)" placeholder="dg">
+	</div> 
+	<div id="kg">
+	<label>Kilogram</label>
+	<input type="number" id="inputkg" class="scol-7 mcol-7 lcol-7 xxxscol-5 xxscol-6 xscol-7 tacol-8 lacol-7"  onchange="hmotnost(this.id,this.value)" oninput="hmotnost(this.id,this.value)" placeholder="kg">
+	</div> 
+	<div id="t">
+	<label>Tona</label>
+	<input type="number" id="inputt" class="scol-7 mcol-7 lcol-7 xxxscol-5 xxscol-6 xscol-7 tacol-8 lacol-7"  onchange="hmotnost(this.id,this.value)" oninput="hmotnost(this.id,this.value)" placeholder="t">
+	</div> 
+	<div id="lib">
+	<label>Libra</label>
+	<input type="number" id="inputlib" class="scol-7 mcol-7 lcol-7 xxxscol-5 xxscol-6 xscol-7 tacol-8 lacol-7"  onchange="hmotnost(this.id,this.value)" oninput="hmotnost(this.id,this.value)" placeholder="lib">
+	</div>
+	</div>
+	<div id="plocha" class="screen-12 screen-6 screen-4" >
+	<h3><b>Plocha</b></h3>
+	<div id="mm2">
+	<label>Milimeter<sup>2</sup></label>
+	<input type="number" id="inputmm2" class="scol-7 mcol-7 lcol-7 xxxscol-5 xxscol-6 xscol-7 tacol-8 lacol-7"  onchange="plocha(this.id,this.value)" oninput="plocha(this.id,this.value)" placeholder="mm2">
+	</div>
+	<div id="cm2">
+	<label>Centimeter<sup>2</sup></label>
+	<input type="number" id="inputcm2" class="scol-7 mcol-6 lcol-7 xxxscol-5 xxscol-5 xscol-6 tacol-7 lacol-7" onchange="plocha(this.id,this.value)" oninput="plocha(this.id,this.value)" placeholder="cm2">
+	</div>
+	<div id="dm2">
+	<label>Decimeter<sup>2</sup></label>
+	<input type="number" id="inputdm2" class="scol-7 mcol-7 lcol-7 xxxscol-5 xxscol-6 xscol-6 tacol-7 lacol-7" onchange="plocha(this.id,this.value)" oninput="plocha(this.id,this.value)" placeholder="dm2">
+	</div>
+	<div id="m2">
+	<label>Meter<sup>2</sup></label>
+	<input type="number" id="inputm2" class="scol-7 mcol-7 lcol-7 xxxscol-5 xxscol-6 xscol-7 tacol-8 lacol-7"  onchange="plocha(this.id,this.value)" oninput="plocha(this.id,this.value)" placeholder="m2">
+	</div>
+	<div id="a">
+	<label>Ár</label>
+	<input type="number" id="inputa" class="scol-7 mcol-7 lcol-7 xxxscol-5 xxscol-6 xscol-7 tacol-8 lacol-7"  onchange="plocha(this.id,this.value)" oninput="plocha(this.id,this.value)" placeholder="a">
+	</div>
+	<div id="ha">
+	<label>Hektár</label>
+	<input type="number" id="inputha" class="scol-7 mcol-7 lcol-7 xxxscol-5 xxscol-6 xscol-7 tacol-8 lacol-7"  onchange="plocha(this.id,this.value)" oninput="plocha(this.id,this.value)" placeholder="ha">
+	</div>
+	<div id="km2">
+	<label>Kilometer<sup>2</sup></label>
+	<input type="number" id="inputkm2" class="scol-7 mcol-7 lcol-7 xxxscol-5 xxscol-6 xscol-7 tacol-8 lacol-7"  onchange="plocha(this.id,this.value)" oninput="plocha(this.id,this.value)" placeholder="km2">
+	</div>
+	</div>
+	<div id="rozmery" class="screen-12 screen-6 screen-4">
+		<h3><b>PX na Em</b></h3>
+	<div id="px">
+	<label>PX</label>
+	<input id="inputpx" class="scol-7 mcol-7 lcol-7 xxxscol-5 xxscol-6 xscol-7 tacol-8 lacol-7" type="number" onchange="web(this.id, this.value)" oninput="web(this.id,this.value)" placeholder="PX">
+	</div>
+	<div id="em">
+	<label>EM</label>
+	<input id="inputem" class="scol-7 mcol-7 lcol-7 xxxscol-5 xxscol-6 xscol-7 tacol-8 lacol-7" type="number" onchange="web(this.id, this.value)" oninput="web(this.id,this.value)" placeholder="EM">
+	</div>
+	</div>
+</div>
+<div id="three2">
+	<div id="leng"  class="screen-12 screen-6 screen-4">
+	<h3><b>Dĺžky</b></h3>
+	<div id="mm">
+	<label>Milimeter</label>	
+	<input type="number" id="inputmm" class="scol-7 mcol-7 lcol-7 xxxscol-5 xxscol-6 xscol-7 tacol-8 lacol-7"  onchange="length(this.id,this.value)" oninput="length(this.id,this.value)" placeholder="mm">
+	</div>
+	<div id="cm">
+	<label>Centimeter</label>
+	<input type="number" id="inputcm" class="scol-7 mcol-7 lcol-7 xxxscol-5 xxscol-6 xscol-7 tacol-7 lacol-7" onchange="length(this.id,this.value)" oninput="length(this.id,this.value)" placeholder="cm">
+	</div>
+	<div id="dm">
+	<label>Decimeter</label>
+	<input type="number" id="inputdm" class="scol-7 mcol-7 lcol-7 xxxscol-5 xxscol-6 xscol-7 tacol-8 lacol-7"  onchange="length(this.id,this.value)" oninput="length(this.id,this.value)" placeholder="dm">
+	</div>
+	<div id="m">
+	<label>Meter</label>
+	<input type="number" id="inputm" class="scol-7 mcol-7 lcol-7 xxxscol-5 xxscol-6 xscol-7 tacol-8 lacol-7"  onchange="length(this.id,this.value)" oninput="length(this.id,this.value)" placeholder="m">
+	</div>
+	<div id="km">
+	<label>Kilometer</label>
+	<input type="number" id="inputkm" class="scol-7 mcol-7 lcol-7 xxxscol-5 xxscol-6 xscol-7 tacol-8 lacol-7"  onchange="length(this.id,this.value)" oninput="length(this.id,this.value)" placeholder="km">
+	</div>
+	<div id="in">
+	<label>Palec</label>
+	<input type="number" id="inputin" class="scol-7 mcol-7 lcol-7 xxxscol-5 xxscol-6 xscol-7 tacol-8 lacol-7"  onchange="length(this.id,this.value)" oninput="length(this.id,this.value)" placeholder="in">	
+	</div>
+	<div id="ft">
+	<label>Stopa</label>
+	<input type="number" id="inputft" class="scol-7 mcol-7 lcol-7 xxxscol-5 xxscol-6 xscol-7 tacol-8 lacol-7"  onchange="length(this.id,this.value)" oninput="length(this.id,this.value)" placeholder="ft">	
+	</div>
+	<div id="yd">
+	<label>Yard</label>
+	<input type="number" id="inputyd" class="scol-7 mcol-7 lcol-7 xxxscol-5 xxscol-6 xscol-7 tacol-8 lacol-7"  onchange="length(this.id,this.value)" oninput="length(this.id,this.value)" placeholder="yd">	
+	</div>
+	<div id="mil">
+	<label>Míľa</label>
+	<input type="number" id="inputmil" class="scol-7 mcol-7 lcol-7 xxxscol-5 xxscol-6 xscol-7 tacol-8 lacol-7"  onchange="length(this.id,this.value)" oninput="length(this.id,this.value)" placeholder="mi">
+	</div>
+	</div>
+	<div id="objem"  class="screen-12 screen-6 screen-4">
+	<h3><b>Objem</b></h3>
+	<div id="mm3">
+	<label>Milimeter<sup>3</sup></label>	
+	<input type="number" id="inputmm3" class="scol-7 mcol-7 lcol-7 xxxscol-5 xxscol-6 xscol-7 tacol-8 lacol-7"  onchange="objem(this.id,this.value)" oninput="objem(this.id,this.value)" placeholder="mm3">
+	</div>
+	<div id="cm3">
+	<label>Centimeter<sup>3</sup></label>	
+	<input type="number" id="inputcm3" class="scol-7 mcol-6 lcol-7 xxxscol-5 xxscol-5 xscol-6 tacol-7 lacol-7" onchange="objem(this.id,this.value)" oninput="objem(this.id,this.value)" placeholder="cm3">
+	</div>
+	<div id="ml">
+	<label>Mililiter</label>	
+	<input type="number" id="inputml" class="scol-7 mcol-7 lcol-7 xxxscol-5 xxscol-6 xscol-7 tacol-8 lacol-7"  onchange="objem(this.id,this.value)" oninput="objem(this.id,this.value)" placeholder="ml">
+	</div>
+	<div id="dl">
+	<label>Deciliter</label>	
+	<input type="number" id="inputdl" class="scol-7 mcol-7 lcol-7 xxxscol-5 xxscol-6 xscol-7 tacol-8 lacol-7"  onchange="objem(this.id,this.value)" oninput="objem(this.id,this.value)" placeholder="dl">
+	</div>
+	<div id="l">
+	<label>Liter</label>	
+	<input type="number" id="inputl" class="scol-7 mcol-7 lcol-7 xxxscol-5 xxscol-6 xscol-7 tacol-8 lacol-7"  onchange="objem(this.id,this.value)" oninput="objem(this.id,this.value)" placeholder="l">
+	</div>
+	<div id="dm3">
+	<label>Decimeter<sup>3</sup></label>	
+	<input type="number" id="inputdm3" class="scol-7 mcol-7 lcol-7 xxxscol-5 xxscol-6 xscol-6 tacol-7 lacol-7" onchange="objem(this.id,this.value)" oninput="objem(this.id,this.value)" placeholder="dm3">
+	</div>
+	<div id="hl">
+	<label>Hektoliter</label>	
+	<input type="number" id="inputhl" class="scol-7 mcol-7 lcol-7 xxxscol-5 xxscol-6 xscol-7 tacol-8 lacol-7"  onchange="objem(this.id,this.value)" oninput="objem(this.id,this.value)" placeholder="hl">
+	</div>
+	<div id="m3">
+	<label>Meter<sup>3</sup></label>	
+	<input type="number" id="inputm3" class="scol-7 mcol-7 lcol-7 xxxscol-5 xxscol-6 xscol-7 tacol-8 lacol-7"  onchange="objem(this.id,this.value)" oninput="objem(this.id,this.value)" placeholder="m3">
+	</div>
+	<div id="km3">
+	<label>Kilometer<sup>3</sup></label>	
+	<input type="number" id="inputkm3" class="scol-7 mcol-7 lcol-7 xxxscol-5 xxscol-6 xscol-7 tacol-8 lacol-7"  onchange="objem(this.id,this.value)" oninput="objem(this.id,this.value)" placeholder="km3">
+	</div>
+	</div>
+</div>
+<div id="three3">
+	<div id="weig" class="screen-12 screen-6 screen-4" >
+	    <h3><b>Rýchlosť</b></h3>
+	<div id="mzas">
+	<label>METER/sek</label>
+	<input type="number" id="inputmse" class="scol-7 mcol-7 lcol-7 xxxscol-5 xxscol-6 xscol-7 tacol-8 lacol-7"  placeholder="m/s" oninput="speed(this.id,this.value)" onchange="speed(this.id,this.value)">
+ 	</div>
+	<div id="kmzah">
+	<label>KM/hod</label>
+	<input type="number" id="inputkmh" class="scol-7 mcol-7 lcol-7 xxxscol-5 xxscol-6 xscol-7 tacol-8 lacol-7"  placeholder="km/h" oninput="speed(this.id,this.value)" onchange="speed(this.id,this.value)">
+ 	</div>
+	<div id="mzam">
+	<label>METER/min</label>
+	<input type="number" id="inputmmi" class="scol-7 mcol-7 lcol-7 xxxscol-5 xxscol-6 xscol-7 tacol-8 lacol-7"  placeholder="m/m" oninput="speed(this.id,this.value)" onchange="speed(this.id,this.value)">
+ 	</div>
+	<div id="fps">
+	<label>STOPA/sek</label>
+	<input type="number" id="inputfps" class="scol-7 mcol-7 lcol-7 xxxscol-5 xxscol-6 xscol-7 tacol-8 lacol-7"  placeholder="fps" oninput="speed(this.id,this.value)" onchange="speed(this.id,this.value)">
+ 	</div>
+	<div id="fph">
+	<label>STOPA/hod</label>
+	<input type="number" id="inputfph" class="scol-7 mcol-7 lcol-7 xxxscol-5 xxscol-6 xscol-7 tacol-8 lacol-7"  placeholder="fph" oninput="speed(this.id,this.value)" onchange="speed(this.id,this.value)">
+ 	</div>
+	</div>
+	<div id="data"  class="screen-12 screen-6 screen-4">
+	<h3><b>Množstvo dát</b></h3>
+	<div id="b">
+	<label>Bit</label>	
+	<input type="number" id="inputbit" class="scol-7 mcol-7 lcol-7 xxxscol-5 xxscol-6 xscol-7 tacol-8 lacol-7"  onchange="data(this.id, this.value)" oninput="data(this.id, this.value)" placeholder="b">
+	</div>
+	<div id="by">
+	<label>Byte</label>	
+	<input type="number" id="inputbyte" class="scol-7 mcol-7 lcol-7 xxxscol-5 xxscol-6 xscol-7 tacol-8 lacol-7"  onchange="data(this.id, this.value)" oninput="data(this.id, this.value)" placeholder="B">
+	</div>
+	<div id="kby">
+	<label>Kilobyte</label>	
+	<input type="number" id="inputkilobyte" class="scol-7 mcol-7 lcol-7 xxxscol-5 xxscol-6 xscol-7 tacol-8 lacol-7"  onchange="data(this.id, this.value)" oninput="data(this.id, this.value)" placeholder="KB">
+	</div>
+	<div id="mby">
+	<label>Megabyte</label>	
+	<input type="number" id="inputmegabyte" class="scol-7 mcol-7 lcol-7 xxxscol-5 xxscol-6 xscol-7 tacol-8 lacol-7"  onchange="data(this.id, this.value)" oninput="data(this.id, this.value)" placeholder="MB">
+	</div>
+	<div id="gby">
+	<label>Gigabyte</label>	
+	<input type="number" id="inputgigabyte" class="scol-7 mcol-7 lcol-7 xxxscol-5 xxscol-6 xscol-7 tacol-8 lacol-7"  onchange="data(this.id, this.value)" oninput="data(this.id, this.value)" placeholder="GB">
+	</div>
+	<div id="tby">
+	<label>Terabyte</label>	
+	<input type="number" id="inputterabyte" class="scol-7 mcol-7 lcol-7 xxxscol-5 xxscol-6 xscol-7 tacol-8 lacol-7"  onchange="data(this.id, this.value)" oninput="data(this.id, this.value)" placeholder="TB">
+	</div>
+	</div>
+	<div id="cas"  class="screen-12 screen-6 screen-4">
+	<h3><b>Čas</b></h3>
+	<div id="s">
+	<label>Sekunda</label>
+	<input type="number" id="inputs" class="scol-7 mcol-7 lcol-7 xxxscol-5 xxscol-6 xscol-7 tacol-8 lacol-7"  onchange="time(this.id,this.value)" oninput="time(this.id,this.value)" placeholder="sek">
+	</div>
+	<div id="mi">
+	<label>Minúta</label>
+	<input type="number" id="inputmi" class="scol-7 mcol-7 lcol-7 xxxscol-5 xxscol-6 xscol-7 tacol-8 lacol-7"  onchange="time(this.id,this.value)" oninput="time(this.id,this.value)" placeholder="min">
+	</div>
+	<div id="h">
+	<label>Hodina</label>
+	<input type="number" id="inputh" class="scol-7 mcol-7 lcol-7 xxxscol-5 xxscol-6 xscol-7 tacol-8 lacol-7"  onchange="time(this.id,this.value)" oninput="time(this.id,this.value)" placeholder="hod">
+	</div>
+	<div id="d">
+	<label>Deň</label>
+	<input type="number" id="inputd" class="scol-7 mcol-7 lcol-7 xxxscol-5 xxscol-6 xscol-7 tacol-8 lacol-7"  onchange="time(this.id,this.value)" oninput="time(this.id,this.value)" placeholder="den">
+	</div>
+	<div id="ty">
+	<label>Týždeň</label>
+	<input type="number" id="inputty" class="scol-7 mcol-7 lcol-7 xxxscol-5 xxscol-6 xscol-7 tacol-8 lacol-7"  onchange="time(this.id,this.value)" oninput="time(this.id,this.value)" placeholder="tyz">
+	</div>
+	<div id="me">
+	<label>Mesiac</label>
+	<input type="number" id="inputme" class="scol-7 mcol-7 lcol-7 xxxscol-5 xxscol-6 xscol-7 tacol-8 lacol-7"  onchange="time(this.id,this.value)" oninput="time(this.id,this.value)" placeholder="mes">
+	</div>
+	<div id="r">
+	<label>Rok</label>
+	<input type="number" id="inputr" class="scol-7 mcol-7 lcol-7 xxxscol-5 xxscol-6 xscol-7 tacol-8 lacol-7"  onchange="time(this.id,this.value)" oninput="time(this.id,this.value)" placeholder="rok">
+	</div>
+	</div>	
+</div>
+	<div style="clear: both;"></div>
+<div id="percenta" class="screen-12 screen-6 screen-4" style="text-align: center;">
+	<h3><b>Percentá</b></h3>
+	<div id="ZAP">
+		<span>Koľko je <input type="number" placeholder="percent" id="dopln-cast-percenta"> % zo <input type="number" placeholder="základu" id="dopln-cast-zaklad" class="od-input-percenta"> ?</span><br>
+		<button class="button" onclick="cast()">Odpoveď:</button><span id="dopln-cast-odpoved"></span>
+	</div>
+	<div id="POP">
+		<span><input type="number" placeholder="časť" id="dopln-percenta-cast"> je koľko percent zo <input type="number" placeholder="základu" id="dopln-percenta-zaklad" class="od-input-percenta"> ?</span><br>
+		<button class="button" onclick="percenta()">Odpoveď:</button><span id="dopln-percenta-odpoved"></span>
+	</div>
+	<div id="CAP">
+		<span><input type="number" placeholder="časť" id="dopln-zaklad-cast"> je <input type="number" placeholder="percent" id="dopln-zaklad-percenta" class="od-input-percenta"> % z čoho?</span><br>
+		<button class="button" onclick="zaklad()">Odpoveď:</button><span id="dopln-zaklad-odpoved"></span>
+	</div>
+</div>
+	<div style="clear: both;"></div>
+<div id="trojuholnik">
+		<h2 style="text-align: center; margin: 0;"><b>Trojuholnik</b></h2>
+		<div id="trojobvod">
+		<h3>OBVOD</h3>
+			<div id="input-tro-obvod">
+			<span>Strana A 	</span><input class="inputtro" type="number" id="trojobvodA" placeholder="A"><br>
+			<span>Strana B 	</span><input class="inputtro" type="number" id="trojobvodB" placeholder="B"><br>
+			<span>Strana C 	</span><input class="inputtro" type="number" id="trojobvodC" placeholder="C"><br>
+			</div>
+			<div id="output-tro-obvod">
+			<button onclick="vysledokobvodtro()" class="button">Výsledok</button><span style="margin-left: 1em;" id="troobvodvy"></span>
+			</div>
+		</div>
+		<div id="trojobsah">
+		<h3>OBSAH</h3>
+			<div id="input-tro-obsah">
+			<span>Strana X 	</span><input style="margin-bottom: 2em;" type="number" id="trojobsahX" placeholder="strana"><br>
+			<span>Výška X 	</span><input style="margin-bottom: 2em;" type="number" id="trojobsahV" placeholder="výška">
+			</div>
+			<div id="output-tro-obsah">
+			<button onclick="vysledokobsahtro()" class="button">Výsledok</button><span style="margin-left: 1em" id="troobsahvy"></span>
+			</div>
+		</div>
+</div>
+<div id="stvorec">
+	<h2 style="text-align: center; margin: 0;"><b>Štvorec</b></h2>
+		<div id="stvoobvod">
+		<h3>OBVOD</h3>
+			<div id="input-stvo-obvod">
+			<span>Strana X 	</span><input style="margin-bottom: 2em;" type="number" id="stvoobvodX" placeholder="strana">
+			</div>
+			<div id="output-stvo-obvod">
+			<button onclick="vysledokobvodstvo()" class="button">Výsledok</button><span style="margin-left: 1em" id="stvoobvodvy"></span>
+		</div>
+	</div>
+		<div id="stvoobsah">
+		<h3>OBSAH</h3>
+		<div id="input-stvo-obsah">
+		<span>Strana X 	</span><input style="margin-bottom: 2em;" type="number" id="stvoobsahX" placeholder="strana">
+		</div>
+		<div id="output-stvo-obsah">
+		<button onclick="vysledokobsahstvo()" class="button">Výsledok</button><span style="margin-left: 1em;" id="stvoobsahvy"></span>
+		</div>
+		</div>
+</div>
+<div id="obdlznik">
+	<h2 style="text-align: center; margin: 0;"><b>Obdĺžník</b></h2>
+		<div id="obdlobvod">
+		<h3>OBVOD</h3>
+			<div id="input-obdl-obvod">
+			<span>Strana A 	</span><input style="margin-bottom: 2em;" type="number" id="obdlobvodA" placeholder="strana A"><br>
+			<span>Strana B 	</span><input style="margin-bottom: 2em;" type="number" id="obdlobvodB" placeholder="strana B">
+			</div>
+			<div id="output-obdl-obvod">
+			<button onclick="vysledokobvodobdl()" class="button">Výsledok</button><span style="margin-left: 1em" id="obdlobvodvy"></span>
+		</div>
+	</div>
+		<div id="obdlobsah">
+		<h3>OBSAH</h3>
+		<div id="input-obdl-obsah">
+		<span>Strana A 	</span><input style="margin-bottom: 2em;" type="number" id="obdlobsahA" placeholder="strana A"><br>
+		<span>Strana B 	</span><input style="margin-bottom: 2em;" type="number" id="obdlobsahB" placeholder="strana B">
+		</div>
+		<div id="output-obdl-obsah">
+		<button onclick="vysledokobsahobdl()" class="button">Výsledok</button><span style="margin-left: 1em;" id="obdlobsahvy"></span>
+		</div>
+		</div>
+</div>
+<div id="kosostvorec">
+	<h2 style="text-align: center; margin: 0;"><b>Kosoštvorec</b></h2>
+		<div id="kosostvoobvod">
+		<h3>OBVOD</h3>
+			<div id="input-kosostvo-obvod">
+			<span>Strana X 	</span><input style="margin-bottom: 2em;" type="number" id="kosostvoobvodX" placeholder="strana">
+			</div>
+			<div id="output-kosostvo-obvod">
+			<button onclick="vysledokobvodkosostvo()" class="button">Výsledok</button><span style="margin-left: 1em" id="kosostvoobvodvy"></span>
+		</div>
+	</div>
+		<div id="kosostvoobsah">
+		<h3>OBSAH</h3>
+		<div id="input-kosostvo-obsah">
+		<span>Strana X 	</span><input style="margin-bottom: 2em;" type="number" id="kosostvoobsahX" placeholder="strana"><br>
+		<span>Výška X 	</span><input style="margin-bottom: 2em;" type="number" id="kosostvoobsahXX" placeholder="výška">
+		</div>
+		<div id="output-kosostvo-obsah">
+		<button onclick="vysledokobsahkosostvo()" class="button">Výsledok</button><span style="margin-left: 1em;" id="kosostvoobsahvy"></span>
+		</div>
+		</div>
+</div>
+<div id="kosodlznik">
+	<h2 style="text-align: center; margin: 0;"><b>Kosodĺžnik</b></h2>
+		<div id="kosodlznobvod">
+		<h3>OBVOD</h3>
+			<div id="input-kosodlzn-obvod">
+			<span>Strana A 	</span><input style="margin-bottom: 2em;" type="number" id="kosodlznobvodA" placeholder="strana A"><br>
+			<span>Strana B 	</span><input style="margin-bottom: 2em;" type="number" id="kosodlznobvodB" placeholder="strana B">
+			</div>
+			<div id="output-kosodlzn-obvod">
+			<button onclick="vysledokobvodkosodlzn()" class="button">Výsledok</button><span style="margin-left: 1em" id="kosodlznobvodvy"></span>
+		</div>
+	</div>
+		<div id="kosodlznobsah">
+		<h3>OBSAH</h3>
+		<div id="input-kosodlzn-obsah">
+		<span>Strana X 	</span><input style="margin-bottom: 2em;" type="number" id="kosodlznobsahX" placeholder="strana"><br>
+		<span>Výška X 	</span><input style="margin-bottom: 2em;" type="number" id="kosodlznobsahXX" placeholder="výška">
+		</div>
+		<div id="output-kosodlzn-obsah">
+		<button onclick="vysledokobsahkosodlzn()" class="button">Výsledok</button><span style="margin-left: 1em;" id="kosodlznobsahvy"></span>
+		</div>
+		</div>
+</div>
+<div id="lichobeznik">
+	<h2 style="text-align: center; margin: 0;"><b>Lichobežník</b></h2>
+		<div id="lichoobvod">
+		<h3>OBVOD</h3>
+			<div id="input-licho-obvod">
+			<span>Strana A 	</span><input style="margin-bottom: 2em;" type="number" id="lichoobvodA" placeholder="strana A"><br>
+			<span>Strana B 	</span><input style="margin-bottom: 2em;" type="number" id="lichoobvodB" placeholder="strana B"><br>
+			<span>Strana C 	</span><input style="margin-bottom: 2em;" type="number" id="lichoobvodC" placeholder="strana A"><br>
+			<span>Strana D 	</span><input style="margin-bottom: 2em;" type="number" id="lichoobvodD" placeholder="strana B">	
+			</div>
+			<div id="output-licho-obvod">
+			<button onclick="vysledokobvodlicho()" class="button">Výsledok</button><span style="margin-left: 1em" id="lichoobvodvy"></span>
+		</div>
+	</div>
+		<div id="lichoobsah">
+		<h3>OBSAH</h3>
+		<div id="input-licho-obsah">
+		<span>Strana A 	</span><input style="margin-bottom: 2em;" type="number" id="lichoobsahA" placeholder="strana A"><br>
+		<span>Strana C 	</span><input style="margin-bottom: 2em;" type="number" id="lichoobsahC" placeholder="strana C"><br>
+		<span>Výška  	</span><input style="margin-bottom: 2em;" type="number" id="lichoobsahV" placeholder="výška">
+		</div>
+		<div id="output-licho-obsah">
+		<button onclick="vysledokobsahlicho()" class="button">Výsledok</button><span style="margin-left: 1em;" id="lichoobsahvy"></span>
+		</div>
+		</div>
+</div>
+<div id="kruh" style="padding-bottom: 5em;">
+	<h2 style="text-align: center; margin: 0;"><b>Kruh</b></h2>
+		<div id="kruhobvod">
+		<h3>OBVOD</h3>
+			<div id="input-kruh-obvod">
+			<span>Priemer 	</span><input style="margin-bottom: 2em;" type="number" id="kruhobvodD" placeholder="priemer">
+			</div>
+			<div id="output-kruh-obvod">
+			<button onclick="vysledokobvodkruh()" class="button">Výsledok</button><span style="margin-left: 1em" id="kruhobvodvy"></span>
+		</div>
+	</div>
+		<div id="kruhobsah">
+		<h3>OBSAH</h3>
+		<div id="input-kruh-obsah">
+		<span>Polomer 	</span><input style="margin-bottom: 2em;" type="number" id="kruhobsahR" placeholder="polomer">
+		</div>
+		<div id="output-kruh-obsah">
+		<button onclick="vysledokobsahkruh()" class="button">Výsledok</button><span style="margin-left: 1em;" id="kruhobsahvy"></span>
+		</div>
+		</div>
+</div>
+<footer style="text-align:center;background:silver;margin: 0;padding:10px 10px 4em 10px;">
+	<p style="margin:0;"><a href="http://www.branislavblazek.sk" style="color:black;text-decoration: none;">Branislav Blažek</a> | 2017 | v prípade chyby/zlého výpočtu/pripomienky mi môžete napísať na <a style="color:black;" href="mailto:branislav.blazek.bb@gmail.com?subject=Nahlásenie%20chyby,%20zlého%20výpočtu%20alebo%20pripomienky%20zo%20stránky%20branislavblazek.sk/converter" title="napísať mail">mail</a></p>
+</footer>
+<!-- funcknost --><script src="converter-page.js"></script>
+<!-- vypocty --><script src="converter-math.js"></script>
+</body>
+</html>

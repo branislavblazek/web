@@ -1,0 +1,7 @@
+<div id="user">
+	<p id="name">branislav</p>
+	<p id="fullname">Branislav Blažek</p>
+	<p id="password">aleluja</p>
+	<p id="photo">branislavblazek.png</p>
+	<p id="secretCode">311002</p>
+</div>

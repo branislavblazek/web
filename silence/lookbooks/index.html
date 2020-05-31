@@ -1,0 +1,60 @@
+<!DOCTYPE html>
+<html>
+<head>
+	<meta charset="utf-8">
+	<title>Silence</title>
+	<script src="https://ajax.googleapis.com/ajax/libs/jquery/3.2.1/jquery.min.js"></script>
+	<meta name="viewport" content="width=device-width, initial-scale=1.0">
+	<link rel="stylesheet" type="text/css" href="../style.css">
+	<link rel="stylesheet" type="text/css" href="style-look.css">
+	<script>
+		var count = 0;
+		function slideshow(value){
+			count += value;
+			if (count > 4) {count = 0;}
+			if (count < -4) {count = 0;}
+			$(".img").hide();
+			if (value == 0) {
+				$(".img").eq(count).show();
+			}
+			if (value == '-1') {
+				$(".img").eq(count).css({'opacity':'0'}).show().animate({opacity:1}, 'slow');
+			}
+			if (value == '1') {
+				$(".img").eq(count).css({'opacity':'0'}).show().animate({opacity:1}, 'slow');
+			}
+		};
+		 $(document).ready(function(){ 
+			slideshow(0);
+		 })
+	</script>
+</head>
+<body>
+<div id="container">
+	<menu>
+		<a href="http://www.branislavblazek.sk/silence"><img src="../logo.png" width="260px"></a>
+		<a href="http://www.branislavblazek.sk/silence" id="lookbooks">HLAVNÁ STRÁNKA</a>
+		<a href="http://www.branislavblazek.sk/silence/kontakt.html" id="kontakt">KONTAKT</a>
+	</menu>
+	<article>
+		<span class="arrow left" onclick="slideshow(-1)">
+		</span>
+		<div id="photos">
+			<img src="https://images.unsplash.com/photo-1464983953574-0892a716854b?auto=format&fit=crop&w=1050&q=60&ixid=dW5zcGxhc2guY29tOzs7Ozs%3D" class="img">
+			<img src="https://images.unsplash.com/photo-1489753735160-2cbf3d9006d4?auto=format&fit=crop&w=1050&q=60&ixid=dW5zcGxhc2guY29tOzs7Ozs%3D" class="img">
+			<img src="https://images.unsplash.com/photo-1482540922003-fc2c0fc25584?auto=format&fit=crop&w=1050&q=60&ixid=dW5zcGxhc2guY29tOzs7Ozs%3D" class="img">
+			<img src="https://images.unsplash.com/photo-1507830075634-ce51e8b19328?auto=format&fit=crop&w=1050&q=60&ixid=dW5zcGxhc2guY29tOzs7Ozs%3D" class="img">
+			<img src="https://images.unsplash.com/photo-1446305341947-847fd13db6c4?auto=format&fit=crop&w=1050&q=60&ixid=dW5zcGxhc2guY29tOzs7Ozs%3D" class="img">
+		</div>
+		<span class="arrow right" onclick="slideshow(+1)">
+		</span>
+	</article>
+	<span style="color:blue;">odkazy na obrázky:</span>
+	<a href="https://images.unsplash.com/photo-1464983953574-0892a716854b?auto=format&fit=crop&w=1050&q=60&ixid=dW5zcGxhc2guY29tOzs7Ozs%3D">snímka 1/5</a>
+	<a href="https://images.unsplash.com/photo-1489753735160-2cbf3d9006d4?auto=format&fit=crop&w=1050&q=60&ixid=dW5zcGxhc2guY29tOzs7Ozs%3D">snímka 2/5</a>
+	<a href="https://images.unsplash.com/photo-1482540922003-fc2c0fc25584?auto=format&fit=crop&w=1050&q=60&ixid=dW5zcGxhc2guY29tOzs7Ozs%3D">snímka 3/5</a>
+	<a href="https://images.unsplash.com/photo-1507830075634-ce51e8b19328?auto=format&fit=crop&w=1050&q=60&ixid=dW5zcGxhc2guY29tOzs7Ozs%3D">snímka 4/5</a>
+	<a href="https://images.unsplash.com/photo-1446305341947-847fd13db6c4?auto=format&fit=crop&w=1050&q=60&ixid=dW5zcGxhc2guY29tOzs7Ozs%3D">snímka 5/5</a>
+</div>	
+</body>
+</html>

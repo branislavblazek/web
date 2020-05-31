@@ -1,0 +1,96 @@
+
+<!DOCTYPE html>
+<html>
+<head>
+	<title>online rádia</title>
+	<script src="https://ajax.googleapis.com/ajax/libs/jquery/3.2.1/jquery.min.js"></script>
+	<meta name="viewport" content="width=device-width, initial-scale=1.0">
+	<link rel="stylesheet" type="text/css" href="radia.css">
+	<meta charset="utf-8">
+<meta name="theme-color" content="#58636f">
+<meta name="apple-mobile-web-app-status-bar-style" content="black-translucent">
+</head>
+<body>
+<div id="preloader"><div id="loader"></div></div>
+<div id="main">
+	<a href="http://www.branislavblazek.sk/#works" style="color:white;text-decoration: none;position: absolute;left:15px;top:15px;">&#60;</a>
+	<h1>ONLINE slovenské rádia</h1>
+</div>
+<div id="radia">
+	<div class="radio" data-odkaz="http://slovensko.rtvs.sk/player/">
+		<span>Rádio<br><span class="size">SLOVENSKO</span></span>
+	</div>
+	<div class="radio" data-odkaz="http://reginazapad.rtvs.sk/player/">
+		<span>Rádio<br><span class="size">REGINA-ZÁPAD</span></span>
+	</div>
+	<div class="radio" data-odkaz="http://reginastred.rtvs.sk/player/">
+		<span>Rádio<br><span class="size">REGINA-STRED</span></span>
+	</div>
+	<div class="radio" data-odkaz="http://reginavychod.rtvs.sk/player/">
+		<span>Rádio<br><span class="size">REGINA-VÝCHOD</span></span>
+	</div>
+	<div class="radio" data-odkaz="http://devin.rtvs.sk/player/">
+		<span>Rádio<br>DEVÍN</span>
+	</div>
+	<div class="radio" data-odkaz="http://fm.rtvs.sk/player/">
+		<span>Rádio<br>FM</span>
+	</div>
+	<div class="radio" data-odkaz="http://patria.rtvs.sk/player/">
+		<span>Rádio<br>PATRIA</span>
+	</div>
+	<div class="radio" data-odkaz="http://rsi.rtvs.sk/player/">
+		<span>Rádio<br><span>INTERNATIONAL</span></span>
+	</div>
+	<div class="radio" data-odkaz="http://pyramida.rtvs.sk/player/">
+		<span>Rádio<br>PYRAMÍDA</span>
+	</div>
+	<div class="radio" data-odkaz="http://litera.rtvs.sk/player/">
+		<span>Rádio<br>LITERA</span>
+	</div>
+	<div class="radio" data-odkaz="http://junior.rtvs.sk/player/">
+		<span>Rádio<br>JUNIOR</span>
+	</div>
+	<div class="radio" data-odkaz="http://antenarock.sk/vysielanie/live">
+		<span>Rádio<br>ROCK</span>
+	</div>
+	<div class="radio" data-odkaz="http://www.bestfm.sk/player">
+		<span>Rádio<br>BEST FM</span>
+	</div>
+	<div class="radio" data-odkaz="http://onair.europa2.sk">
+		<span>Rádio<br>EUROPA 2</span>
+	</div>
+	<div class="radio" data-odkaz="https://www.expres.sk/stream/">
+		<span>Rádio<br>EXPRES</span>
+	</div>
+	<div class="radio" data-odkaz="http://www.funradio.sk/play/?select=1">
+		<span>Rádio<br>FUN</span>
+	</div>
+	<div class="radio" data-odkaz="http://www.jemne.sk/vysielanie/live">
+		<span>Rádio<br>JEMNÉ</span>
+	</div>
+	<div class="radio" data-odkaz="https://www.rockovarepublika.sk/player/">
+		<span>rocková<br>REPUBLIKA</span>
+	</div>
+	<div class="radio" data-odkaz="https://slobodnyvysielac.sk/zive-vysielanie/">
+		<span>slobodný<br>VYSIELAČ</span>
+	</div>
+</div>
+<footer>
+<span>created by : <a href="http://www.branislavblazek.sk">Branislav Blažek</a> | 2017 | ZDROJE: <a href="https://images.unsplash.com/photo-1465147836063-7ca3784f01af?w=650&ixid=dW5zcGxhc2guY29tOzs7Ozs%3D">pozadie_stranky</a> ; <a href="https://images.unsplash.com/photo-1503227770247-8340b5c2b759?w=1050&ixid=dW5zcGxhc2guY29tOzs7Ozs%3D">pozadie_hlavicky</a></span>
+</footer>
+<script>
+$(document).ready(function() {
+	$("#radia").show('slow');
+	$(".radio").click(function() {
+		window.open($(this).attr('data-odkaz'), "_blank", "width=300,height=730");
+	})
+})
+$(window).on('load', function() {
+	$('#status').fadeOut(); 
+    $('#preloader').delay(350).fadeOut('slow');
+    $('body').delay(350).css({'overflow':'visible'});
+})
+
+</script>
+</body>
+</html>

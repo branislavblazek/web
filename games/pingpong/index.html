@@ -1,0 +1,666 @@
+<!DOCTYPE html>
+<html>
+	<head>
+		<meta charset="utf-8">
+		<meta http-equiv="X-UA-Compatible" content="IE=edge,chrome=1">
+		<title>pingpong game</title>
+		<meta name="viewport" content="width=device-width, initial-scale=1.0">
+		<meta name="viewport" content="width=device-width, user-scalable=no">
+		<link href="https://fonts.googleapis.com/icon?family=Material+Icons" rel="stylesheet">
+		<meta charset="utf-8">
+		<meta name="theme-color" content="#000000">
+		<style>
+			* {padding: 0;margin:0;}
+			body, html {
+				font-family: Verdana, sans-serif;
+				overflow: hidden;
+			}
+			#orient {
+				display: none;
+			}
+			#canvas {
+				background: #eee; 
+				display: block; 
+				margin: 0 auto;
+			}
+			@media screen and (max-width: 800px) and (orientation: portrait){
+				#canvas {
+					display: none;
+				}
+				#orient {
+					display: block;
+					width: 90%;
+					height: 50em;
+					background: black;
+					z-index: 3;
+					text-align: center;
+					padding:50% 5% 50% 5%;
+					overflow: hidden;
+					font-size: larger;
+					color: limegreen;
+				};
+			}
+		</style>
+	</head>
+	<body>
+		<div id="orient">
+			<p>Pre spustenie hry si prosím aktivujte automatické otáčanie a otočte mobil na šírku,<br> ďakujem.</p>
+		</div>
+		<canvas id="canvas"></canvas>
+		<script>
+			/*
+			TODOLIST:
+			-touch event
+			*/
+			window.addEventListener('load', function(){
+				if (window.innerWidth > 800){
+					canvas.setAttribute('width', 900);
+					canvas.setAttribute('height', 500);
+					canvas = document.getElementById("canvas");
+					play();
+				} else if (window.innerWidth <= 800){
+					canvas.setAttribute('width', window.innerWidth);
+					canvas.setAttribute('height', window.innerHeight);
+					canvas = document.getElementById("canvas");
+					play();
+				}
+			}, false);
+			window.addEventListener('resize', function(){
+				if (screen.orientation.type.indexOf("landscape") >= 0){
+					canvas.setAttribute('width', window.innerWidth);
+					canvas.setAttribute('height', window.innerHeight);
+					var ctx = canvas.getContext("2d");
+					ctx.clearRect(0,0, canvas.width, canvas.height);
+					ctx.fillStyle = 'black';
+					ctx.fillRect(0 , 0 , canvas.width , canvas.height);
+					ctx.font = '25px Monospace';
+					ctx.fillText('Načítavam hru...', canvas.width/3, canvas.height/3);
+					location.reload();
+				}
+			}, false);
+			
+			function play(){
+				var canvas = document.getElementById("canvas"),
+					ctx = canvas.getContext("2d"),
+					playgame = false,
+					ready,
+					num = 0,
+					pause = true,
+					prevGame = false,
+					sl = 46,
+					sm = 25,
+					ss = 20;
+				var data_ready = {
+					style: "black",
+					text: {
+						welcome: {
+							size: sl,
+							style: "white",
+							font: "monospace",
+							x: canvas.width/3,
+							y: 50,
+							text: "Vitajte!"
+						},
+						type_game: {
+							size: sm,
+							style: "white",
+							font: "monospace",
+							x: canvas.width/2-200,
+							y: 120,
+							text: 'Zvoľte spôsob hry:'
+						},
+						_first: {
+							size: ss,
+							style: "white",
+							font: "monospace",
+							x: canvas.width/4,
+							y: 170,
+							text: 'Jeden hráč'
+						},
+						_second: {
+							size: ss,
+							style: "white",
+							font: "monospace",
+							x: canvas.width/2,
+							y: 170,
+							text: 'Dvaja hráči'
+						},
+						play: {
+							size:sm,
+							style:"white",
+							font:"monospace",
+							x: canvas.width/2-90,
+							y: 250,
+							text: 'HRAŤ'
+						}
+					}
+				};
+				var data_game = {
+					backStyle: "black",
+					type: null,
+					T_A: false,
+					B_A: false,
+					T_B: false,
+					B_B: false,
+					line: {
+						width: 5,
+						style: "white",
+						from: {
+							x: canvas.width/2,
+							y: 0
+						},
+						to: {
+							x: canvas.width/2,
+							y: canvas.height
+						}
+					},
+					sides: {
+						player_a: {
+							from: {
+								x: 0,
+								y: 0
+							},
+							to: {
+								x: canvas.width/2,
+								y: canvas.height
+							}
+						},
+						player_b: {
+							from: {
+								x: canvas.width/2,
+								y: 0
+							},
+							to: {
+								x: canvas.width,
+								y: canvas.height
+							}
+						}
+					},
+					ball: {
+						radius: 10,
+						style: "white",
+						from: {
+							x: canvas.width/2,
+							y: canvas.height/2
+						},
+						dx: 2,
+						dy: 2
+					},
+					text: {
+						status_a: {
+							text: 0,
+							cor: {
+								x: canvas.width/2 - 48,
+								y: 30
+							},
+							size: sm,
+							style: "white"
+						},
+						status_b: {
+							text: 0,
+							cor: {
+								x: canvas.width/2 + 16,
+								y: 30
+							},
+							size: sm,
+							style: "white"
+						}
+					},
+					paddle: {
+						player_a: {
+							width: 5,
+							height: 60,
+							x: 2,
+							y: canvas.height/3,
+							color: "white",
+							update: 7
+						},
+						player_b: {
+							width: 5,
+							height:60,
+							x: canvas.width - 7,
+							y: canvas.height/3,
+							color: "white",
+							update: 7
+						},
+					},
+					pause: {
+						text: {
+							head : {
+								color: 'limegreen',
+								font: sm,
+								x: canvas.width/2-81.25,
+								y: canvas.height/4*1.25,
+								text: 'HRA zastavená'
+							},
+							pokrac: {
+								color: 'white',
+								font: ss,
+								x: canvas.width/3,
+								y: canvas.height/4*2,
+								text: "pokračovať (p)"
+							},
+							reset: {
+								color: 'white',
+								font: ss,
+								x: canvas.width/2,
+								y: canvas.height/4*2,
+								text: "reštartovať (r)"
+							},
+							enter : {
+								color: 'white',
+								font: ss,
+								x: canvas.width/2-81.25,
+								y: canvas.height/4*2.75,
+								text: "ENTER (enter)"
+							}
+						}
+					}
+				};
+				//events when on menu
+				document.addEventListener('keydown', function(event){
+					if (playgame == true) return false;
+					switch(event.keyCode){
+						case 39:
+							num--;
+							updateMenu(num);
+							break;
+						case 37:
+							num++;
+							updateMenu(num);
+							break;
+						case 13://enter
+							startGame();
+							break;
+					}
+				}, false);
+				document.addEventListener('click', function(event){
+					for (i in data_ready.text) {
+						if(data_ready.text.hasOwnProperty(i)){
+							var _text = data_ready.text[i];
+							var _x = _text.x,
+								_y = _text.y - _text.size,
+								_xx = _x + _text.text.length * (_text.size/2)+10,
+								_yy = _text.y;
+							if (event.offsetX >= _x && event.offsetX <= _xx && event.offsetY >= _y && event.offsetY <= _yy){
+								var types = ["_first", "_second"];
+								switch(i){
+									case '_first':
+									case '_second':
+										types.forEach(function(type, index){
+											data_ready.text[type].style = "white";
+											if (type == i){
+												data_game.type = index;
+												data_ready.text[type].style = "limegreen";
+											}
+										});
+										break;
+									case 'play':
+										if (prevGame == false){
+											startGame();	
+											prevGame = true;
+										};
+										break;
+								};
+							}
+						};
+					};
+				}, false);
+				
+				function updateMenu(er){
+					if (er > 1) er = 0;
+					if (er < 0) er = 1;
+					var colorIt = ["_first", "_second"];
+					colorIt.forEach(function(obj){ data_ready.text[obj].style = "white";});
+					data_ready.text[colorIt[er]].style = "limegreen";
+					num = er;
+					data_game.type = er;
+				}
+				function startGame(){
+					playgame = true;
+					ctx.clearRect(0, 0, canvas.width, canvas.height);
+					game(data_game);
+					clearInterval(ready);
+				}
+				
+				updateMenu(0);			
+				if (playgame == false){
+					ready = setInterval(function(){
+						ctx.clearRect(0, 0, canvas.width, canvas.height);
+						ctx.fillStyle = data_ready.style,
+						ctx.fillRect(0 , 0 , canvas.width, canvas.height);
+						
+						for (var i in data_ready.text){
+							if (data_ready.text.hasOwnProperty(i)){
+								ctx.font = data_ready.text[i].size + 'px Monospace';
+								ctx.fillStyle = data_ready.text[i].style;
+								ctx.fillText(data_ready.text[i].text,  data_ready.text[i].x, data_ready.text[i].y);
+							};
+						};
+					}, 10);
+				}
+			};
+
+			function game(data){
+				var ctx = canvas.getContext("2d"),
+					w = canvas.width,
+					h = canvas.height,
+					ballsUpdate = {},
+					num = 0,
+					menu = true,
+					int, int_1,
+					toto = 'pokrac';			
+				function back(){
+					ctx.fillStyle = data.backStyle;
+					ctx.fillRect(0, 0, w, h);
+					
+					ctx.setLineDash([10, 10]);
+					ctx.beginPath();
+					ctx.strokeStyle = data.line.style;
+					ctx.lineWidth = data.line.width;
+					ctx.moveTo(data.line.from.x, data.line.from.y);
+					ctx.lineTo(data.line.to.x, data.line.to.y);
+					ctx.stroke();
+				};
+				function status(){
+					for (i in data.text) {
+						if(data.text.hasOwnProperty(i)){
+							ctx.fillStyle = data.text[i].style;	
+							ctx.font = data.text[i].size + 'px monospace';
+							ctx.fillText(data.text[i].text, data.text[i].cor.x, data.text[i].cor.y);
+						};
+					};
+				};
+				ballsUpdate = {
+					x: data.ball.from.x,
+					y: data.ball.from.y
+				};
+
+				function ball(){
+					for (var p in data.sides){
+						if (data.sides.hasOwnProperty(p)){
+							 var x = ballsUpdate.x,
+							 	y = ballsUpdate.y,
+							 	radius = data.ball.radius,
+							 	_width = data.paddle[p].width,
+							 	_height = data.paddle[p].height,
+							 	_y = data.paddle[p].y,
+							 	_x = data.paddle[p].x;
+							if (x > data.sides[p].from.x && x < data.sides[p].to.x && y > data.sides[p].from.y && y < data.sides[p].to.y){
+								switch(p){
+									case 'player_a':
+										if (x < _width + radius){
+											if (y > _y - radius && y < _y + _height + radius){
+												data.ball.dx = -data.ball.dx;
+											} else {
+												ballsUpdate.x = canvas.width/2;
+												ballsUpdate.y = canvas.height/2;
+												data.ball.dx = -data.ball.dx;
+												data.text.status_b.text += 1;
+											}
+										}
+									break;
+									case 'player_b':
+										if (x > _x - radius){
+											if (y > _y - radius && y < _y + _height + radius){
+												data.ball.dx = -data.ball.dx;
+											} else {
+												ballsUpdate.x = canvas.width/2;
+												ballsUpdate.y = canvas.height/2;
+												data.ball.dx = -data.ball.dx;
+												data.text.status_a.text += 1;
+											}
+										}
+									break;
+								};
+							};
+						};
+							
+						//bounce off the bottom wall
+						if(ballsUpdate.y > canvas.height - data.ball.radius){
+							data.ball.dy = -data.ball.dy;
+						}
+						//bounce off the top wall
+						if(ballsUpdate.y < data.ball.radius){
+							data.ball.dy = -data.ball.dy;
+						}
+						//bounce off the right wall
+						if(ballsUpdate.x > canvas.width - data.ball.radius){
+							
+						};
+						//bounce off the left wall
+						if(ballsUpdate.x < data.ball.radius){
+							data.ball.dx = -data.ball.dx;
+							data.text.status_b.text += 1;
+						}
+						
+						ctx.beginPath();
+						ctx.arc(ballsUpdate.x, ballsUpdate.y, data.ball.radius, 0, Math.PI*2);
+						ctx.fillStyle = data.ball.style;
+						ctx.fill();
+						ballsUpdate.x += data.ball.dx;
+						ballsUpdate.y += data.ball.dy;
+					};
+				};
+				function paddle(){
+					for (i in data.paddle) {
+						if(data.paddle.hasOwnProperty(i)){
+							ctx.fillStyle = data.paddle[i].color;
+							ctx.fillRect(data.paddle[i].x, data.paddle[i].y, data.paddle[i].width, data.paddle[i].height);
+						}
+					}
+				};
+
+				function updatePause(er){
+					if (er > 1) er = 0;
+					if (er < 0) er = 1;
+					var colorIt = ['pokrac', 'reset'];
+					colorIt.forEach(function(obj){ data.pause.text[obj].color = "white"});
+					data.pause.text[colorIt[er]].color = 'limegreen';
+					num = er;
+				};
+				function keyDownHand(event){
+					if (data.type == 0 && !pause){//ak je hra jedneho hraca tak sa posusu oba
+						switch(event.keyCode){
+							case 38: case 87:
+								data.T_A = true; data.T_B = true; break;
+							case 40: case 83:
+								data.B_A = true; data.B_B = true; break;
+					};
+					} else if (data.type == 1 && !pause){//ak je hra pre dvoch hracov, posunie sa na zaklade w alebo sipky hore
+						switch(event.keyCode){
+							case 87:
+								data.T_A = true; break;
+							case 83:
+								data.B_A = true; break;
+							case 38:
+								data.T_B = true; break;
+							case 40:
+								data.B_B = true; break;
+						};
+					} else if (pause){
+						switch(event.keyCode){
+							case 39:
+								num--;
+								updatePause(num);
+							break;
+							case 37:
+								num++;
+								updatePause(num);
+							break;
+							case 13:
+								if (num == 0){
+									clearInterval(int_1);
+									menu = false;
+									pause = false;
+								} else if (num == 1){
+									clearInterval(int_1);
+									ballsUpdate = {
+										x: data.ball.from.x,
+										y: data.ball.from.y
+									};
+									data.text.status_a.text = 0;
+									data.text.status_b.text = 0;
+									menu = false;
+									pause = false;
+									updatePause(0);
+								}
+							break;
+						}
+					}
+					switch(event.keyCode){
+						case 80://pause
+							if (!pause){
+								pause = true;
+								menu = true;
+								//cierny stvorec
+								int_1 = setInterval(function(){
+									if (menu){
+										ctx.fillStyle = "black";
+										ctx.fillRect(w/4, h/4, w/2, h/2);
+										//stvorec s ramikom
+										ctx.beginPath();
+										ctx.setLineDash([]);
+										ctx.strokeStyle = "limegreen";
+										ctx.lineWidth = 5;
+										ctx.strokeRect(w/4, h/4, w/2, h/2);
+										//pismo
+										//nadpis
+										for (var d in data.pause.text){
+											if(data.pause.text.hasOwnProperty(d)){
+												var path = data.pause.text[d];
+												ctx.fillStyle = path.color;
+												ctx.font = path.font + 'px monospace';
+												ctx.fillText(path.text, path.x, path.y);
+											}
+										};
+									}
+								}, 20);
+							} else if (pause){
+								clearInterval(int_1);
+								menu = false;
+								pause = false;
+							};
+							break;
+						case 82: 
+							clearInterval(int_1);
+							ballsUpdate = {
+								x: data.ball.from.x,
+								y: data.ball.from.y
+							};
+							data.text.status_a.text = 0;
+							data.text.status_b.text = 0;
+							menu = false;
+							pause = false;
+						break;
+					}
+				};
+				function keyUpHand(event){
+					if (data.type == 0){
+						switch(event.keyCode){
+							case 38: case 87:
+								data.T_A = false; data.T_B = false; break;
+							case 40: case 83:
+								data.B_A = false; data.B_B = false; break;
+						};
+					} else if (data.type == 1){
+						switch(event.keyCode){
+							case 38: data.T_B = false; break;
+							case 40: data.B_B = false; break;
+							case 87: data.T_A = false; break;
+							case 83: data.B_A = false; break;
+						};
+					}
+				};
+				function clickDown(event){
+					if (!pause) return;
+					for (var o in data.pause.text){
+						if (data.pause.text.hasOwnProperty(o)){
+							var _text = data.pause.text[o];
+							var _x = _text.x,
+								_y = _text.y - _text.font,
+								_xx = _x + _text.text.length * (_text.font/2)+10,
+								_yy = _text.y;
+							if (event.offsetX >= _x && event.offsetX <= _xx && event.offsetY >= _y && event.offsetY <= _yy){
+								switch(o){
+									case 'pokrac':
+										data.pause.text['reset'].color = 'white';
+										data.pause.text['pokrac'].color = 'limegreen';
+										toto = o;
+									break;
+									case 'reset':
+										data.pause.text['reset'].color = 'limegreen';
+										data.pause.text['pokrac'].color = 'white';
+										toto = o;
+									break;
+									case 'enter':
+										switch(toto){
+											case 'pokrac':
+												clearInterval(int_1);
+												menu = false;
+												pause = false;
+											break;
+											case 'reset':
+												clearInterval(int_1);
+												ballsUpdate = {
+													x: data.ball.from.x,
+													y: data.ball.from.y
+												};
+												data.text.status_a.text = 0;
+												data.text.status_b.text = 0;
+												menu = false;
+												pause = false;
+											break;
+										}
+									break;
+								}
+							}
+						}
+					};
+				}
+				function mouseEvent(event){
+					var relativeY = event.clientY - canvas.offsetTop;
+					if (relativeY > 0 && relativeY < canvas.height && data.type == 0){
+						data.paddle.player_a.y = relativeY - data.paddle.player_a.height/2;
+						data.paddle.player_b.y = relativeY - data.paddle.player_b.height/2;
+					}
+				};
+				function touchDown(event){
+					alert(event.offsetX);
+				}
+				function check(){
+					if (data.T_A && data.paddle.player_a.y > 0){
+						data.paddle.player_a.y -= data.paddle.player_a.update;
+					} else if (data.B_A && data.paddle.player_a.y < canvas.height - data.paddle.player_a.height){ 
+						data.paddle.player_a.y += data.paddle.player_a.update;
+					}
+					if(data.T_B && data.paddle.player_b.y > 0){
+						data.paddle.player_b.y -= data.paddle.player_b.update;
+					} else if (data.B_B && data.paddle.player_b.y < canvas.height - data.paddle.player_b.height){
+						data.paddle.player_b.y += data.paddle.player_b.update;
+					}
+				};
+				
+				document.addEventListener('keydown', keyDownHand, false);
+				document.addEventListener('keyup', keyUpHand, false);
+				document.addEventListener('click', clickDown, false);
+				document.addEventListener('mousemove', mouseEvent, false);
+				document.addEventListener('touchstart', touchDown, false);
+
+				pause = false;
+				updatePause(0);
+
+				int = setInterval(function(){
+					if (!pause){
+						ctx.clearRect(0, 0, w, h);
+						back();
+						status();
+						check();
+						paddle();
+						ball();
+					}
+				}, 15);
+			};
+		</script>
+	</body>
+</html>

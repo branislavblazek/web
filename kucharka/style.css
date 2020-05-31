@@ -1,0 +1,166 @@
+*:
+{
+    box-sizing: border-box;
+    -webkit-tab-highlight-color: rgba(0,0,0,0) !important;
+}
+
+*:focus
+{
+    outline: 0 !important;
+}
+
+html
+{
+    height: 100%;
+}
+body
+{
+    margin: 0;
+    height: 100%;
+    position: relative;
+    font-family: 'Open Sans';
+}
+
+h1 
+{
+    padding: 0;
+    margin: 0 0 15px 0;
+    text-align: center;
+}
+
+.cntr
+{
+    width: 1024px;
+    margin: 0 auto;
+    text-align: left;
+    position: relative;
+}
+/*HEADER*/
+#header
+{
+    width: 100%;
+    position: fixed;
+    top: 0;
+    left: 0;
+    background-image: url('img/header.jpg');
+    background-position: center center;
+    background-size: cover;
+    background-attachment: fixed;
+    background-repeat: no-repeat;
+    border-top: 5px solid rgb(10, 223, 56);
+    border-bottom: 1px solid #ddd;
+    padding: 15px 0 0 0;
+    z-index: 90;
+    transition: 1s opacity, 1s border;
+    box-shadow: 0 0 10px rgb(194, 194, 194);
+}
+#nadpis
+{
+    font-family: 'Grand Hotel';
+    font-size: 30px;
+    display: inline-block;
+    text-align: left;
+}
+#popis
+{
+    float:right;
+    padding: 5px;
+    background: rgba(114, 114, 114, 0.8);
+    box-shadow: 0 5px 15px #bababa;
+    border-radius: 5px;
+    width: 290px;
+    text-align: center;
+    color: rgb(211, 211, 211);
+    font-size: 14px;
+}
+#popis p
+{
+    margin: 10px 0 10px 0;
+}
+/*CONTENT*/
+#content
+{
+    margin-top: 120px;
+}
+/*TAG MENU*/
+#tagmenu
+{
+    background: rgb(223, 223, 223);
+    padding: 5px 10px 5px 10px;
+    border-radius: 10px;
+    border: 1px solid black;
+    width: 40%;
+    margin: 0 auto;
+}
+#tagmenu > p
+{
+    margin: 0;
+    display: block;
+    /*border-bottom: 1px solid black;*/
+    padding: 0 0 5px 0;
+}
+.tag
+{
+    font-size: 12px;
+    background: rgb(130, 130, 130);
+    display: inline-block;
+    margin: 5px 0 0 5px;
+    padding: 5px 10px 5px 10px;
+    border-radius: 150px;
+    border: 1px solid rgb(57, 57, 57);
+    cursor: pointer;
+    text-transform: uppercase;
+    color: white;
+}
+.tag:not(.active)
+{
+    background:rgb(130, 130, 130) !important;
+}
+.tag p
+{
+    margin: 0;
+}
+
+/*RESPONSIVE*/
+@media (max-width: 1100px)
+{
+    .cntr
+    {
+        width: auto;
+        margin: 0;
+    }
+    #nadpis
+    {
+        margin: 0 0 0 30px;
+    }
+    #popis
+    {
+        margin: 0 30px 0 0;
+    }
+}
+@media (max-width: 630px)
+{
+    #header
+    {
+        background-position: 70% 0%;
+    }
+    #nadpis
+    {
+        display: inline;
+        margin: 0;
+        font-size: 35px;
+    }
+    #nadpis h1
+    {
+        margin: 0 0 0 30px;
+        text-align: left;
+    }
+    #popis
+    {
+        display: none;
+    }
+    #content
+    {
+        margin-top: 130px;
+    }
+}

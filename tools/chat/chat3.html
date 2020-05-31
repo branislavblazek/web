@@ -1,0 +1,122 @@
+<!DOCTYPE html>
+<html>
+<head>
+	<title>chat box 3</title>
+	<script src="http://www.branislavblazek.sk/JS/jquery.js"></script>
+	<meta charset="utf-8">
+	<meta name="viewport" content="width=device-width, initial-scale=1.0">
+	 <link href="https://fonts.googleapis.com/css?family=Roboto" rel="stylesheet"> 
+	 <link href="https://fonts.googleapis.com/icon?family=Material+Icons" rel="stylesheet">
+	<style>
+	body,html{
+		margin:0;padding:0;width:100%;height:100vh;overflow: hidden;background: rgba(0,0,0,0);font-family: Roboto,sans-serif;
+	}
+	#box{
+		width:300px;
+		height: 500px;
+		padding:25px;
+	}
+	#nick{
+		display: inline-block;
+	}
+	#heading{
+		text-align: center;
+	}
+	#nick[contenteditable="true"]{
+		transition: 500ms;
+		padding:5px;
+		margin:5px 0;
+		width:150px;
+		text-align: center;
+	}
+	#nick[contenteditable="true"]:hover{
+		background: #cce5fc;
+	}
+	#nick[contenteditable="true"]:focus{
+		background: #99cfff;
+		border:none;
+		outline:none;
+	}
+	#messages {
+		width:100%;
+		height:350px;
+		background: rgba(255,255,255,0.4);
+		overflow-x: hidden;
+		padding:5px;
+	}
+	#message {
+		resize:none;
+		padding:5px;
+		box-sizing: border-box;
+		overflow-x: hidden;
+		width:85%;
+		margin-top:10px;
+		background: rgba(255,255,255,0.4);
+		border:none;
+	}
+	#se {
+		display: inline-block;cursor: pointer;height:68px;width:10%;text-align: center;
+	}
+	#send {
+		display:inline;cursor: pointer;
+	}
+	.message {
+		width:240px;
+		padding:5px;
+		cursor: pointer;
+		margin-bottom:10px;
+		border-radius:5px;
+		position: relative;
+	}
+	.B {
+		background:white;
+		margin-left:10px;
+	}
+	.A {
+		background: #00bfff;
+		margin-left:40px;
+	}
+	.message p,.message span{
+		margin:0;
+	}
+	.l{color:gray;font-size:smaller;width:120px;display: inline-block;}
+	.r{color:gray;font-size:smaller;width:120px;display: inline-block;text-align:right;z-index: 4;}
+	.fromB{width:5px;height:5px;background: white;position: absolute;left:-2.5px;top:10px;z-index:2;transform: rotate(45deg);}
+	.fromA{width:5px;height:5px;background: #00bfff;position: absolute;right:-2.5px;bottom:10px;z-index:2;transform: rotate(45deg);};
+	</style>
+</head>
+<body>
+	<div id="box">
+		<div id="heading">
+			<h2 id="nick" contenteditable="true" spellcheck="false">Name</h2><i class="material-icons">mode_edit</i>
+		</div>
+		<div id="messages">
+		</div>
+		<textarea id="message" rows="4" spellcheck="false" placeholder="Napíšte správu..."></textarea>
+		<div id="se">
+			<i class="material-icons" id="send">send</i><br><br>
+		</div>
+	</div>
+	<script>
+		$(function(){
+			$("#send").click(function(e){
+				message = {
+					nick:$("#nick").text(),
+					message:$("#message").val(),
+					time:new Date().getHours()+':'+new Date().getMinutes()
+				}
+				var room = "http://www.branislavblazek.sk/chat";
+				window.parent.postMessage(message,room);
+				$("#message").val("");
+			});
+			$(window).bind("message",function(e){
+				var data = e.originalEvent.data;
+				var w;
+				if (data.nick == $("#nick").text()){w = 'A';}else {w = 'B'}
+				$("#messages").append("<div class='message "+w+"'><div class='from"+w+"'></div><p>"+data.message+"</p><span class='l'>"+data.nick+"</span><span class='r'>"+data.time+"</span></div>");
+				$("#messages").scrollTop(15000);
+			})
+		})
+	</script>
+</body>
+</html>

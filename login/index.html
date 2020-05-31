@@ -1,0 +1,354 @@
+<!DOCTYPE html>
+<html>
+<head>
+	<title>Prihlásenie - branislavblazek.sk</title>
+	<meta charset="utf-8">
+	<script type="text/javascript" src="http://www.branislavblazek.sk/JS/jquery.js"></script>
+	<meta name="viewport" content="width=device-width, initial-scale=1.0">
+	<link href='http://fonts.googleapis.com/css?family=Roboto:400,500,600,700' rel='stylesheet' type='text/css'>
+	<link rel="stylesheet" href="https://fonts.googleapis.com/icon?family=Material+Icons">
+	<link rel="stylesheet" href="https://www.w3schools.com/w3css/4/w3.css">
+	<style>
+		body,html{margin:0;padding:0;background: #bdbdbd;outline:none;}
+		*:focus,textarea:focus,input:focus {outline:none;}
+		#box {
+			width:400px;margin:100px auto 0 auto;position: relative;overflow: hidden;height: 500px;box-sizing: border-box;background:white;font-family:Roboto,sans-serif;
+		}
+		#padd{
+			width:350px;height:450px;position: relative;margin: 25px auto;overflow: hidden;
+		}
+		.window {
+			width:350px;height:450px;position: absolute;top:0;left:100%;transition:all 0.5s,display 0ms;;
+		}
+		.window h3{
+			font-size:2.92rem;font-weight: 400;height:100px;
+		}
+		.window .content {
+			height:300px;overflow: hidden;text-align: center;
+		}
+		.window .buttons {
+			height:50px;overflow:hidden;position: relative;
+		}
+		.window .buttons button{
+			position: absolute;transition: 0.5s;
+		}
+		.window .buttons button.r{
+			right:0;
+		}
+		.window .buttons button.l{
+			left:0;
+		}
+
+		.choose{
+			left:0;
+		}
+		input[type="password"],input[type="name"]{
+			text-align: center;
+		}
+		.prejdi {transition: left 0ms;left:100% !important;}
+		#Yface{width:50%;border-radius:50%;position: absolute;left:25px;bottom:-100%;transition: bottom 1s, filter 500ms;z-index: 5}
+		#Yface:hover{filter:blur(3px);}
+		.usrcard {width:300px;height:59px;background:white;position: relative;box-shadow: 0 2px 2px 0 rgba(0,0,0,0.14),0 1px 5px 0 rgba(0,0,0,0.12),0 3px 1px -2px rgba(0,0,0,0.2);transition: 500ms;cursor: pointer;margin:0 auto 15px auto;}
+		.usrcard:hover{background: rgba(0,0,0,0.16);}
+		.usrcard h4 {position: absolute;right:15px;top:10.5px;margin:0;}
+		.usrcard img,.ico {position: absolute;left:10px;top:5px;width:49px;border-radius: 50%;font-size:49px;}
+		#username{display:none;}
+		/*http://tobiasahlin.com/spinkit/*/
+		h3{margin:0;}
+		.w3-input{margin: 0 auto;width:65%;}
+		@media screen and (max-width:900px){
+			html,body{
+				background: white;
+			}
+			#box {
+				height:100%;margin:0 auto;
+			}
+			h3 {
+				text-align: center;
+			}
+			.window .buttons button.l {
+				left:15px;
+			}
+			.window .buttons button.r {
+				right:15px;
+			}
+		}
+		@media screen and (max-width:360px){
+			#box {
+				max-width:360px;
+			}
+			#padd {
+				max-width:360px;
+			}
+		}
+		.spinner {
+		  width: 100px;
+		  height: 100px;
+		  margin: 100px auto;
+		  background-color: #2196F3;
+		  border-radius: 100%;  
+		  -webkit-animation: sk-scaleout 1.0s infinite ease-in-out;
+		  animation: sk-scaleout 1.0s infinite ease-in-out;
+		}
+
+		@-webkit-keyframes sk-scaleout {
+		  0% { -webkit-transform: scale(0) }
+		  100% {
+		    -webkit-transform: scale(1.0);
+		    opacity: 0;
+		  }
+		}
+
+		@keyframes sk-scaleout {
+		  0% { 
+		    -webkit-transform: scale(0);
+		    transform: scale(0);
+		  } 100% {
+		    -webkit-transform: scale(1.0);
+		    transform: scale(1.0);
+		    opacity: 0;
+		  }
+		}
+	</style>
+</head>
+<body onload="cookies()">
+	<div id="box">
+		<div id="padd">
+			<div class="window choose">
+				<h3>Kto ste?</h3>
+				<div id="users" class="content">
+				</div>
+			</div>
+			<div class="window login">
+				<h3>Prihláste sa!</h3>
+				<div class="content">
+					<input type="name" id="name" class="w3-input"><label for="name">Vaše meno</label><br>
+					<input type="password" id="pass" class="w3-input"><label for="pass">Vaše heslo</label><br><br>
+					<input type="checkbox" id="cookies"><label for="cookies">&nbsp;Zapamätať prihlásenie</label>
+				</div>
+				<div class="buttons">
+					<button class="w3-button w3-blue l" onclick="goBack('login','choose')">späť</button>
+					<button class="w3-button w3-blue r" onclick="sub()">pokračovať</button>
+				</div>
+			</div>
+			<div class="window cookies">
+				<h3>Ste to Vy?</h3>
+				<div class="content">
+					<p>Pre overenie, že ste to naozaj Vy, prosím napíšte Váš 'tajný kód', ktorý ste si vytvorili pri registarcií.</p><span id="username"></span>
+					<br>
+					<input class="w3-input" id="sc" type="password"><label for="sc">Váš kód</label>
+				</div>
+				<div class="buttons">
+					<button class="w3-button w3-blue l" onclick="goBack('cookies','choose');$('#sc').val('');">späť</button>
+					<button class="w3-button w3-blue r" onclick="log()">potvrdiť</button>
+				</div>
+			</div>
+			<div class="window wait">
+				<h3>Prihlasujem...</h3>
+				<div class="content">
+					<div class="spinner"></div>
+				</div>
+			</div>
+			<div class="window error" data-back="choose">
+				<h3>Neúspešné :-(</h3>
+				<div class="content">
+					<p style="color: #f44336">Zadali ste nesprávne svoje prihlasovanie údaje!</p>
+				</div>
+				<div class="buttons">
+					<button class="w3-button w3-blue r" onclick="goBack('error',$(this).parent().parent().data('back'))">znova</button>
+				</div>
+			</div>
+			<div class="window sucess">
+				<h3>Vitajte,</h3>
+				<div class="content">
+					<h3 id="Yname"></h3>
+				</div>
+				<div class="buttons">
+					<button class="w3-button w3-blue r" onclick="">pokračovať</button>
+				</div>
+			</div>
+		</div>
+		<img id="Yface">
+	</div>
+<script type="text/javascript">
+	$('body').on("keyup mouseup",function(e){
+		if(!e.metaKey){
+			e.preventDefault();
+		}
+	})
+
+	//https://dms.licdn.com/playback/C4D00AQFMRGgeIWH3Og/7aecf9386b3f41f5bd2d74915b87446d/feedshare-mp4_500/1479932728445-v0ch3x?e=1518786000&v=alpha&t=fztQ3bFKV2Cuc9BZHm4i3SAn4emBbjaptyaosgtn4JM
+	function sub(){
+		if ($("#name").val().trim() == "" || $("#pass").val().trim() == ""){
+			if ($("#name").val().trim() == ""){$("#name").css("border-bottom-color","red")};
+			if ($("#pass").val().trim() == ""){$("#pass").css("border-bottom-color","red")};
+		} else {
+			$("#name").css("border-bottom-color","rgb(204,204,204");
+			$("#pass").css("border-bottom-color","rgb(204,204,204");
+			$(".login").css({left:"-100%"});
+			$(".wait").css({left:0});
+			$(".wait").delay(300).fadeIn("slow");
+			user = {name:$("#name").val(),password:$("#pass").val(),code:''}
+			user.name = user.name.toLowerCase();
+			user.password = user.password.toLowerCase();
+			user.code = user.name.slice(0,5)+user.password.slice(0,1)+user.name.slice(5);
+			var xmlhttp;
+			if(window.XMLHttpRequest){xmlhttp=new XMLHttpRequest();}else{xmlhttp=new ActiveXObject("Microsoft.XMLHTTP");}
+			xmlhttp.onreadystatechange = function() {
+			    setTimeout(function(){
+			    	if (xmlhttp.readyState == 4 && xmlhttp.status == 200) {
+			    		if (user.name === $(xmlhttp.responseText).find("#user").prevObject[0].children[0].textContent && user.password === $(xmlhttp.responseText).find("#user").prevObject[0].children[2].textContent){
+			    			$("#Yname").text($(xmlhttp.responseText).find("#user").prevObject[0].children[1].textContent + " !");
+			    			$(".wait").css({left:"-100%"});
+			    			$(".sucess").css({left:0});
+				    		$("#Yface").attr("src",$(xmlhttp.responseText).find("#user").prevObject[0].children[3].textContent);
+				    		$("#Yface").attr("alt",$(xmlhttp.responseText).find("#user").prevObject[0].children[1].textContent);
+				    		$("#Yface").css({bottom:"-20px"});
+				    		user.photo = $(xmlhttp.responseText).find("#user").prevObject[0].children[3].textContent;
+				    		if ($("#cookies").is(":checked")){
+							document.cookie = user.name+'='+user.password+';expires=Thu, 31 Dec 2020 23:59:59 UTC; path=/';
+							document.cookie = user.name+'Photo'+'='+user.photo+';expires = Thu, 31 Dec 2020 23:59:59;path=/';
+				    		user.code = $(xmlhttp.responseText).find("#user").prevObject[0].children[4].textContent;
+				    		document.cookie = user.name+'Code'+'='+user.code+';expires = Thu, 31 Dec 2020 23:59:59;path=/'
+							}
+							document.cookie = user.name+'Fname'+'='+$(xmlhttp.responseText).find("#user").prevObject[0].children[1].textContent+';expires=Thu, 31 Dec 2020 23:59:59 UTC; path=/';
+				    		;
+			    		} else {
+			    			$(".error").data("back","login");
+			    			$(".wait").css({left:"-100%"})
+			    			$(".error").css({left:0});
+			    			$("#name,#pass").val("");
+			    			setTimeout(function(){
+			    				$(".wait").css({display:"none",left:"100%"});
+			    				setTimeout(function(){
+			    					$(".wait").css({display:"block"});
+			    				},400);
+			    			},400);
+			    		}
+				 		
+				    } else {
+				    	$(".error").data("back","login");
+				    	$(".wait").css({left:"-100%"})
+				    	$(".error").css({left:0});
+				    	$("#name,#pass").val("");
+				    	setTimeout(function(){
+				    		$(".wait").css({display:"none",left:"100%"});
+				    		setTimeout(function(){
+				    			$(".wait").css({display:"block"});
+				    		},400);
+				    	},400);
+				    }
+			    },2000);
+		    };
+		    xmlhttp.open("GET", user.code+".txt", true);
+		    xmlhttp.send();
+		}
+	}
+	function cookies(){
+		if (!document.cookie){
+			$("#name,#pass").val("");
+			$("#users").append('<div class="usrcard" onclick="userNew()"><i class="material-icons ico">add_circle_outline</i><h4>prihlásiť sa</h4></div>');
+		} else if (document.cookie){
+			cookies = {};
+			var c = document.cookie.split("; ");
+			for (let i = 0;i < c.length;i++){
+				var is = c[i].indexOf('=');
+				var name = c[i].slice(0,is);
+				var value = c[i].slice(is+1);
+				cookies[name] = value;
+			}
+			var keyNames = Object.keys(cookies);
+			cookie_users = {}
+			var ss = function(obj,name){return (obj[name]);}
+			for (let user in keyNames){;
+				if (keyNames[user].indexOf("Photo") == -1 && keyNames[user].indexOf("Code") == -1 && keyNames[user].indexOf("Fname") == -1 && keyNames[user].indexOf("_g") == -1){
+					cookie_users[keyNames[user]] = [];
+					cookie_users[keyNames[user]].push(keyNames[user]);
+				}
+			}
+			for (let user in keyNames){
+				if (keyNames[user].indexOf("Photo") == -1 && keyNames[user].indexOf("Code") == -1){
+				} else if (keyNames[user].indexOf("Code") >= 0){
+					let value = cookies[keyNames[user]];
+					let user_array = keyNames[user].substring(keyNames[user].indexOf("Code"),0);
+					let x = ss(cookie_users, user_array).push(value);
+				} else if (keyNames[user].indexOf("Photo") >= 0){
+					let value = cookies[keyNames[user]];
+					let user_array = keyNames[user].substring(keyNames[user].indexOf("Photo"),0);
+					let x = ss(cookie_users, user_array).push(value);
+				}
+			}
+			for (let user in cookie_users){
+				$("#users").append('<div onclick="userOld(this.children[1].textContent)" class="usrcard"><img src="'+cookie_users[user][1]+'"><h4>'+cookie_users[user][0]+'</h4></div>');
+			}
+			$("#users").append('<div class="usrcard" onclick="userNew()"><i class="material-icons ico">add_circle_outline</i><h4>prihlásiť sa</h4></div>');
+		}
+	}
+	function userOld(val){
+		$(".choose").css({left:"-100%"});
+		$(".cookies").css({left:0});
+		$("#username").text(val);
+	}
+	function userNew(){
+		$(".choose").css({left:"-100%"});
+		$(".login").css({left:0});
+		$("#name,#pass").val("");
+	}
+	function log(){
+		if ($("#sc").val().trim() == "" || $("#sc").val().length !== 6 || $.isNumeric($("#sc").val()) == false){
+			$("#sc").css("border-bottom-color","red");
+		} else {
+			$(".error").data("back","cookies");
+			$("#sc").css("border-bottom-color","rgb(204,204,204");
+			$(".cookies").css({left:"-100%"});
+			$(".wait").css({left:0});
+			var sprava = 0;var userN,userP,userF,userV; 
+			setTimeout(function(){
+				document.cookie.split("; ").forEach(function(ee){
+					var para = ee.slice(0,ee.indexOf("="));
+					var value = ee.slice(ee.indexOf("=")+1);
+					if (para == $("#username").text()+"Code" && $("#sc").val() == value){
+						sprava = 1;
+						userN = para.slice(0,para.indexOf("Code"));
+						userV = value;
+					}
+				});
+				document.cookie.split("; ").forEach(function(rr){
+					var para = rr.slice(0,rr.indexOf("="));
+					var value = rr.slice(rr.indexOf("=")+1);
+					if (para == userN+'Photo'){userP = value};
+					if (para == userN+'Fname'){userF = value}; 
+				});
+				if (sprava === 1){
+					setTimeout(function(){
+			    		$(".wait").css({display:"none",left:"100%"});
+			    		setTimeout(function(){
+			    			$(".wait").css({display:"block"});
+			    		},400);
+			    	},400);
+					$("#Yname").text(userF + " !");
+					$("#Yface").attr("src",userP).attr("alt",userP);
+					$(".sucess").css({left:0});
+					$("#Yface").css({bottom:"-20px"});
+					
+				} else {
+					setTimeout(function(){
+			    		$(".wait").css({display:"none",left:"100%"});
+			    		setTimeout(function(){
+			    			$(".wait").css({display:"block"});
+			    		},400);
+			    	},400);
+					$(".error").css({left:0});
+					$("#sc").val("");
+				}
+			},2000);
+			
+		}
+	}
+	function goBack(from,to){
+		$("."+from).css({left:"100%"});
+		$("."+to).css({left:0});
+	}
+</script>
+</body>
+</html>

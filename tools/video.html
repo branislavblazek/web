@@ -1,0 +1,41 @@
+<html>
+<head>
+<style>
+	.booth {
+		width:400px;
+		background:#ccc;
+		border:10px solid #ddd;
+		margin: 0 auto;
+	}	
+	#video {
+		width:400px;
+		height:300px;
+	}
+</style>	
+<title>
+video	
+</title>
+</head>
+<body>
+<div class="booth">
+	<video id="video"></video>
+</div>
+<script>
+	(function(){
+		var video = document.getElementById("video"),
+			vendorUrl = window.URL || window.webkitURL;
+		navigator.getMedia = navigator.getUserMedia ||
+		navigator.webkitGetUserMedia || navigator.mozGetUserMedia || navigator.msGetUserMedia;
+		navigator.getMedia({
+			video:true,
+			audio:false
+		}, function(stream){
+			video.src = vendorUrl.createObjectURL(stream);
+			video.play();
+		}, function(error){
+			
+		});
+	})();
+</script>
+</body>
+</html>

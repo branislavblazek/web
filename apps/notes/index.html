@@ -1,0 +1,102 @@
+<!DOCTYPE html>
+<html>
+    <head>
+        <meta charset="utf-8" />
+        <title>To-do list</title>
+        <meta name="viewport" content="width=device-width, initial-scale=1">
+        <style>
+        body,html {
+            margin:30px auto 0 auto;
+            padding:0;
+            font-family: Arial, Helvetica, sans-serif;
+            max-width: 500px;
+        }
+        #input {
+            width:500px;
+            border:none;
+            outline: none;
+            font-size:48px;
+        }
+        #list li {
+            font-size: 48px;
+            list-style-type: none;
+            cursor: pointer;
+        }
+        #list li:hover {
+            text-decoration: line-through;
+        }
+		@media screen and (max-width:900px){
+			body, html {
+				max-width:95%;
+				margin: 20px auto 0 auto;
+			}
+			#input {
+				width:100%;
+				font-size:29px;
+			}
+			#list li {
+				font-size: 29px;
+			}
+		}
+        </style>
+    </head>
+    <body>
+        <input type="text" id="input" placeholder="Čo potrebujete spraviť?" autofocus>
+        <ul id="list"></ul>
+        <script>
+            loadLS();
+            function loadLS(){
+                var ls = localStorage.getItem("todo"), a;
+                if (localStorage.getItem("todo")){
+                    a = ls.split(",").map(function(slovo){
+                        slovo = slovo.replace("- ", "");
+                        create(slovo);
+                    });
+                }
+            }
+            function removeLS(value){
+                var ls = localStorage.getItem("todo"), arr = [], a;
+                a = ls.split(",").map(function(slovo){
+                    if (slovo !== value){
+                        arr.push(slovo);
+                    }
+                });
+                if (arr.length == 0){
+                    localStorage.clear();
+                } else {
+                    localStorage.setItem("todo", arr);
+                }
+            }
+            function updateLS(){
+                var arr = [];
+                var len = document.getElementById("list").getElementsByTagName("li").length;
+                for (var i = 0; i < len; i++){
+                    var item = document.getElementsByTagName("li")[i];
+                    arr.push(item.innerHTML)
+                };
+                localStorage.setItem("todo", arr);
+            }
+            function remove(e){
+                e.target.parentElement.removeChild(e.target);
+                removeLS(e.target.innerHTML);
+            };
+            function create(value){
+                var _li = document.createElement("li");
+                var _li_textNode = document.createTextNode("- " + value);
+                _li.appendChild(_li_textNode);
+                _li.onclick = remove;
+                document.getElementById("list").appendChild(_li);
+                document.getElementById("input").value = "";
+                updateLS();
+            }
+            document.body.onkeypress = function(e){
+                if (e.keyCode == 13){
+                    var _input = document.getElementById("input").value;
+                    if(_input.trim() !== ""){
+                        create(_input);
+                    };
+                };
+            };
+        </script>
+    </body>
+</html>

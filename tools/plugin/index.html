@@ -1,0 +1,124 @@
+<!doctype html>
+<html>
+<head>
+<meta charset="utf-8">
+<title>PLUGINY - branislavblazek.sk</title>
+<script src="https://ajax.googleapis.com/ajax/libs/jquery/3.2.1/jquery.min.js"></script>
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<script src="http://www.branislavblazek.sk/plugin/JS/analog-clock.js"></script>
+	<style>body{overflow-x:hidden;}#pridajNaVlastnu{width:90%;margin: 0 auto;background: #999;padding:15px;font-family: Verdana, sans-serifs;}#pridajNaVlastnu h1 {text-align: center;}a {background: #555;text-decoration: none;color:black;padding:15px;border-radius: 10px;display: inline-block;}li {list-style-type: none;display: none;}.what{box-sizing: border-box;float: left;width: 20%;text-align:center;}.value {box-sizing: border-box;float: left;width: 15%;text-align:center;}.value > input {display: block;text-align: center;margin:1em auto}.view {box-sizing: border-box;float: left;width:25%;text-align: center;}.take {float:left;width:40%;box-sizing: border-box;text-align: center;}#generate {padding: 15px 25px;font-size: 24px;text-align: center;cursor:pointer;outline: none;color: #fff;background-color: #4CAF50;border: none;border-radius: 15px;box-shadow: 0 9px #999;}#generate:hover {background-color: #3e8e41;}#generate:active {background-color:#3e8e41;box-shadow: 0 7px #666;transform: translateY(4px);}iframe{overflow: hidden;}
+	@media screen and (max-width:500px){
+		#pridajNaVlastnu ul {padding:0;}.what,.value {width:50%;}.view,.take{width:100%;}
+	}
+</style>
+<script>
+var a,b,c,d,e,f,g;
+function gen(){
+	if (a,b,c,d,e,f,g == undefined ) {a=$("#analogclock-sirka_hodiny").val()+'px';b=$("#analogclock-vyska_hodiny").val()+'px';c=$("#analogclock-farba_pismo_").val();d=$("#analogclock-pozadie_hodiny").val();e=$("#analogclock-pozadie_hodin").val();f=$("#analogclock-pozadie_minut").val();g=$("#analogclock-pozadie_sekun").val();}
+	var code = "<iframe id=\"framebb\" src=\"http://branislavblazek.sk/plugin/analog-clock.html\" frameborder=\"0\" name=\""+a+"|"+b+"|"+c+"|"+d+"|"+e+"|"+f+"|"+g+"\"></iframe>";
+	$("#out").text(code);
+}
+function copy(){var copyText = document.getElementById("out");copyText.select();document.execCommand("Copy");}
+function x(){a=$("#analogclock-sirka_hodiny").val()+'px';b=$("#analogclock-vyska_hodiny").val()+'px';c=$("#analogclock-farba_pismo").val();d=$("#analogclock-pozadie_hodiny").val();e=$("#analogclock-pozadie_hodin").val();f=$("#analogclock-pozadie_minut").val();g=$("#analogclock-pozadie_sekun").val();var sendValue=a+'|'+b+'|'+c+'|'+d+'|'+e+'|'+f+'|'+g;$(".frameBranislavBlazek").css({height:a,width:b});/*document.getElementById('framebb').contentWindow.Nac();*/window.postMessage(sendValue, window.location.href);};
+</script>
+</head>
+<body>
+<iframe src="http://www.branislavblazek.sk/plugin/analogClockVIEW.html" frameborder="0" width="160" height="160"></iframe>
+<iframe src="http://www.branislavblazek.sk/plugin/digitalClockVIEW.html" frameborder="0" width="200" height="80"></iframe>
+<div id="pridajNaVlastnu">
+	<h1>Pridajte si toto aj vy na svoju webstránku!</h1>
+	
+	<a href="#" class="woala">Analogove hodiny</a>
+	<ul>
+		<li class="">
+			Nastavte si prosím najprv hodnoty, ktoré chcete mať na hodinách:<br>
+			<div class="what">
+				<p>Výška hodín</p>
+				<p>Šírka hodín</p>
+				<p>Farba písma</p>
+				<p>Pozadie hodín</p>
+				<p>Farba hodinovky</p>
+				<p>Farba minútovky</p>
+				<p>Farba sekundovky</p>
+			</div>
+			<div class="value">
+				<input type="number" id="analogclock-sirka_hodiny" min="0" max="300" value="150" oninput="x()">
+				<input type="number" id="analogclock-vyska_hodiny" min="0" max="300" value="150" oninput="x()">
+				<input type="color" id="analogclock-farba_pismo" oninput="x()">
+				<input type="color" id="analogclock-pozadie_hodiny" value="#FFFF00" oninput="x()">
+				<input type="color" id="analogclock-pozadie_hodin" value="#FF0000" oninput="x()">
+				<input type="color" id="analogclock-pozadie_minut" value="#0000FF" oninput="x()">
+				<input type="color" id="analogclock-pozadie_sekun" value="#008000" oninput="x()">
+			</div>
+			<div class="view">
+				<p>náhľad:</p> 
+				<div id="frame">
+					<iframe id="framebb" src="analog-clock.html" frameborder="0" onload="x()" class="frameBranislavBlazek"></iframe>
+				</div>
+			</div>
+			<div class="take">
+				<p>Vygenerujte si kód, ktorý si vložíte na stránku aby ste tam mali tieto hodiny</p>
+				<button id="generate" onclick="gen()">Vygenerovať kód</button>
+				<textarea id="out" type="text" style="width: 100%;margin-top:2em" rows="10" spellcheck="false" readonly></textarea>
+				<button id="copy" onclick="copy();">kopírovať</button>
+			</div>
+			<div style="clear: both"></div>
+		</li>
+	</ul>
+	<a href="#" class="woala">Digitalne hodiny</a>
+	<ul>
+		<li class="">
+			Nastavte si prosím najprv hodnoty, ktoré chcete mať na hodinách:<br>
+			<div class="what">
+				<p>Výška hodín</p>
+				<p>Šírka hodín</p>
+				<p>Pozadie hodín</p>
+				<p>Rámiky okolo hodín - šírka</p>
+				<p>Rámiky okolo hodín - farba</p>
+				<p>Farba hodín</p>
+				<p>Veľkosť hodín</p>
+				<p>Farba dátumu</p>
+				<p>Veľkost dátumu</p>
+			</div>
+			<div class="value">
+				<input type="number" id="digitalclock-sirka_hodiny" min="0" max="300" value="150" oninput="y()">
+				<input type="number" id="digitalclock-vyska_hodiny" min="0" max="300" value="150" oninput="y()">
+				<input type="color" id="digitalclock-pozadie" oninput="y()">
+				<input type="number" id="digitalclock-ramiky_sirka" value="#FFFF00" min="0" max="300" value="150" oninput="y()">
+				<input type="color" id="digitalclock-ramiky_farba" value="#FF0000" oninput="y()">
+				<input type="color" id="digitalclock-hodiny_farba" value="#0000FF" oninput="y()">
+				<input type="number" id="digitalclock-hodiny_velkost" value="#008000" min="0" max="300" value="150" oninput="y()">
+				<input type="color" id="digitalclock-datum_farba" value="#008000" oninput="y()">
+				<input type="number" id="digitalclock-datum_velkost" value="#008000" min="0" max="300" value="150" oninput="y()">
+			</div>
+			<div class="view">
+				<p>náhľad:</p> 
+				<div id="frame">
+					<iframe id="framebb" src="analog-clock.html" frameborder="0" onload="x()" class="frameBranislavBlazek"></iframe>
+				</div>
+			</div>
+			<div class="take">
+				<p>Vygenerujte si kód, ktorý si vložíte na stránku aby ste tam mali tieto hodiny</p>
+				<button id="generate" onclick="gen()">Vygenerovať kód</button>
+				<textarea id="out" type="text" style="width: 100%;margin-top:2em" rows="10" spellcheck="false" readonly></textarea>
+				<button id="copy" onclick="copy();">kopírovať</button>
+			</div>
+			<div style="clear: both"></div>
+		</li>
+	</ul>
+</div>
+<script>
+	$(".woala").click(function(e){
+		e.preventDefault();
+		var $this = $(this);
+		if($this.next().children().hasClass('show')){
+			$this.next().children().removeClass('show');
+			$this.next().children().slideUp(350);
+		} else {
+			$this.next().children().addClass('show');
+			$this.next().children().slideDown(350);
+		}
+	})
+</script>
+</body>
+</html>

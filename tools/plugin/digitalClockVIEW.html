@@ -1,0 +1,82 @@
+<html>
+<head>
+<meta charset="utf-8">	
+<style>
+		body {
+			margin:0 auto;
+			padding:0;
+			font-family:sans-serif;
+		}
+		#digitalhoverclock{
+			width:200px;
+			height: 56px;;
+			border:1px inset black;
+			box-sizing: border-box;
+			margin: 0 auto;
+			cursor: default;
+			overflow: hidden;
+		}
+		#hrs{
+			text-align: center;
+			font-size: calc(50px / 5 * 3);
+			margin: calc(50px / 5) 0;
+			transition: 350ms;
+			display: block;
+			text-align: center;
+			background-color: transparent;
+		}
+		#date {
+			font-size: calc(50px / 5 * 2);
+			z-index: 3;
+			transition:350ms;
+			display: block;
+			text-align: center;
+			background-color: transparent;
+		}
+		#digitalhoverclock:hover #hrs {
+			margin-left:250px;
+		}
+		#digitalhoverclock:hover #date {
+			margin-top:-40px;
+		}
+	</style>
+</head>
+<body>
+	<div id="digitalhoverclockbyBranislavBlazek">
+		<div id="digitalhoverclock">
+		<span id="hrs">12:25.01</span>
+		<span id="date"></span>
+		</div>
+	</div>
+<script>
+time();
+	function time(){
+		var den;
+		var d = new Date();
+		var day = d.getDay();
+		var dweek = d.getDate();
+		var month = d.getMonth() + 1;
+		var year = d.getFullYear();
+		var hrs = d.getHours();
+		var min = d.getMinutes();
+		var sec = d.getSeconds();
+		switch(day){
+			case 0:den = 'NED';break;
+			case 1:den = 'PON';break;
+			case 2:den = 'UTO';break;
+			case 3:den = 'STR';break;
+			case 4:den = 'STV';break;
+			case 5:den = 'PIA';break;
+			case 6:den = 'SOB';break;
+		}
+		 if (hrs < 10) { hrs = "0" + hrs;} else { hrs = hrs.toString();}
+		 if (min < 10) { min = "0" + min;} else { min = min.toString();}
+		 if (sec < 10) { sec = "0" + sec;} else { sec = sec.toString();}
+
+		document.getElementById("date").innerHTML = den + ' ' + dweek + '.' + month + '.' + year;
+		document.getElementById("hrs").innerHTML = hrs + ':' + min + '.' + sec;
+		setTimeout(time, 100);
+	}	
+</script>
+</body>
+</html>

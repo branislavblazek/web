@@ -1,0 +1,367 @@
+<!DOCTYPE html>
+<html lang="sk">
+<head>
+	<script async src="https://www.googletagmanager.com/gtag/js?id=UA-106964827-1"></script>
+	<script>
+  		window.dataLayer = window.dataLayer || [];
+  		function gtag(){dataLayer.push(arguments);}
+  		gtag('js', new Date());
+  		gtag('config', 'UA-106964827-1');
+	</script>
+	<title>converter</title>
+	<meta name="viewport" content="width=device-width, initial-scale=1.0">
+	<meta name="theme-color" content="#3498db">
+	<meta charset="utf-8">
+	<link rel="stylesheet" href="https://www.w3schools.com/w3css/4/w3.css">
+	<link href="https://fonts.googleapis.com/css?family=Roboto:400,500" rel="stylesheet">
+	<script src="https://ajax.googleapis.com/ajax/libs/jquery/3.2.1/jquery.min.js"></script>
+	<script src="https://unpkg.com/masonry-layout@4.2.1/dist/masonry.pkgd.min.js"></script>
+	<link rel="stylesheet" type="text/css" href="style.css">
+	<script src="script.js"></script>
+	<script src="page.js"></script>
+</head>
+<body>
+	<div id="preloader">
+		<div id="loader"></div>
+	</div>
+	<div id="content">
+		<div id="menu">
+			<h1>prevodník jednotiek</h1>
+			<div class="slide">
+				<div class="slide_but" id="slide_a">
+					<h3>Prevod jednotiek</h3><div class="slideicon"><div class="hor"></div><div class="ver"></div></div>
+				</div>
+				<div class="slide_box" id="slide_a_box">
+					<h4 class="dlzka">jednotky dĺžky</h4>
+					<h4 class="obsah">jednotky obsahu</h4>
+					<h4 class="objem">jednotky objemu</h4>
+					<h4 class="hmotnost">jednotky hmotnosti</h4>
+					<h4 class="pxem">grafické (px na em)</h4>
+					<h4 class="data">množstvo dát</h4>
+					<h4 class="down">rýchlosť sťahovania dát</h4>
+					<h4 class="rych">výpočet rýchlosti</h4>
+					<h4 class="tep">výpočet teploty</h4>
+					<h4 class="time">výpočet času</h4>
+					<h4 class="per">výpočet percent</h4>
+					<h4 class="pytagor">výpočet pytagorovej vety</h4>
+				</div>
+				<div class="slide_but" id="slide_b">
+					<h3>Obvody a obsahy rovinných útvarov</h3><div class="slideicon"><div class="hor"></div><div class="ver"></div></div>
+				</div>
+				<div class="slide_box" id="slide_b_box">
+					<h4 class="stvorec">štvorec</h4>
+					<h4 class="obdlznik">obdĺžnik</h4>
+					<h4 class="kosostvorec">kosoštvorec</h4>
+					<h4 class="kosodlznik">kosodĺžnik</h4>
+					<h4 class="kruh">kruh</h4>
+					<h4 class="lichobeznik">lichobežník</h4>
+					<h4 class="trojuholnik">trojuhloník</h4>
+				</div>
+				<div class="slide_but" id="slide_c">
+					<h3>Objemy a povrchy telies</h3><div class="slideicon"><div class="hor"></div><div class="ver"></div></div>
+				</div>
+				<div class="slide_box" id="slide_c_box">
+					<h4 class="kocka">kocka</h4>
+					<h4 class="kvader">kvader</h4>
+					<h4 class="valec">valec</h4>
+					<h4 class="kuzel">kužeľ</h4>
+					<h4 class="gula">guľa</h4>
+					<h4 class="hranol">hranol</h4>
+					<h4 class="ihlan">ihlan</h4>
+				</div>
+			</div>
+		</div>
+		<div id="con" class="w3-row">
+			<div class="sizer"></div>
+			<div class="w3-col s12 m6 l4 jednotka" id="dlzka">
+				<h3>jednotky dĺžky</h3>
+				<label>Milimeter</label><input type="number" placeholder="mm" id="dlzky_a_mm"><br>
+				<label>Centimeter</label><input type="number" placeholder="cm" id="dlzky_a_cm"><br>
+				<label>Decimeter</label><input type="number" placeholder="dm" id="dlzky_a_dm"><br>
+				<label>Meter</label><input type="number" placeholder="m" id="dlzky_a_m"><br>
+				<label>Kilometer</label><input type="number" placeholder="km" id="dlzky_a_km"><br>
+				<label>Míľa</label><input type="number" placeholder="mila" id="dlzky_b_mile"><br>
+				<label>Stopa</label><input type="number" placeholder="feet" id="dlzky_b_feet"><br>
+				<label>Palec</label><input type="number" placeholder="inch" id="dlzky_b_inch"><br>
+				<label>Yard</label><input type="number" placeholder="yard" id="dlzky_b_yard"><br>
+			</div>
+			<div class="w3-col s12 m6 l4 jednotka" id="obsah">
+				<h3>jednotky obsahu</h3>
+				<label>Milimeter<sup>2</sup></label><input type="number" placeholder="mm2" id="obsah_a_mm"><br>
+				<label>Centimeter<sup>2</sup></label><input type="number" placeholder="cm2" id="obsah_a_cm"><br>
+				<label>Decimeter<sup>2</sup></label><input type="number" placeholder="dm2" id="obsah_a_dm"><br>
+				<label>Meter<sup>2</sup></label><input type="number" placeholder="m2" id="obsah_a_m"><br>
+				<label>Ár</label><input type="number" placeholder="a" id="obsah_a_a"><br>
+				<label>Hektár</label><input type="number" placeholder="ha" id="obsah_a_ha"><br>
+				<label>Kilometer<sup>2</sup></label><input type="number" placeholder="km2" id="obsah_a_km"><br>
+			</div>
+			<div class="w3-col s12 m6 l4 jednotka" id="objem">
+				<h3>jednotky objemu</h3>
+				<label>Milimeter<sup>3</sup></label><input type="number" placeholder="mm3" id="objem_a_mm"><br>
+				<label>Centimeter<sup>3</sup></label><input type="number" placeholder="cm3" id="objem_a_cm"><br>
+				<label>Decimeter<sup>3</sup></label><input type="number" placeholder="dm3" id="objem_a_dm"><br>
+				<label>Meter<sup>3</sup></label><input type="number" placeholder="m3" id="objem_a_m"><br>
+				<label>Kilometer<sup>3</sup></label><input type="number" placeholder="km3" id="objem_a_km"><br>
+				<label>Mililiter</label><input type="number" placeholder="ml" id="objem_a_ml"><br>
+				<label>Centiliter</label><input type="number" placeholder="cl" id="objem_a_cl"><br>
+				<label>Deciliter</label><input type="number" placeholder="dl" id="objem_a_dl"><br>
+				<label>Liter</label><input type="number" placeholder="l" id="objem_a_l"><br>
+				<label>Hektoliter</label><input type="number" placeholder="hl" id="objem_a_hl"><br>
+			</div>
+			<div class="w3-col s12 m6 l4 jednotka" id="hmotnost">
+				<h3>jednotky hmotnosti</h3>
+				<label>Miligram</label><input type="number" placeholder="mg" id="hmot_a_mg"><br>
+				<label>Gram</label><input type="number" placeholder="g" id="hmot_a_g"><br>
+				<label>Dekagram</label><input type="number" placeholder="dkg" id="hmot_a_dkg"><br>
+				<label>Kilogram</label><input type="number" placeholder="kg" id="hmot_a_kg"><br>
+				<label>Metrický cent</label><input type="number" placeholder="q" id="hmot_a_q"><br>
+				<label>Tona</label><input type="number" placeholder="t" id="hmot_a_t"><br>
+			</div>
+			<div class="w3-col s12 m6 l4 jednotka" id="pxem">
+				<h3>Grafické (PX - EM - %)</h3>
+				<p>16px = 1em</p>
+				<label>PX</label><input type="number" placeholder="px" id="pxem_a_px"><br>
+				<label>EM</label><input type="number" placeholder="em" id="pxem_a_em"><br>
+				<label>%</label><input type="number" placeholder="pe" id="pxem_a_pe"><br>
+			</div>
+			<div class="w3-col s12 m6 l4 jednotka" id="data">
+				<h3>množstvo dát</h3>
+				<p>1 kb = 1024 b</p>
+				<label>bit</label><input type="number" placeholder="b" id="data_a_b"><br>
+				<label>kilobit</label><input type="number" placeholder="kb" id="data_a_kb"><br>
+				<label>megabit</label><input type="number" placeholder="Mb" id="data_a_Mb"><br>
+				<label>gigabit</label><input type="number" placeholder="Gb" id="data_a_Gb"><br>
+				<label>terabit</label><input type="number" placeholder="Tb" id="data_a_Tb"><br>
+				<label>byte</label><input type="number" placeholder="B" id="data_b_B"><br>
+				<label>kilobyte</label><input type="number" placeholder="kB" id="data_b_kB"><br>
+				<label>Megabyte</label><input type="number" placeholder="MB" id="data_b_MB"><br>
+				<label>Gigabyte</label><input type="number" placeholder="GB" id="data_b_GB"><br>
+				<label>Terabyte</label><input type="number" placeholder="TB" id="data_b_TB"><br>
+			</div>
+			<div class="w3-col s12 m6 l4 jednotka" id="down">
+				<h3>rýchlosť sťahovania dát</h3>
+				<p>1 kbps = 1024 bps</p>
+				<label>bit za sekundu</label><input type="number" placeholder="bps" id="down_a_bps"><br>
+				<label>kilobit za sekundu</label><input type="number" placeholder="kbps" id="down_a_kbps"><br>
+				<label>megabit za sekundu</label><input type="number" placeholder="Mbps" id="down_a_Mbps"><br>
+				<label>gigabit za sekundu</label><input type="number" placeholder="Gbps" id="down_a_Gbps"><br>
+				<label>terabit za sekundu</label><input type="number" placeholder="Tbps" id="down_a_Tbps"><br>
+				<label>byte za sekundu</label><input type="number" placeholder="B/s" id="down_b_Bps"><br>
+				<label>kilobyte za sekundu</label><input type="number" placeholder="kB/s" id="down_b_kBps"><br>
+				<label>Megabyte za sekundu</label><input type="number" placeholder="MB/s" id="down_b_MBps"><br>
+				<label>Gigabyte za sekundu</label><input type="number" placeholder="GB/s" id="down_b_GBps"><br>
+				<label>Terabyte za sekundu</label><input type="number" placeholder="TB/s" id="down_b_TBps"><br>
+			</div>
+			<div class="w3-col s12 m6 l4 jednotka" id="rych">
+				<h3>výpočet rýchlosti</h3>
+				<label>meter za sekundu</label><input type="number" placeholder="mps" id="rych_a_mps"><br>
+				<label>meter za minútu</label><input type="number" placeholder="mpmin" id="rych_a_mpmin"><br>
+				<label>kilometer za hodinu</label><input type="number" placeholder="kmph" id="rych_a_kmph"><br>
+				<label>míľa za hodinu</label><input type="number" placeholder="MPH" id="rych_b_MPH"><br>
+				<label>stopa za sekundu</label><input type="number" placeholder="fps" id="rych_b_fps"><br>
+				<label>stopa za hodinu</label><input type="number" placeholder="fph" id="rych_b_fph"><br>
+			</div>
+			<div class="w3-col s12 m6 l4 jednotka" id="tep">
+				<h3>výpočet teploty</h3>
+				<label>Celzium</label><input type="number" placeholder="C" id="d_tep_c"><br>
+				<label>fahrenheit</label><input type="number" placeholder="F" id="d_tep_f"><br>
+				<label>kelvin</label><input type="number" placeholder="K" id="d_tep_k"><br>
+			</div>
+			<div class="w3-col s12 m6 l4 jednotka" id="time">
+				<h3>výpočet času</h3>
+				<label>milisekunda</label><input type="number" placeholder="ms" id="time_a_ms"><br>
+				<label>sekunda</label><input type="number" placeholder="s" id="time_a_s"><br>
+				<label>minúta</label><input type="number" placeholder="min" id="time_a_min"><br>
+				<label>hodina</label><input type="number" placeholder="h" id="time_a_h"><br>
+				<label>deň</label><input type="number" placeholder="d" id="time_a_d"><br>
+				<label>týždeň</label><input type="number" placeholder="t" id="time_a_t"><br>
+				<label>mesiac</label><input type="number" placeholder="m" id="time_a_m"><br>
+				<label>rok</label><input type="number" placeholder="r" id="time_a_r"><br>
+			</div>
+			<div class="w3-col s12 m6 l4 jednotka" id="per">
+				<h3>výpočet percent</h3>
+				<label>základ</label><input type="number" placeholder="z" id="c_per_a/3"><br>
+				<label>časť	</label><input type="number" placeholder="ppc" id="c_per_b/3"><br>
+				<label>percentá</label><input type="number" placeholder="pp" id="c_per_c/3"><br>
+				<label id="per_out_name">výsledok:</label><input id="per_out" disabled>
+			</div>
+			<div class="w3-col s12 m6 l4 jednotka" id="pytagor">
+				<h3>výpočet pytagorovej vety</h3>
+				<label>odvesna a</label><input type="number" placeholder="a" id="c_pyta_a/3"><br>
+				<label>odvesna b</label><input type="number" placeholder="b" id="c_pyta_b/3"><br>
+				<label>prepona c</label><input type="number" placeholder="c" id="c_pyta_c/3"><br>
+				<label id="pyta_out_name">výsledok:</label><input id="pyta_out" disabled>
+			</div>
+			<div class="w3-col s12 m6 l4 jednotka" id="stvorec">
+				<h3>štvorec</h3>
+				<label>strana a</label><input type="number" id="e_stvo_a/1a" placeholder="a"><br>
+				<label>obvod</label><input type="number" id="e_stvo_obvod_out" disabled><br>
+				<label>obsah</label><input type="number" id="e_stvo_obsah_out" disabled><br>
+			</div>
+			<div class="w3-col s12 m6 l4 jednotka" id="obdlznik">
+				<h3>obdĺžník</h3>
+				<label>strana a</label><input type="number" id="e_obdl_a/2a" placeholder="a"><br>
+				<label>strana b</label><input type="number" id="e_obdl_b/2a" placeholder="b"><br>
+				<label>obvod</label><input type="number" id="e_obdl_obvod_out" disabled><br>
+				<label>obsah</label><input type="number" id="e_obdl_obsah_out" disabled><br>
+			</div>
+			<div class="w3-col s12 m6 l4 jednotka" id="kosostvorec">
+				<h3>kosoštvorec</h3>
+				<label>strana a</label><input type="number" id="e_kost_a/2a" placeholder="a"><br>
+				<label>výška a</label><input type="number" id="e_kost_b/2a" placeholder="va"><br>
+				<label>obvod</label><input type="number" id="e_kost_obvod_out" disabled><br>
+				<label>obsah</label><input type="number" id="e_kost_obsah_out" disabled><br>
+			</div>
+			<div class="w3-col s12 m6 l4 jednotka" id="kosodlznik">
+				<h3>kosodĺžnik</h3>
+				<label>strana a</label><input type="number" id="e_kodl_a/3a" placeholder="a"><br>
+				<label>strana b</label><input type="number" id="e_kodl_b/3a" placeholder="b"><br>
+				<label>výška a</label><input type="number" id="e_kodl_c/3a" placeholder="va"><br>
+				<label>obvod</label><input type="number" id="e_kodl_obvod_out" disabled><br>
+				<label>obsah</label><input type="number" id="e_kodl_obsah_out" disabled><br>
+			</div>
+			<div class="w3-col s12 m6 l4 jednotka" id="kruh">
+				<h3>kruh</h3>
+				<label>polomer r</label><input type="number" id="e_kruh_a/1a" placeholder="r"><br>
+				<label>obvod</label><input type="number" id="e_kruh_obvod_out" disabled><br>
+				<label>obsah</label><input type="number" id="e_kruh_obsah_out" disabled><br>
+			</div>
+			<div class="w3-col s12 m6 l4 jednotka" id="lichobeznik">
+				<h3>lichobežník</h3>
+				<label>strana a</label><input type="number" id="e_licho_a/5a" placeholder="a"><br>
+				<label>strana b</label><input type="number" id="e_licho_b/5a" placeholder="b"><br>
+				<label>strana c</label><input type="number" id="e_licho_c/5a" placeholder="c"><br>
+				<label>strana d</label><input type="number" id="e_licho_d/5a" placeholder="d"><br>
+				<label>výška a</label><input type="number" id="e_licho_e/5a" placeholder="va"><br>
+				<label>obvod</label><input type="number" id="e_licho_obvod_out" disabled><br>
+				<label>obsah</label><input type="number" id="e_licho_obsah_out" disabled><br>
+			</div>
+			<div class="w3-col s12 m6 l4 jednotka" id="trojuholnik">
+				<h3>trojuhloník</h3>
+				<label>strana a</label><input type="number" id="e_troj_a/4a" placeholder="a"><br>
+				<label>strana b</label><input type="number" id="e_troj_b/4a" placeholder="b"><br>
+				<label>strana c</label><input type="number" id="e_troj_c/4a" placeholder="c"><br>
+				<label>výška a</label><input type="number" id="e_troj_d/4a" placeholder="va"><br>
+				<label>obvod</label><input type="number" id="e_troj_obvod_out" disabled><br>
+				<label>obsah</label><input type="number" id="e_troj_obsah_out" disabled><br>
+			</div>
+			<div class="w3-col s12 m6 l4 jednotka" id="kocka">
+				<h3>kocka</h3>
+				<label>strana a</label><input type="number" id="e_kocka_a/1b" placeholder="a"><br>
+				<label>objem</label><input type="number" id="e_kocka_objem_out" disabled><br>
+				<label>povrch</label><input type="number" id="e_kocka_povrch_out" disabled><br>
+			</div>
+			<div class="w3-col s12 m6 l4 jednotka" id="kvader">
+				<h3>kváder</h3>
+				<label>strana a</label><input type="number" id="e_kvad_a/3b" placeholder="a"><br>
+				<label>strana b</label><input type="number" id="e_kvad_b/3b" placeholder="b"><br>
+				<label>strana c</label><input type="number" id="e_kvad_c/3b" placeholder="c"><br>
+				<label>objem</label><input type="number" id="e_kvad_objem_out" disabled><br>
+				<label>povrch</label><input type="number" id="e_kvad_povrch_out" disabled><br>
+			</div>
+			<div class="w3-col s12 m6 l4 jednotka" id="valec">
+				<h3>valec</h3>
+				<label>polomer r</label><input type="number" id="e_valec_a/2b" placeholder="a"><br>
+				<label>výška v</label><input type="number" id="e_valec_b/2b" placeholder="v"><br>
+				<label>objem</label><input type="number" id="e_valec_objem_out" disabled><br>
+				<label>povrch</label><input type="number" id="e_valec_povrch_out" disabled><br>
+			</div>
+			<div class="w3-col s12 m6 l4 jednotka" id="kuzel">
+				<h3>kužeľ</h3>
+				<label>polomer r</label><input type="number" id="e_kuzel_a/3b" placeholder="r"><br>
+				<label>výška v</label><input type="number" id="e_kuzel_b/3b" placeholder="v"><br>
+				<label>stenová výška</label><input type="number" id="e_kuzel_c/3b" placeholder="s"><br>
+				<label>objem</label><input type="number" id="e_kuzel_objem_out" disabled><br>
+				<label>povrch</label><input type="number" id="e_kuzel_povrch_out" disabled><br>
+			</div>
+			<div class="w3-col s12 m6 l4 jednotka" id="gula">
+				<h3>guľa</h3>
+				<label>polomer r</label><input type="number" id="e_gula_a/1b" placeholder="a"><br>
+				<label>objem</label><input type="number" id="e_gula_objem_out" disabled><br>
+				<label>povrch</label><input type="number" id="e_gula_povrch_out" disabled><br>
+			</div>
+			<div class="w3-col s12 m6 l4 jednotka" id="hranol">
+				<h3>hranol</h3>
+				<label>výška v</label><input type="number" id="e_hranol_a/3b" placeholder="a"><br>
+				<label>obsah podstavy</label><input type="number" id="e_hranol_b/3b" placeholder="Sp"><br>
+				<label>obsah plášťa</label><input type="number" id="e_hranol_c/3b" placeholder="Spl"><br>
+				<label>objem</label><input type="number" id="e_hranol_objem_out" disabled><br>
+				<label>povrch</label><input type="number" id="e_hranol_povrch_out" disabled><br>
+			</div>
+			<div class="w3-col s12 m6 l4 jednotka" id="ihlan">
+				<h3>ihlan</h3>
+				<label>výška v</label><input type="number" id="e_ihlan_a/3b" placeholder="v"><br>
+				<label>obsah podstavy</label><input type="number" id="e_ihlan_b/3b" placeholder="Sp"><br>
+				<label>obsah plášťa</label><input type="number" id="e_ihlan_c/3b" placeholder="Spl"><br>
+				<label>objem</label><input type="number" id="e_ihlan_objem_out" disabled><br>
+				<label>povrch</label><input type="number" id="e_ihlan_povrch_out" disabled><br>
+			</div>
+		</div>
+	</div>
+	<script>
+		var input = $(".jednotka");
+		input.on(' input', function(e){
+			var name = e.target.id.slice(0,2),
+				abc = ["a","b","c","d","e","f"];
+			if (name == "e_"){
+				input = {
+					more: e.target.id.slice(0,e.target.id.indexOf('_')),
+					kat: e.target.id.slice(e.target.id.indexOf('_')+1, e.target.id.indexOf('_',e.target.id.indexOf('_')+1)),
+					len: Number(e.target.id.slice(-2, -1)),
+					typ: e.target.id.slice(-1)
+				};
+				upVar = {};
+				for (var rr = 0; rr < input.len; rr++){
+					upVar[abc[rr]] = Number(document.getElementById(input.more + '_' + input.kat + '_' + abc[rr] + '/' + input.len + input.typ).value);
+				};
+				input.value = upVar;
+			} else if (name == "d_"){
+				input = {
+					more: e.target.id.slice(0,e.target.id.indexOf('_')),
+					kat: e.target.id.slice(e.target.id.indexOf('_')+1, e.target.id.lastIndexOf("_")),
+					druh: e.target.id.slice(e.target.id.lastIndexOf("_")+1),
+					value: e.target.value
+				};
+			} else if (name == "c_"){
+				input = {
+					more: e.target.id.slice(0,e.target.id.indexOf('_')),
+					kat: e.target.id.slice(e.target.id.indexOf('_')+1, e.target.id.indexOf('_',e.target.id.indexOf('_')+1)),
+					len: e.target.id.slice(e.target.id.lastIndexOf("/")+1)
+				}
+				upVar = {};
+				for (var i = 0; i < input.len; i++){
+					upVar[abc[i]]  = document.getElementById(input.more + '_' + input.kat + '_' + abc[i] + '/' + input.len).value;
+				}
+				input.value = upVar;
+			} else {
+				input = {
+					kat: e.target.id.slice(0,e.target.id.indexOf('_')),
+					druh: e.target.id.slice(e.target.id.indexOf('_')+1, e.target.id.lastIndexOf('_')),
+					name: e.target.id.slice(e.target.id.lastIndexOf('_')+1),
+					value: e.target.value
+				}
+			}
+			var data = Vypocitaj(input);
+			for (var i in data){
+				if (data.hasOwnProperty(i)){
+					if (data.write == true){
+						if (i == 'write'){
+						} else {
+							document.getElementById(i).value = data[i];
+							if (i.slice(i.indexOf('_')) == '_out_name'){
+								document.getElementById(i).innerHTML = data[i];
+							}
+						}
+					}
+				}
+			}
+		});
+		$("#con").masonry({
+			itemSelector: '.jednotka',
+			columnWidth:'.sizer',
+			percentPosition:true,
+			horizontalOrder:false
+		});
+	</script>
+</body>
+</html>

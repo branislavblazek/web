@@ -1,0 +1,47 @@
+section {
+	width:100%;
+}
+section #tovar {
+	width: 100%;
+	margin: auto;
+	background:white;
+}
+section #tovar article {
+	float:left;
+	width:33.33%;
+	padding:3%;
+	background: black;
+}
+section #tovar article > div {
+	background: black;
+	width:100%;
+	padding:5px;
+	cursor: pointer;
+}
+section #tovar article > div img {
+	width:100%;
+	background:black;
+	border:4px solid red;
+}
+section #tovar article h1 {
+	color:#ff0000;
+	background: black;
+	cursor: default;
+	font-size:x-large;
+	letter-spacing: 2px;
+}
+@media screen and (min-width: 300px) {
+	section #tovar article {
+		width: 100%;
+	}
+}
+@media screen and (min-width: 600px) {
+	section #tovar article {
+		width: 50%;
+	}
+}
+@media screen and (min-width: 1024px) {
+	section #tovar article {
+		width: 33.33%;
+	}
+}

@@ -1,0 +1,35 @@
+<!DOCTYPE HTML>
+<html>
+<head>
+<meta charset="utf-8">
+<script src="https://ajax.googleapis.com/ajax/libs/jquery/3.2.1/jquery.min.js"></script>
+<style>
+body{margin:0;}#analogclock{box-sizing:border-box;border:1px solid black;position:relative;border-radius:50%;overflow-x: hidden} .num{height:100%;position:absolute;left:45%;}.num div {width:1em;line-height:2em;text-align:center;} .num{height:100%;position:absolute;left:45%;} .num1 {	transform:rotate(30deg);}.num1 div{transform:rotate(-30deg);}.num2{transform: rotate(60deg);}.num2 div{transform:rotate(-60deg);}.num3{transform:rotate(90deg);}.num3 div{transform:rotate(-90deg);}.num4{transform:rotate(120deg);}.num4 div{transform: rotate(-120deg);}.num5{transform:rotate(150deg);}.num5 div{transform: rotate(-150deg);}.num6{transform:rotate(180deg);}.num6 div{transform: rotate(-180deg);}.num7{transform:rotate(210deg);}.num7 div{transform: rotate(-210deg);}.num8{transform:rotate(240deg);}.num8 div{transform: rotate(-240deg);}.num9{transform:rotate(270deg);}.num9 div{transform: rotate(-270deg);}.num10{transform:rotate(300deg);}.num10 div{transform: rotate(-300deg);}.num11{transform:rotate(330deg);}.num11 div{transform: rotate(-330deg);}.num12{transform:rotate(360deg);}.num12 div{transform: rotate(-360deg);}#analog-hrs-hand{width:5px;height:25%;position:absolute;top:25%;left:50%;transform-origin:100% 100%;}#analog-min-hand{width:3px;height:30%;position:absolute;left:50%;top:15%;transform-origin: 100% 110%;}#analog-sec-hand {width:1px;height:45%;position:absolute;left:50%;top:5%;transform-origin:100% 100%;}	
+</style>
+</head>
+<body>
+<div id="analogclockbyBranislavBlazek"><div id="analogclock" style="width:150px;height:150px;color:#000000;background:#ffff00;"><div class="num num1"><div>1</div></div><div class="num num2"><div>2</div></div><div class="num num3"><div>3</div></div><div class="num num4"><div>4</div></div><div class="num num5"><div>5</div></div><div class="num num6"><div>6</div></div><div class="num num7"><div>7</div></div><div class="num num8"><div>8</div></div><div class="num num9"><div>9</div></div><div class="num num10"><div>10</div></div><div class="num num11"><div>11</div></div><div class="num num12"><div>12</div></div><div id="analog-hrs-hand" style="background:#ff0000;"></div><div id="analog-min-hand" style="background:#0000ff;"></div><div id="analog-sec-hand" style="background:#008000;"></div></div></div>
+<script>
+	function time(){
+			var d = new Date();
+			var hours = d.getHours();
+			var minutes = d.getMinutes();
+			var second = d.getSeconds();
+			var hrs;
+			if (second < 10) second = "0"+second;
+			if (minutes < 10) minutes = "0"+minutes;
+			if (hours < 10)hours = "0"+hours;
+			if (hours > 12) {
+				hrs = (hours%12);
+			} else {
+				hrs = hours;
+			};
+			$("#analog-hrs-hand").css({'transform':'rotate('+hrs*30+'deg)'});
+			$("#analog-min-hand").css({'transform':'rotate('+minutes*6+'deg)'});
+			$("#analog-sec-hand").css({'transform':'rotate('+second*6+'deg)'});
+			setTimeout(time, 100);
+	};
+	time();	
+</script>
+</body>
+</html>

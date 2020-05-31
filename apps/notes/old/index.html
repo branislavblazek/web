@@ -1,0 +1,41 @@
+<!DOCTYPE HTML>
+<html>
+<head>
+<meta charset="utf-8">
+<title>poznámky</title>
+<script src="https://ajax.googleapis.com/ajax/libs/jquery/3.2.1/jquery.min.js"></script>
+<link rel="stylesheet" type="text/css" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/4.7.0/css/font-awesome.min.css">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<link rel="stylesheet" type="text/css" href="notes-style.css">
+<meta name="theme-color" content="#aa6a35">
+<meta name="apple-mobile-web-app-status-bar-style" content="black-translucent">
+</head>
+<body>
+	<div id="laoder"><div id="preloader"></div></div>
+	<div id="menu">
+		<a href="http://www.branislavblazek.sk/#works" style="margin:13px 0;color:black;text-decoration: none;">&#60; back</a>
+		<h1 style="margin: 13px 0;">MOJE POZNÁMKY</h1>
+			<div id="ponukainmenu">
+				<input id="input" placeholder="Zadajte text poznámky..."><select id="select" ><option value="null">--FARBA--</option><option value="antiquewhite">SVETLOORANŽOVÁ</option><option value="cornsilk">SVETLOŽLTÁ</option><option value="burlywood">SVETLOHNEDÁ</option><option value="darkkhaki">TMAVOŽLTÁ</option><option value="darksalmon">TMAVOORANŽOVÁ</option><option value="darkorange">ORANŽOVÁ</option><option value="deeppink">TMAVORÚŽOVÁ</option><option value="crimson">ČERVENÁ</option><option value="brown">TMAVOHNEDÁ</option><option value="firebrick">HNEDÁ</option><option value="chartreuse">SVETLOZELENÁ</option><option value="forestgreen">ZELENÁ</option><option value="darkgreen">TMAVOZELENÁ</option><option value="darkgray">SIVÁ</option><option value="cyan">TYRKYSOVÁ</option><option value="deepskyblue">SVETLOMODRÁ</option><option value="cornflowerblue">MODRÁ</option><option value="darkslateblue">TMAVOMODRÁ</option><option value="darkmagenta">TMAVOFIALOVÁ</option><option value="darkorchid">FIALOVÁ</option><option value="fuchsia">SVETLOFIALOVÁ</option><option value="dimgray">TMAVOSIVÁ</option>
+				</select><button id="button" onclick="pridaj()">PRIDAJ</button>
+			</div>
+	<!--<div id="footer">
+	<p><a href="http://www.branislavblazek.sk" style="color:black;text-decoration: none;" target="_self">Branislav Blažek</a> | 2017 | v prípade chyby alebo pripomienky mi môžete napísať na <a style="color:black;" target="_blank" href="mailto:branislav.blazek.bb@gmail.com?subject=Nahlásenie chyby alebo pripomienky zo stránky branislavblazek.sk/notes.html" title="napísať mail">mail</a></p>	
+	</div>-->
+	</div>
+	<div id="errortext" class="error">
+		<p><strong>ERROR!</strong>	Zadajte text úlohy!</p>
+	</div>
+	<div id="errorcopy" class="error">
+		<p><strong>ERROR!</strong>	Text tejto úlohy už má nejaká iná úloha!</p>
+	</div>
+	<div id="errorcolor" class="error">
+		<p><strong>ERROR!</strong>	Zadajte farbu úlohy!</p>
+	</div>
+	<div id="ul">
+	<ul id="place">
+	</ul>
+	</div>
+<script src="notes-main.js"></script>	
+</body>
+</html>

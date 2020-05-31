@@ -1,0 +1,66 @@
+<!DOCTYPE html>
+<html>
+<head>
+	<title>length of text</title>
+	<meta name="viewport" content="width=device-width, initial-scale=1.0">
+	<script src="http://www.branislavblazek.sk/JS/jquery.js"></script>
+	<meta charset="utf-8">
+	<meta name="viewport" content="width=device-width, initial-scale=1.0">
+	<link href="https://fonts.googleapis.com/css?family=Cutive+Mono" rel="stylesheet"> 
+	<style>
+	body,html{
+		padding:0;
+		margin:0;
+		background: linear-gradient(to right,#DA4453,#89216b);
+		font-family: 'Cutive Mono',monospace;
+		color:white;
+		-webkit-user-select: none;
+		-moz-user-select: none;  
+		-ms-user-select: none;
+		user-select: none;
+	}
+	#container {
+		width:90%;
+		margin:5% auto 0 auto;
+	}
+	#area {
+		width:100%;
+		display: block;
+		padding:15px;
+		height:80vh;
+		color:white;
+		background: rgba(0,0,0,0.3);
+		border:none;
+		box-sizing: border-box;
+		resize:none;
+		margin:0;
+		font-family: 'Cutive Mono',monospace;
+		overflow-y: scroll;
+	}
+	p{
+		background: rgba(0,0,0,0.3);
+		margin:0;
+		padding:15px;
+		width: 70%;
+		box-sizing: border-box;
+		font-family: 'Cutive Mono',monospace;
+		float:left;
+	}
+	p:last-of-type{
+		text-align: right;
+		width:30%;
+	}
+	</style>
+</head>
+<body>
+<div id="container">
+	<textarea placeholder="váš text..." id="area" spellcheck="false"></textarea>
+	<p>Dĺžka textu:</p><p id="res">0</p>
+</div>
+<script>
+(function(){
+	document.querySelector("#area").addEventListener("input",function(){document.querySelector("#res").textContent=document.querySelector("#area").value.replace(/\s/g,'').length}, false);
+})();
+</script>
+</body>
+</html>

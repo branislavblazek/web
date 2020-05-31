@@ -1,0 +1,130 @@
+
+body {
+	overflow-x: hidden;
+	background:black;
+	text-align: center;
+}
+* {
+	box-sizing: border-box;
+	font-family: sans-serif;
+	-webkit-tap-highlight-color: rgba(0,0,0,0);-webkit-tap-highlight-color: transparent;
+}
+#container {
+	width:80%;
+	margin:auto;
+}
+menu {
+	width:100%;
+	background:black;
+	box-sizing: border-box;
+	padding:0;
+	maargin:0;
+}
+menu img {
+	box-sizing: border-box;
+}
+menu a:not(:first-of-type) {
+	color: #ff0000;
+	padding:10px;
+	text-decoration: none;
+	border-bottom: 4px solid #ff0000;
+	font-size: x-large;
+	letter-spacing: 5px;
+	box-sizing: border-box;
+}
+/* design for mobiles*/
+@media screen and (min-width: 300px) {
+	#container {
+		width:100%;
+	}
+	menu {
+		height: 60vh;
+		margin-bottom: 30px;
+		position: relative;
+		text-align: center;
+		width: 100%;
+	}
+	menu img {
+		position: relative;
+		top: 10px;
+		box-sizing: border-box;
+	}
+	menu #kontakt {
+		top: 50px;
+		position: relative;
+		right:0;
+		width:55%;
+	}
+	menu #lookbooks {
+		position: relative;
+		top: 5px;
+		width:55%;
+	}
+}
+
+/*design for tablets*/
+@media screen and (min-width: 600px) {
+	#container {
+		width:80%;
+	}
+	menu {
+		height: auto;
+	}
+	menu img {
+		display: block;
+		left:27%;
+	}
+	menu #lookbooks {
+		display:inline-block;
+		position: static;
+		width:100%;
+		margin-top: 20px;
+	}
+	menu #kontakt {
+		position: static;
+		display: inline-block;
+		width: 100%;
+	}
+}
+@media screen and (min-width: 1020px) {
+	menu {
+		position: relative;
+		height:35vh;
+	}
+	menu img {
+		position: absolute;
+		left: 35%;
+	}
+	menu #lookbooks {
+		position: absolute;
+		display: inline;
+		left: 2%;
+		top: 77%;
+		width: auto;
+		margin:0;
+	}
+	menu #kontakt {
+		position: absolute;
+		display: inline;
+		right: 2%;
+		top: 77%;
+		width:auto;
+	}
+}
+@media screen and (min-width: 1400px) {
+	menu img {
+		left: 38%;
+	}
+}
+::-webkit-scrollbar {
+	width: 10px;
+}
+::-webkit-scrollbar-track {
+	background-color: transparent;
+}
+::-webkit-scrollbar-thumb {
+	background: #f00;
+}
+::-webkit-scrollbar-button {
+	background-color: #f00;
+}

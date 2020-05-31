@@ -1,0 +1,227 @@
+<!DOCTYPE html>
+<html lang="sk">
+	<head>
+		<title>Branislav Blažek</title>
+		<script async src="https://www.googletagmanager.com/gtag/js?id=UA-106964827-1"></script>
+		<script>
+  		window.dataLayer = window.dataLayer || [];
+  		function gtag(){dataLayer.push(arguments);}
+  		gtag('js', new Date());
+  		gtag('config', 'UA-106964827-1');
+		</script>
+		<meta name="viewport" content="width=device-width, initial-scale=1.0">
+		<meta charset="utf-8">
+		<meta name='author' content='Branislav Blažek'>
+		<meta name='robots' content='all'>
+		<meta name="theme-color" content="#49ecff">
+		<meta name="apple-mobile-web-app-status-bar-style" content="black-translucent">
+		<meta property="og:url"   		content="http://www.branislavblazek.sk" />
+		<meta property="og:type"  		content="website" />
+		<meta property="og:title" 		content="Branislav Blažek" />
+		<meta property="og:description" content="Branislav Blažek´s website" />
+		<meta property="og:image" 		content="http://www.branislavblazek.sk/obrazky/jaor.jpg" />
+        <link href='https://fonts.googleapis.com/css?family=Open+Sans:300,400,600,700&amp;subset=latin,latin-ext' rel='stylesheet' type='text/css' />
+		<link href='img/favicon.jpg' rel="icon" type="image/x-icon" />
+		<link rel="stylesheet" type="text/css" href="CSS/style.css">
+		<script src="https://ajax.googleapis.com/ajax/libs/jquery/3.2.1/jquery.min.js"></script>
+		<script src="JS/script.js"></script>
+	</head>
+	<body onscroll="scroll(); animacia()">
+		<div id="preloader">
+			<div id="loader">
+				<div class="cube1"></div>
+				<div class="cube2"></div>
+				<div class="cube3"></div>
+				<div class="cube4"></div>
+				<div class="cube5"></div>
+				<div class="cube6"></div>
+				<div class="cube7"></div>
+				<div class="cube8"></div>
+				<div class="cube9"></div>
+			</div>
+		</div>
+		<div id="header">
+			<div class="lpmob">
+				<a href="\" onclick="$('body, html').animate({scrollTop:0}, 'slow')" id="logo">
+					<b>Branislav Blažek</b>
+				</a>
+				<div onclick="$('#header').toggleClass('ham');" id="hamburger">
+					<div class="bar1"></div>
+					<div class="bar2"></div>
+					<div class="bar3"></div>
+				</div>
+				<ul id="menu">
+					<li class="now"><a href="javascript:scrollTo('hello')"><span><b>úvod</b></span></a></li>
+					<li class=""><a href="javascript:scrollTo('about')"><span><b>o mne</b></span></a></li>
+					<li class=""><a href="javascript:scrollTo('works')"><span><b>aplikácie</b></span></a></li>
+					<li class=""><a href="javascript:scrollTo('photos')"><span><b>galéria</b></span></a></li>
+					<li class=""><a href="javascript:scrollTo('contact')"><span><b>kontakt</b></span></a></li>
+				</ul>
+			</div>
+		</div>
+		<div id="top"><a href="#" onclick="$('body, html').animate({scrollTop:0}, 'slow')"></a></div>
+		<div class="onlymobile menupadd"></div>
+		<div id="hello" class="lpfull lpmarg">
+		</div>
+		<div id="title" class="lp lpmob lpmarg">
+			<h1>Vitajte na osobnej stránke <b>Branislava Blažeka!</b></h1>
+		</div>
+		<div id="about" class="lp anim_opacity">
+			<div id="ja_div" class="lpmarg">
+				<img src="img/e.JPG" id="ja" alt="ako vyzerám">
+			</div>
+			<div id="hellotext" class="lpmob lpmarg">
+				<h1>Volám sa <b>Branislav Blažek</b>. Momentálne som na <b>17-tom leveli</b> a svoj život márnim na <b>Gymnáziu Veľká Okružná</b> v Žiline. Pomimo školy sa rád venujem programovaniu. <br />
+				Náročnejšie úlohy riešim v <b>C++</b> a hry alebo skripty robím v <b>Pythone</b>. Okrem toho sa venujem aj stránkam. Napríklad táto beží na <b>HTML5 s CSS3</b> s vychytávkami <b>Javascriptu a Jquery</b>. Rád sa učím nové algoritmy, či už to je <b>sortovanie</b> alebo práca s <b>grafmi</b>. Keď nemám čo robiť tak si buď bootujem nový systém, flashujem hry alebo zapájam LED-ky s tlačítkami na mojom <b>Raspberry Pi 3B+</b>.  <br />
+				Môj obľubený systém je <b>Linux Ubuntu</b> ale aj tak na hlavnom notebooku bežím na <b>Windowse 10</b>. Medzi moje obľúbenejšie činnosti patrí <b>web scarping</b> a <b>kryptografia</b>. <br />
+				Keď chcem vypnúť tak si idem zabehať po okolí Žiliny. Najradšej však behám po kopcoch napríklad v <b>Malej Fatre</b>. Preto mám aj rád turistiku. Ešte do toho stíham aj robiť <b><a href="http://topdance.sk">spoločenský tanec</a></b>. Kto by povedal, že ma viac baví <b>štandart</b> než <b>latina</b>.
+			</div>
+		</div>
+		<div id="works" class="lp lpmarg lpfull">
+			<h1>Moje aplikácie:</h1>
+			<div class="app anim_opacity">
+				<div class="app_title">
+					<h1>CONVERTER<br><br></h1>
+				</div>
+				<div class="app_body">
+					<h3>CONVERTER je šikovná online pomôcka na premenu jednotiek, výpočet percent, výpočet obvodu a obsahu rovinných útvarov a výpočet objemov a povrchov telies.</h3>
+				</div>
+				<div class="app_go">
+					<a href="/apps/converter">zobraziť</a><span>></span>
+				</div>
+			</div>						
+			<div class="app anim_opacity">				
+				<div class="app_title">				
+					<h1>Hejmat<br><br></h1>				
+				</div>				<div class="app_body">					
+					<h3>Pekná hra.</h3>				
+				</div>				
+				<div class="app_go">					
+					<a href="/hejmat">zobraziť</a><span>></span>				
+				</div>			
+			</div>
+
+			
+			<div id="app_more">
+				<div class="center_apps_more">
+					<a id="app_more_click">
+						zobraziť viac
+					</a>
+					<span>></span>
+				</div>
+			</div>
+
+			<div id="hidded_apps">
+				<div class="app anim_opacity">
+					<div class="app_title">
+						<h1>periodická tabuľka prvkov</h1>
+					</div>
+					<div class="app_body">
+						<h3>Aplikácia ponúka zoznam 118 chemických prvkov s ich niektorými vlastnosťami (sk názov, lat názov, protónové číslo, elektronegativita, atómova hmotnosť a fyzikálne vlastnosti).</h3>
+					</div>
+					<div class="app_go">
+						<a href="/apps/psp">zobraziť</a><span>></span>
+					</div>
+				</div>
+				<div class="app anim_opacity">
+					<div class="app_title">
+						<h1>poznámky<br><br></h1>
+					</div>
+					<div class="app_body">
+						<h3>Aplikácia na zapisovanie poznámok, niečo ako To-Do list. Poznámky zostanú aj po zatvorení prehliadača (ukladajú sa do lokálného úložiska - localStorage).</h3>
+					</div>
+					<div class="app_go">
+						<a href="/apps/notes">zobraziť</a><span>></span>
+					</div>
+				</div>
+				<div class="app anim_opacity">
+					<div class="app_title">
+						<h1>online slovenské rádiá</h1>
+					</div>
+					<div class="app_body">
+						<h3>Zoznam s najpočúvanejšími slovenskými rádiami, ktoré si môžete online vypočuť.</h3>
+					</div>
+					<div class="app_go">
+						<a href="/apps/radia">zobraziť</a><span>></span>
+					</div>
+				</div>
+			</div>
+		</div>
+		<div id="photos" class="lpfull lpmarg">
+			<h1>Fotky zachytavajúce môj život:</h1>
+			<div id="gallery" >
+				<div style="background-image: url(img/gallery/fiit.jpg)" class="w25 toW50 left anim_opacity">
+					<div><h3>Druhé miesto na celoslovenskej programátorskej súťaži Junior internet 2018.<br>STU FIIT, 23. - 24. 3. 2018</h3></div>
+				</div>
+				<div style="background-image: url(img/gallery/web.jpg)" class="w50 toW50 bottom anim_opacity">
+					<div><h3>Titulná fotografia na mojom prvom webe spustenom v septembri 2017. Celý prvý web je na tejto <a href="/old">adrese</a></h3></div>
+				</div>
+				<div style="background-image: url(img/gallery/code.jpg)" class="w25 toW44 right anim_opacity">
+					<div><h3>Programovaniu sa venujem skoro každý deň</h3></div>
+				</div>
+				<div style="background-image: url(img/gallery/dance.jpg)" class="w33 toW55 top anim_opacity">
+					<div><h3>Súťaž v spoločenských tancoch. Jeden z mojich obľúbených tancov je tango.</h3></div>
+				</div>
+				<div style="background-image: url(img/gallery/spartan_water.jpg)" class="w44 toW66 bottom anim_opacity">
+					<div><h3>Môj prvý Spartan Race - Sprint 2018. Čvachtám sa v potoku pod ostnatým drôtom.</h3></div>
+				</div>
+				<div style="background-image: url(img/gallery/snow.jpg)" class="w22 toW33 right anim_opacity">
+					<div><h3>Odmalička sa lyžujem ale tentokrát som vyskúšal snowboard.</h3></div>
+				</div>
+				<div style="background-image: url(img/gallery/lyze.jpg)" class="w25 toW33 left anim_opacity">
+					<div><h3>Selfičko na vrchole Martiniek na lyžiarskom výcviku.</h3></div>
+				</div>
+				<div style="background-image: url(img/gallery/duben.jpg)" class="w25 toW33 pos_top right anim_opacity">
+					<div><h3>Žilina ako na dlani. Krásny výhľad z vyhliadky na Dubni.</h3></div>
+				</div>
+				<div style="background-image: url(img/gallery/ja.jpg)" class="w25 toW33 left anim_opacity">
+					<div><h3>...na svadbe...</h3></div>
+				</div>
+				<div style="background-image: url(img/gallery/lod.jpg)" class="w25 toW50 right anim_opacity">
+					<div><h3>Skákanie z lode v Chorvátsku.</h3></div>
+				</div>
+				<div style="background-image: url(img/gallery/under.jpg)" class="w33 toW50 top anim_opacity">
+					<div><h3>Pod morskou hladinou...</h3></div>
+				</div>
+				<div style="background-image: url(img/gallery/austria.jpg)" class="w66 toW100 bottom anim_opacity">
+					<div><h3>Nádherné rakúsne alpy, Kitzstienhorn, Salzburg.</h3></div>
+				</div>
+				<div style="background-image: url(img/gallery/kozol.jpg)" class="w33 bottom anim_opacity">
+					<div><h3>Západ slnka z Kozla.</h3></div>
+				</div>
+				<div style="background-image: url(img/gallery/pagac.jpg)" class="w22 toW66 pos_top bottom anim_opacity">
+					<div><h3>Pravá odmena po vystúpaní na Kôprovský štít, 2363 m.n.m.</h3></div>
+				</div>
+				<div style="background-image: url(img/gallery/ihrisko.jpg)" class="w44 toW50 tosW55 pos_top top anim_opacity">
+					<div><h3>Pokúšam sa robiť animátora na prímestskom tábore.</h3></div>
+				</div>
+				<div style="background-image: url(img/gallery/nohy.jpg)" class="w33 toW50 tosW44 bottom anim_opacity">
+					<div><h3>Keď na chate nie je voda, musíš sa nejako vynájsť. Ranné umývanie v chladnom potoku pod Kráľovou hoľou.</h3></div>
+				</div>
+				<div style="background-image: url(img/gallery/vychod.jpg)" class="w66 pos_bot top anim_opacity">
+					<div><h3>Výhľad na Žilinu z Martiniek o šiestej ráno.</h3></div>
+				</div>
+				<div style="background-image: url(img/gallery/jaskyna.jpg)" class="w25 toW33 left anim_opacity">
+					<div><h3>Večerná expedícia malej jaskyňe v Nízkych Tatrách.</h3></div>
+				</div>
+				<div style="background-image: url(img/gallery/sanitka.jpg)" class="w50 toW50 tosW55 toLeft top anim_opacity">
+					<div><h3>Prvýkrát po mňa prišla sanitka a ja si to užívam.</h3></div>
+				</div>
+				<div style="background-image: url(img/gallery/potok.jpeg)" class="w25 toW50 tosW44 right anim_opacity">
+					<div><h3>"Nie neboj, to sa pod tebou neprepadne..."</h3></div>
+				</div>
+			</div>
+			<div style="clear:both"></div>
+		</div>
+		<div id="contact" class="lp lpmob lpmargT anim_opacity">
+			<h1>Kontakt: </h1>
+			<br>						<h2>GITHUB:</h2>						<a href="https://github.com/branislavblazek"><h3>github.com/branislavblazek</h3></a>
+			<h2>MAIL:</h2>
+			<a href="mailto:branislav.blazek.bb@gmail.com"><h3>branislav.blazek.bb@gmail.com</h3></a>
+			<h2>FACEBOOK:</h2>
+			<a href="https://www.facebook.com/branislav.bla"><h3>Branislav Blažek</h3></a>
+			<h2>INSTAGRAM:</h2>
+			<a href="https://www.instagram.com/branislav_blazek/"><h3>branislav_blazek</h3></a>
+		</div>
+	</body>
+</html>

@@ -1,0 +1,586 @@
+<!DOCTYPE html>
+<html>
+	<head>
+		<meta charset="utf-8">
+		<meta http-equiv="X-UA-Compatible" content="IE=edge,chrome=1">
+		<title></title>
+		<script src="https://ajax.googleapis.com/ajax/libs/jquery/3.2.1/jquery.min.js"></script>
+		<meta name="viewport" content="width=device-width, initial-scale=1.0">
+		<link rel="stylesheet" href="https://fonts.googleapis.com/icon?family=Material+Icons">
+		<style>
+		body,html{
+			outline:none;
+		}
+		#player_controls div{
+			display: flex;
+			display: -webkit-flex;
+			display: -moz-flex;
+			display: -ms-flex;
+			cursor: pointer;
+		}
+		.slider {
+			flex-grow: 0;
+			flex-shrink: 0;
+			flex-basis: 0;
+			-webkit-flex-grow: 0;
+			-webkit-flex-shrink: 0;
+			-webkit-flex-basis: 0;
+			-moz-flex-grow: 0;
+			-moz-flex-shrink: 0;
+			-moz-flex-basis: 0;
+			-ms-flex-grow: 0;
+			-ms-flex-shrink: 0;
+			-ms-flex-basis: 0;
+		}
+		#player_time {
+			width:500px;
+			height:10px;
+			background:green;
+		}
+		#sli_time {
+			background: skyblue;
+		}
+		#player_volume {
+			width:230px;
+			height:10px;
+			background:blue;
+		}
+		#sli_volume {
+			background:yellow;
+			-webkit-flex-basis:100%;
+			-moz-flex-basis:100%;
+			-ms-flex-basis:100%;
+			flex-basis:100%;
+		}
+		#player_speed {
+			background:red;
+			width:300px;
+			height:10px;
+		}
+		#sli_speed {
+			background:orange;
+			-webkit-flex-basis:50%;
+			-moz-flex-basis:50%;
+			-ms-flex-basis:50%;
+			flex-basis:50%;
+		}
+		.row	 {
+			display: inline-block !important;
+			outline:none;
+		}
+			fieldset {
+				width:50%;
+			}
+			li {
+				padding: 0;
+				margin:0;
+				cursor: pointer;
+			}
+			li .name {
+				float: left;
+			}
+			li .time {
+				float:right;
+			}
+			.active {
+				color:green;
+			}
+		</style>
+	</head>
+	<body>
+		<audio src="" id="track"></audio>
+		<div id="player_controls">
+			<div id="rep5" class="material-icons row cl_time">replay_5</div>
+			<div id="rep10" class="material-icons row cl_time">replay_10</div>
+			<div id="rep30" class="material-icons row cl_time">replay_30</div>
+			<div id="prev" class="material-icons row">fast_rewind</div>
+			<div id="play" class="material-icons row" style="color:red">play_arrow</div>
+			<div id="next" class="material-icons row">fast_forward</div>
+			<div id="loop" class="material-icons row" style="color:red">repeat_one</div>
+			<div id="repeat" class="material-icons row" style="color:red">repeat</div>
+			<div id="for5" class="material-icons row cl_time">forward_5</div>
+			<div id="for10" class="material-icons row cl_time">forward_10</div>
+			<div id="for30" class="material-icons row cl_time">forward_30</div>
+			<div id="player_time">
+				<div id="sli_time" class="slider"></div>
+			</div>
+			<div id="player_volume">
+				<div id="sli_volume" class="slider"></div>
+			</div>
+			<div id="player_speed">
+				<div id="sli_speed" class="slider"></div>
+			</div>
+		</div>
+		<select id="sel_volume">
+			<option value="0">0%</option>
+			<option value="0.25">25%</option>
+			<option value="0.50">50%</option>
+			<option value="0.75">75%</option>
+			<option value="1.00" selected>100%</option>
+		</select>
+		<select id="sel_speed">
+			<option value="0">0%</option>
+			<option value="0.25">25%</option>
+			<option value="0.50">50%</option>
+			<option value="0.75">75%</option>
+			<option value="1.00" selected>100%</option>
+			<option value="1.25">125%</option>
+			<option value="1.50">150%</option>
+			<option value="1.75">175%</option>
+			<option value="2">200%</option>
+			
+		</select>
+		<br>
+		<br>
+		<table>
+			<tr>
+				<td>nazov</td><td id="src"></td>
+			</tr>
+			<tr>
+				<td>cas</td><td id="time"></td>
+			</tr>
+			<tr>
+				<td>cas %</td><td id="timeper"></td>
+			</tr>
+			<tr>
+				<td>cas celkovy</td><td id="timeall"></td>
+			</tr>
+			<tr>
+				<td>cas ostava</td><td id="timerest"></td>
+			</tr>
+			<tr>
+				<td>cas ostava %</td><td id="timerestper"></td>
+			</tr>
+			<tr>
+				<td>hlas</td><td id="volume"></td>
+			</tr>
+			<tr>
+				<td>hlas %</td><td id="volumeper"></td>
+			</tr>
+			<tr>
+				<td>rýchlosť</td><td id="speed"></td>
+			</tr>	
+			<tr>
+				<td>rýchlosť %</td><td id="speedper"></td>
+			</tr>
+		</table>
+		<fieldset>
+			<legend>playlist</legend>
+			<ol id="list">
+			</ol>
+			<span>názov:</span><input type="text" id="new_name"><span>cesta</span><input type="text" id="new_path"><input type="button" value="pridaj" id="new_add">
+			<div id="playlist_add" class="material-icons">playlist_add</div>
+			<div id="playlist_remove" class="material-icons">not_interested</div>
+			
+		</fieldset>
+		<script>
+			window.onload = function(){
+				tracks();
+				zistiZdroj();
+				setValue("loop");
+			}
+			function zistiZdroj(){
+				for (var namee in playlist){
+					if (playlist.hasOwnProperty(namee)){
+						track.src = playlist[namee];
+						if (getID("play_1").textContent == namee){
+							getID("play_1").className = "active";
+						}
+						break;
+					}
+				}
+				i_src.innerHTML = track.src;
+			}
+			//playlist
+			playlist = {
+			}
+			var tracks = function(){
+				for (var w = 0;w < localStorage.length;w++){
+					playlist[localStorage.key(w)] =localStorage.getItem(localStorage.key(w))
+				}
+				var count = 0;
+				for (var t in playlist){
+					if (playlist.hasOwnProperty(t)){
+						count++;
+					}
+				}
+				if (count == 0){
+					alert("na prehravanie pridajte prosím niečo do playlistu!");
+				} else if (count >= 1){
+					var index_li = 0;
+					for (var tracks in playlist){
+						if (playlist.hasOwnProperty(tracks)){
+							index_li++;
+							var li = document.createElement("li");
+							li.setAttribute("id", "play_"+index_li);
+							var name = document.createElement("span");
+							name.setAttribute("class","name");
+							name.textContent = tracks;
+							li.appendChild(name);
+							list.appendChild(li);
+						}
+					}
+				}
+			}
+			function updatePlaylist(){
+				var name = getID("new_name").value;
+				var path = getID("new_path").value;
+				playlist[name] = path;
+				var count = 0;
+				for (var tt in playlist){
+					if (playlist.hasOwnProperty(tt)){
+						count++;
+						if (getID("play_"+count) == undefined){
+							var li = document.createElement("li");
+							li.setAttribute("id", "play_"+count);
+							var name = document.createElement("span");
+							name.setAttribute("class","name");
+							name.textContent = tt;
+							li.appendChild(name);
+							b_list.appendChild(li);
+						}
+					}
+				}
+			}
+			function callTrack(e){
+				for (var u = 0;u < b_list.children.length;u++){
+					b_list.children[u].className="";
+				}
+				var value;
+				if (e.target.nodeName == "SPAN"){
+					e.target.parentElement.className = "active";
+					value = e.target.innerHTML;
+				} else {
+					e.target.className = "active";
+					value = e.target.children[0].innerHTML;
+				}
+				track.src=playlist[value];
+				track.play();
+				b_play.set("style color","green");
+				b_play.set("textContent","pause");
+			}
+			function next(){
+				var now = track.attributes[0].textContent;
+				var va = Object.values(playlist);
+				va.forEach(function(item,index){
+					if (va[index+1] == undefined){
+						index = -1;
+					}
+					if (item == now){
+						track.src = va[index+1];
+						track.play();
+						b_play.set("style color","green");
+						b_play.set("textContent","pause");
+						for (var op = 0;op < b_list.children.length;op++){
+							b_list.children[op].className = "";
+						}
+					}
+				});
+				Object.keys(playlist).forEach(function(e){
+					if (playlist[e] == track.attributes[0].textContent){
+						for (var io = 0;io < b_list.children.length;io++){
+							if (b_list.children[io].children[0].textContent == e){
+								b_list.children[io].className = "active";
+							}
+						}
+					}
+				})
+			};
+			function prev(){
+				var now = track.attributes[0].textContent;
+				var va = Object.values(playlist);
+				va.forEach(function(item,index){
+					var count = 0;
+					Object.values(playlist).forEach(function(){
+						count++;
+					});
+					if (va[index-1] == undefined){
+						index = count;
+					}
+					if (item == now){
+						track.src = va[index-1];
+						track.play();
+						b_play.set("style color","green");
+						b_play.set("textContent","pause");
+						for (var op = 0;op < b_list.children.length;op++){
+							b_list.children[op].className = "";
+						}
+					}
+				});
+				Object.keys(playlist).forEach(function(e){
+					if (playlist[e] == track.attributes[0].textContent){
+						for (var io = 0;io < b_list.children.length;io++){
+							if (b_list.children[io].children[0].textContent == e){
+								b_list.children[io].className = "active";
+							}
+						}
+					}
+				})
+			}
+			function whatNow(){
+				var length = objectLength();
+				var what = track.className;
+				switch(what){
+					case "":
+						console.log("nothing to do!");
+						break;
+					case "repeat":
+						next();
+						break;
+				}
+			}
+			function LS(){
+				Object.keys(playlist).forEach(function(item){
+					localStorage.setItem(item,playlist[item]);
+				})
+			}
+			function rLS(){
+				localStorage.clear();
+			}
+			//helpful functions
+			var getID = function(id){
+				return document.getElementById(id);
+			}
+			var getClass = function(cla){
+				return document.getElementsByClassName(cla);
+			}
+			var fix = function(val, per){
+				if (per == undefined || per == 0){
+					return val.toFixed(2);
+				} else if (per == 1){
+					return val.toFixed(2)+"%";
+				}
+			}
+			function sliderPer(n,s){
+				return n.offsetX/s.offsetWidth;
+			}
+			function objectLength(){
+				var number = 0;
+				for (var qqq in playlist){
+					if (playlist.hasOwnProperty(qqq)){
+						number++;
+					}
+				}
+				return number;
+			}
+			Object.prototype.toggle = function(prop, array){
+				var obj = [];
+				prop.split(" ").map(function(path,index){
+					obj.push(path);
+				});
+				var str = "this.";
+				for (var i = 0;i < obj.length;i++){
+					if (i == 0 && obj.length >= 2){
+						str += ""+obj[i]+".";
+					} else {
+						str += ""+obj[i]+"";
+					}
+				}
+				var t = eval(str);
+				var set = 0;
+				for (let i = 0;i < array.length;i++){
+					if (t == array[array.length-1]) {
+						set = 0;
+					} else {
+						set = i + 1;
+					}
+					if (t === array[i]){
+						eval(str+"='"+array[set]+"'");
+						break;
+					} else {
+						eval(str+"='"+array[set]+"'");
+					}
+				};
+			};
+			Object.prototype.set = function(prop, value){
+				var obj = [];
+				prop.split(" ").map(function(path,index){
+					obj.push(path);
+				});
+				var str = "this.";
+				for (var i = 0;i < obj.length;i++){
+					if (i == 0 && obj.length >= 2){
+						str += ""+obj[i]+".";
+					} else {
+						str += ""+obj[i]+"";
+					}
+				};
+				eval(str+"='"+value+"'");
+			};
+			//variables
+			var track = getID("track");
+			var b_play = getID("play");
+			var b_loop = getID("loop");
+			var b_src = getID("source");
+			var b_new = getID("new_add");
+			var b_list = getID("list");
+			var b_next = getID("next");
+			var b_prev = getID("prev");
+			var b_repe = getID("repeat");
+			var b_play_add = getID("playlist_add");
+			var b_play_rem = getID("playlist_remove");
+			//slider - time
+			var b_time = getID("sli_time");
+			var b_slider_time = getID("player_time");
+			var rf = getClass("cl_time");
+			//slider - volume
+			var b_volume = getID("sli_volume");
+			var b_slider_volume = getID("player_volume");
+			//slider - speed 
+			var b_speed = getID("sli_speed");
+			var b_slider_speed = getID("player_speed");
+			//selects
+			var b_sel_volume = getID("sel_volume");
+			var b_sel_speed = getID("sel_speed");
+			//values
+			var d_tDuration = null;
+			var d_tNow = null;
+			var d_vGet = null;
+			var d_vSet = null;
+			var d_sGet = null;
+			var d_sSet = null;
+			//info
+			var i_src = getID("src");
+			var i_time = getID("time");
+			var i_timeall = getID("timeall");
+			var i_timeper = getID("timeper");
+			var i_timerest = getID("timerest");
+			var i_timerestper = getID("timerestper");
+			var i_volume = getID("volume");
+			var i_volumeper = getID("volumeper");
+			var i_speed = getID("speed");
+			var i_speedper = getID("speedper");
+			//get functions
+			function getInfo(){
+				d_tDuration = track.duration;
+				d_tNow = track.currentTime;
+				
+				i_src.innerHTML = track.src;
+				
+				b_time.style.flexBasis = d_tNow + "%";
+				i_timeall.innerHTML = fix(d_tDuration);
+				i_time.innerHTML = fix(d_tNow);
+				i_timeper.innerHTML = fix(track.currentTime/track.duration*100,1);
+				i_timerest.innerHTML = fix(track.duration-track.currentTime);
+				i_timerestper.innerHTML = fix((track.duration - track.currentTime) /( track.duration / 100 ),1 );
+				
+				d_vGet = parseFloat(window.getComputedStyle(b_volume, null).flexBasis);
+				d_vSet = track.volume;
+				i_volume.innerHTML=d_vSet;
+				i_volumeper.innerHTML=d_vGet+" %";
+				
+				d_vGet = parseFloat(window.getComputedStyle(b_speed, null).flexBasis);
+				d_vSet = track.playbackRate;
+				i_speed.innerHTML = d_vSet;
+				i_speedper.innerHTML = d_vGet*2+" %";
+			}
+			//set functions
+			function setValue(what,n){
+				switch(what){
+					case "play":
+						track.paused ? track.play() : track.pause();
+						b_play.toggle("style color",["green","red"]);
+						b_play.toggle("textContent",["play_arrow","pause","play_circle_filled","pause_circle_filled","play_circle_outline","pause_circle_outline"]);
+						break;
+					case "loop":
+						track.loop ? track.loop = false : track.loop = true;
+						b_loop.toggle("style color",["green","red"]);
+						break;
+					case "volume":
+						track.volume = n;
+						i_volume.innerHTML = track.volume;
+						i_volumeper.innerHTML = fix(track.volume*100,1);
+						b_volume.style.flexBasis = fix(track.volume*100,1);
+						break;
+					case "speed":
+						track.playbackRate = n;
+						i_speed.innerHTML = track.playbackRate;
+						i_speedper.innerHTML = fix(track.playbackRate*100,1);
+						b_speed.style.flexBasis = fix(track.playbackRate*50,1);
+						break;
+					case "ontimeupdate":
+						d_tNow = track.currentTime;
+						d_tDuration = track.duration;
+						b_time.style.flexBasis = fix(d_tNow/d_tDuration*100,1);
+						i_time.innerHTML = fix(d_tNow);
+						i_timeper.innerHTML = fix(d_tNow/d_tDuration*100,1);
+						i_timeall.innerHTML = fix(d_tDuration);
+						i_timerest.innerHTML = fix(d_tDuration-d_tNow);
+						i_timerestper.innerHTML = fix((d_tDuration - d_tNow) /( d_tDuration / 100 ),1);
+						break;
+					case "updatetime":
+						var point = (n.offsetX/b_slider_time.offsetWidth)*track.duration;
+						sliderPer(n,b_slider_time,track.duration);
+						track.currentTime = point;
+						break;
+					case "updatevolume":
+						var point = sliderPer(n,b_slider_volume);
+						b_volume.style.flexBasis = fix(point*100,1);
+						track.volume = point;
+						i_volume.innerHTML = track.volume;
+						i_volumeper.innerHTML = fix(track.volume*100,1);
+						break;
+					case "updatespeed":
+						var parent = {};
+						parent.offsetWidth = parseFloat(window.getComputedStyle(b_slider_speed,null).width)/2;
+						var point = sliderPer(n,parent);
+						track.playbackRate = point;
+						b_speed.style.flexBasis = fix(track.playbackRate*50,1);
+						i_speed.innerHTML = track.playbackRate;
+						i_speedper.innerHTML = fix(track.playbackRate*100,1);
+						break;
+					case "src":
+						var v = getID("source").value;
+						track.src=v;
+						track.play();
+						b_play.set("style color","green");
+						b_play.set("textContent","pause");
+						break;
+					case "refo":
+						var id = n.target.id.slice(0,3);
+						var num = n.target.id.slice(3,5);
+						id == "rep" ? num = Number("-"+num) : num = Number(num);
+						track.currentTime += num;
+						break;
+					case "repeat":
+						if (window.getComputedStyle(b_repe,null).color == "rgb(255, 0, 0)"){
+							b_repe.set("style color","green");
+							track.className = "repeat";
+						} else {
+							b_repe.set("style color","red");
+							track.className = "";
+						}
+						break;
+				}
+			}
+			//events
+			//events - track
+			track.ontimeupdate = function(){setValue("ontimeupdate")};
+			track.onloadeddata = function(){getInfo()};
+			track.onended = function(){whatNow()}
+			//events - slider
+			b_slider_time.onclick = function(e){setValue("updatetime",e)}
+			b_slider_volume.onclick = function(e){setValue("updatevolume",e)}
+			b_slider_speed.onclick = function(e){setValue("updatespeed",e)}
+			b_new.onclick = function(){updatePlaylist()}
+			b_list.onclick = function(e) {callTrack(e)}
+			//events - play/pause | next/prev | shuffle/repeat
+			b_play.onclick = function(){setValue("play")};
+			b_loop.onclick = function(){setValue("loop")};
+			b_next.onclick = function(){next()}
+			b_prev.onclick = function(){prev()}
+			b_repe.onclick = function(){setValue("repeat")}
+			b_play_add.onclick = function(){LS()}
+			b_play_rem.onclick = function(){rLS()}
+			//events - select
+			b_sel_volume.onchange = function(){setValue("volume",b_sel_volume.value)};
+			b_sel_speed.onchange = function(){setValue("speed",b_sel_speed.value)};
+			//replay/forward
+			for(var o = 0;o < rf.length;o++){
+				rf[o].addEventListener("click",function(e){
+					setValue("refo",e);	
+				},false);
+			}
+		</script>
+	</body>
+</html>
