@@ -1,4 +1,4 @@
-*:
+*
 {
     box-sizing: border-box;
     -webkit-tab-highlight-color: rgba(0,0,0,0) !important;
@@ -57,9 +57,10 @@ h1
 #nadpis
 {
     font-family: 'Grand Hotel';
-    font-size: 30px;
+    font-size: 26px;
     display: inline-block;
     text-align: left;
+    margin: 0 0 0 30px;
 }
 #popis
 {
@@ -89,8 +90,10 @@ h1
     padding: 5px 10px 5px 10px;
     border-radius: 10px;
     border: 1px solid black;
-    width: 40%;
+    width: 20%;
     margin: 0 auto;
+    float: left;
+    position: fixed;
 }
 #tagmenu > p
 {
@@ -120,6 +123,60 @@ h1
 {
     margin: 0;
 }
+#list
+{
+    width: 70%;
+    float: right;
+}
+.recept
+{
+    float: right;
+    width: 100%;
+    border: 1px solid black;
+    border-radius: 5px;
+    padding-bottom: 5px;
+}
+.recept .obr
+{
+    width: 40%;
+    display: inline-block;
+}
+.recept img
+{
+    width: 100%;
+    height: auto;
+}
+.recept .text
+{
+    display: inline-block;
+    width: 60%;
+    float: right;
+}
+.recept .text h2 
+{
+    margin: 10px;
+}
+.recept .text p
+{
+    margin: 5px;
+    color: gray;
+}
+.recept .tag
+{
+    font-size: 12px;
+    background: rgb(130, 130, 130);
+    display: inline-block;
+    margin: 5px 0 0 5px;
+    padding: 5px 10px 5px 10px;
+    border-radius: 150px;
+    border: 1px solid rgb(57, 57, 57);
+    text-transform: uppercase;
+    color: white;
+}
+.recept .tag p
+{
+    margin: 0;
+}
 
 /*RESPONSIVE*/
 @media (max-width: 1100px)
@@ -128,10 +185,7 @@ h1
     {
         width: auto;
         margin: 0;
-    }
-    #nadpis
-    {
-        margin: 0 0 0 30px;
+        padding: 10px;
     }
     #popis
     {
@@ -162,5 +216,28 @@ h1
     #content
     {
         margin-top: 130px;
+    }
+    #tagmenu
+    {
+        float: none;
+        width: 70%;
+        margin: 0 auto;
+        position: relative;
+    }
+    #list
+    {
+        width: 100%;
+        float: none;
+        margin-top: 20px;
+    }
+    .recept{
+        float: none;
+    }
+    .recept .obr{
+        width: 100%;
+    }
+    .recept .text
+    {
+        width: 100%;
     }
 }
