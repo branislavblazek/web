@@ -5,13 +5,31 @@ var farba_tagov = {
     a: ["NIECO INE", "#DE6449"],
     bezmasite: ["BEZMASITE", "#FDE74C"]
 }
-
-$(window).on('load', function() {
+function set_offset()
+{
     //get height of header and set offset to content
     var header_h = $("#header").css("height");
     var header_p = $("#header").css("padding-top");
-    var height = parseInt(header_h, 10) + parseInt(header_p, 10) + 30;
+    var height = parseInt(header_h, 10) + parseInt(header_p, 10);
+    if ($("body").width() > 630)
+    {
+        height += 20;
+    }
     $("#content").css("margin-top", height + 'px');
+}
+function fixed_tags()
+{
+    //set width for fixed element
+    var $parent = $("#tag_rel").width();
+    //ignore this for mobiles
+    if ($("body").width() > 630)
+    {
+        $("#tagmenu").width($parent);
+    }
+}
+//ON LOAD
+$(window).on('load', function() {
+    set_offset();
 
     //create tags
     var parent = $("#tags");
@@ -23,6 +41,8 @@ $(window).on('load', function() {
             parent.append($tag);
         }
     }
+
+    fixed_tags();
 
     //set colors for tags
     var children = $("#tags")[0].children;
@@ -46,4 +66,10 @@ $(window).on('load', function() {
         }
         $(tag).toggleClass('active');
     });
+});
+//ON RESIZE
+$(window).on('resize', function()
+{
+    set_offset();
+    fixed_tags();
 });
