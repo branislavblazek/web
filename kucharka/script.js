@@ -66,6 +66,24 @@ $(window).on('load', function() {
         }
         $(tag).toggleClass('active');
     });
+
+    //click on recipies
+    $(".recept").click(function(e){
+        var file = $(e.currentTarget).data().href;
+        //get height of header and set offset to content
+        var header_h = $("#header").css("height");
+        $("#modal_window").css("top", 0);
+        $("#modal_window").css("paddingTop", header_h);
+        setTimeout(function(){
+            //$("#list").addClass("modal_is_opened");
+        }, 1000);
+    });
+
+    //click on exit
+    $("#closebtn").click(function(e){
+        //$("#list").removeClass('modal_is_opened');
+        $("#modal_window").css("top", "100%");
+    });
 });
 //ON RESIZE
 $(window).on('resize', function()

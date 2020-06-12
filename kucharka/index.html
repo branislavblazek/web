@@ -16,8 +16,9 @@
         <link href='img/favicon.jpg' rel="icon" type="image/x-icon" />-->
         <link href="https://fonts.googleapis.com/css2?family=Grand+Hotel&display=swap" rel="stylesheet">
         <link href='https://fonts.googleapis.com/css?family=Open+Sans:300,400,600,700&amp;subset=latin,latin-ext' rel='stylesheet' type='text/css' />
-		<link rel="stylesheet" type="text/css" href="style.css">
-		<script src="https://ajax.googleapis.com/ajax/libs/jquery/3.2.1/jquery.min.js"></script>
+        <link rel="stylesheet" type="text/css" href="style.css">
+        <link rel="stylesheet" type="text/css" href="recept.css">
+        <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.2.1/jquery.min.js"></script>
 		<script src="script.js"></script>
     </head>
     <body>
@@ -43,7 +44,7 @@
                 </div>
             </div>
             <div id="list">
-                <div class='recept'>
+                <div class='recept' data-href='rezance_s_makom'>
                     <div class='obr'>
                         <img src='img/d.jpg'>
                     </div>
@@ -63,7 +64,7 @@
                     </div>
                 </div>
 
-                <div class='recept'>
+                <div class='recept' data-href='nieco_ine'>
                     <div class='obr'>
                         <img src='img/d.jpg'>
                     </div>
@@ -81,6 +82,70 @@
                     <div class='tag'>
                         <p>predjedla</p>
                     </div>
+                </div>
+
+                <div class='recept' data-href='nieco_ine'>
+                    <div class='obr'>
+                        <img src='img/d.jpg'>
+                    </div>
+                    <div class='text'>
+                        <h2>Rezance s makom bez maku a Rezancov</h2>
+                        <p>
+                            Tu by mohol byt nejaky krasny popis toho co je tu.
+                            Ale fakt len nieco take kratke. Maximalne nejaky tri 
+                            styri vety preco si toto jedlo spravit.
+                        </p>
+                    </div>
+                    <div class='tag'>
+                        <p>polievky</p>
+                    </div>
+                    <div class='tag'>
+                        <p>predjedla</p>
+                    </div>
+                </div>
+            </div>
+        </div>
+        
+        <div id="modal_window">
+            <div id="closebtn">
+                <span>X</span>
+            </div>
+            <div id="modal_content" class="cntr">
+                <div id="overview">
+                    <img src="img/a.jpg">
+                </div>
+                <div id="nazov">
+                    <h1>Perkeltova polievka na sladko</h1>
+                </div>
+                <div id="uvod">
+                    <div id="ingred">
+                        <h3>Ingrediencie:</h3>
+                        <ul>
+                            <li>2PL soli</li>
+                            <li>Zemiaky</li>
+                            <li>Kmin</li>
+                            <li>Mlieko 5L</li>
+                            <li>Cukor do hrste</li>
+                            <li>Zubok z vily</li>
+                            <li>Modra ruza</li>
+                        </ul>
+                    </div>
+                    <div id="intro">
+                        <p>Tu by mohol byt nejaky krasny popis toho co je tu.
+                            <br>Ale fakt len nieco take kratke. Maximalne nejaky tri 
+                            <br>styri vety preco si toto jedlo spravit.
+                        </p>
+                    </div>
+                </div>
+                <div id="postup">
+                    <p>ahoj</p>
+                    <p>ahoj</p>
+                    <p>ahoj</p>
+                    <p>ahoj</p>
+                    <p>ahoj</p>
+
+                    <p>ahoj</p>
+                    <p>ahoj</p>
                 </div>
             </div>
         </div>
