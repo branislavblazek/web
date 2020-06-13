@@ -75,13 +75,16 @@ $(window).on('load', function() {
         $("#modal_window").css("top", 0);
         $("#modal_window").css("paddingTop", header_h);
         setTimeout(function(){
-            //$("#list").addClass("modal_is_opened");
-        }, 1000);
+            $("#content").addClass("modal_is_opened");
+            $("#modal_window").css("position", "relative");
+            $('html, body').animate({scrollTop:0}, 0);
+        }, 750);
     });
 
     //click on exit
     $("#closebtn").click(function(e){
-        //$("#list").removeClass('modal_is_opened');
+        $("#content").removeClass('modal_is_opened');
+        $("#modal_window").css("position", "fixed");
         $("#modal_window").css("top", "100%");
     });
 });

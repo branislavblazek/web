@@ -83,6 +83,10 @@ h1
     margin-top: 120px;
     position: relative;
 }
+#content.modal_is_opened
+{
+    display: none;
+}
 /*TAG MENU*/
 #tag_rel
 {
